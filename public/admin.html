@@ -1,0 +1,5645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Chotelal Hotel Admin Panel"
+    >
+
+    <title>Admin Panel | Chotelal Hotel</title>
+
+    <style>
+        /* =========================================================
+           ROOT
+        ========================================================= */
+
+        :root {
+            --red: #b71c1c;
+            --red-dark: #7f1010;
+            --red-light: #e53935;
+
+            --gold: #ffb300;
+            --gold-light: #ffc107;
+
+            --black: #0d0d0d;
+            --black-2: #151515;
+            --black-3: #1d1d1d;
+            --black-4: #252525;
+
+            --white: #ffffff;
+            --text: #f4f4f4;
+            --muted: #a8a8a8;
+
+            --green: #22c55e;
+            --blue: #3b82f6;
+            --orange: #f97316;
+
+            --border: rgba(255, 255, 255, 0.09);
+
+            --shadow:
+                0 15px 45px rgba(0, 0, 0, 0.35);
+
+            --radius: 16px;
+        }
+
+        /* =========================================================
+           RESET
+        ========================================================= */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family:
+                Inter,
+                system-ui,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at top right,
+                    rgba(183, 28, 28, 0.15),
+                    transparent 30%
+                ),
+                var(--black);
+
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        button,
+        input,
+        textarea,
+        select {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* =========================================================
+           LOGIN
+        ========================================================= */
+
+        .login-screen {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 25px;
+
+            background:
+                linear-gradient(
+                    rgba(0, 0, 0, 0.72),
+                    rgba(0, 0, 0, 0.88)
+                ),
+                radial-gradient(
+                    circle at 50% 20%,
+                    rgba(183, 28, 28, 0.4),
+                    transparent 45%
+                );
+        }
+
+        .login-box {
+            width: 100%;
+            max-width: 440px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(38, 38, 38, 0.98),
+                    rgba(16, 16, 16, 0.98)
+                );
+
+            border: 1px solid var(--border);
+            border-radius: 24px;
+
+            padding: 38px;
+
+            box-shadow: var(--shadow);
+
+            animation: loginIn 0.5s ease;
+        }
+
+        @keyframes loginIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.98);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .login-logo {
+            width: 80px;
+            height: 80px;
+
+            margin: 0 auto 20px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--red),
+                    var(--red-dark)
+                );
+
+            border: 3px solid var(--gold);
+
+            font-size: 35px;
+
+            box-shadow:
+                0 10px 30px rgba(183, 28, 28, 0.35);
+        }
+
+        .login-box h1 {
+            text-align: center;
+
+            font-size: 28px;
+
+            color: var(--gold);
+
+            margin-bottom: 7px;
+        }
+
+        .login-subtitle {
+            text-align: center;
+
+            color: var(--muted);
+
+            margin-bottom: 30px;
+
+            font-size: 14px;
+        }
+
+        .login-error {
+            display: none;
+
+            background: rgba(220, 38, 38, 0.15);
+
+            border: 1px solid rgba(220, 38, 38, 0.35);
+
+            color: #ff8b8b;
+
+            padding: 12px 14px;
+
+            border-radius: 10px;
+
+            margin-bottom: 18px;
+
+            font-size: 14px;
+        }
+
+        /* =========================================================
+           FORM
+        ========================================================= */
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-label {
+            display: block;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            color: #ddd;
+
+            margin-bottom: 8px;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+
+            border: 1px solid var(--border);
+
+            background: #111;
+
+            color: var(--white);
+
+            border-radius: 10px;
+
+            padding: 12px 14px;
+
+            outline: none;
+
+            transition:
+                border-color 0.2s,
+                box-shadow 0.2s,
+                background 0.2s;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            border-color: var(--gold);
+
+            box-shadow:
+                0 0 0 3px rgba(255, 179, 0, 0.1);
+
+            background: #151515;
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 110px;
+        }
+
+        .form-help {
+            color: var(--muted);
+
+            font-size: 12px;
+
+            margin-top: 6px;
+        }
+
+        /* =========================================================
+           BUTTONS
+        ========================================================= */
+
+        .btn {
+            border: 0;
+
+            border-radius: 10px;
+
+            padding: 11px 16px;
+
+            font-weight: 700;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 8px;
+
+            transition:
+                transform 0.2s,
+                opacity 0.2s,
+                box-shadow 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .btn:disabled {
+            opacity: 0.55;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-primary {
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--red),
+                    var(--red-dark)
+                );
+
+            color: white;
+
+            box-shadow:
+                0 8px 20px rgba(183, 28, 28, 0.2);
+        }
+
+        .btn-gold {
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--gold),
+                    #e09b00
+                );
+
+            color: #111;
+        }
+
+        .btn-success {
+            background: var(--green);
+            color: white;
+        }
+
+        .btn-danger {
+            background: #dc2626;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #333;
+            color: white;
+        }
+
+        .btn-blue {
+            background: var(--blue);
+            color: white;
+        }
+
+        .btn-full {
+            width: 100%;
+        }
+
+        .btn-small {
+            padding: 7px 10px;
+            font-size: 12px;
+        }
+
+        /* =========================================================
+           APP
+        ========================================================= */
+
+        .admin-app {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* =========================================================
+           SIDEBAR
+        ========================================================= */
+
+        .sidebar {
+            width: 255px;
+
+            position: fixed;
+
+            top: 0;
+            left: 0;
+            bottom: 0;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #171717,
+                    #0d0d0d
+                );
+
+            border-right: 1px solid var(--border);
+
+            z-index: 100;
+
+            overflow-y: auto;
+        }
+
+        .brand {
+            padding: 25px 20px;
+
+            border-bottom: 1px solid var(--border);
+        }
+
+        .brand-title {
+            color: var(--gold);
+
+            font-size: 21px;
+
+            font-weight: 900;
+        }
+
+        .brand-subtitle {
+            color: var(--muted);
+
+            font-size: 11px;
+
+            margin-top: 4px;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+        }
+
+        .nav {
+            padding: 18px 12px;
+        }
+
+        .nav-section {
+            color: #666;
+
+            font-size: 10px;
+
+            font-weight: 800;
+
+            letter-spacing: 1.5px;
+
+            text-transform: uppercase;
+
+            padding: 12px 12px 7px;
+        }
+
+        .nav-link {
+            width: 100%;
+
+            border: 0;
+
+            background: transparent;
+
+            color: #bbb;
+
+            padding: 12px;
+
+            border-radius: 10px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            text-align: left;
+
+            margin-bottom: 4px;
+
+            transition:
+                background 0.2s,
+                color 0.2s,
+                transform 0.2s;
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.05);
+
+            color: white;
+
+            transform: translateX(2px);
+        }
+
+        .nav-link.active {
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(183, 28, 28, 0.3),
+                    rgba(183, 28, 28, 0.08)
+                );
+
+            color: var(--gold);
+
+            border-left: 3px solid var(--gold);
+        }
+
+        .nav-icon {
+            width: 22px;
+
+            text-align: center;
+
+            font-size: 17px;
+        }
+
+        .sidebar-bottom {
+            position: absolute;
+
+            left: 12px;
+            right: 12px;
+            bottom: 15px;
+        }
+
+        .customer-site {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 7px;
+
+            width: 100%;
+
+            padding: 10px;
+
+            border: 1px solid var(--border);
+
+            border-radius: 9px;
+
+            color: #ccc;
+
+            font-size: 13px;
+
+            margin-bottom: 8px;
+        }
+
+        .customer-site:hover {
+            color: var(--gold);
+            border-color: rgba(255, 179, 0, 0.4);
+        }
+
+        /* =========================================================
+           MAIN
+        ========================================================= */
+
+        .main-content {
+            margin-left: 255px;
+
+            width: calc(100% - 255px);
+
+            min-height: 100vh;
+        }
+
+        .topbar {
+            height: 72px;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 50;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 28px;
+
+            background:
+                rgba(13, 13, 13, 0.92);
+
+            backdrop-filter: blur(15px);
+
+            border-bottom: 1px solid var(--border);
+        }
+
+        .topbar-left {
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+        }
+
+        .page-title {
+            font-size: 21px;
+            font-weight: 800;
+        }
+
+        .page-subtitle {
+            color: var(--muted);
+            font-size: 12px;
+            margin-top: 2px;
+        }
+
+        .admin-user {
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+        }
+
+        .admin-avatar {
+            width: 36px;
+            height: 36px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: var(--red);
+
+            border: 1px solid var(--gold);
+
+            font-size: 15px;
+        }
+
+        .admin-username {
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .content {
+            padding: 28px;
+        }
+
+        /* =========================================================
+           VIEWS
+        ========================================================= */
+
+        .view {
+            display: none;
+
+            animation: viewIn 0.3s ease;
+        }
+
+        .view.active {
+            display: block;
+        }
+
+        @keyframes viewIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* =========================================================
+           STATS
+        ========================================================= */
+
+        .stats-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, minmax(0, 1fr));
+
+            gap: 18px;
+
+            margin-bottom: 25px;
+        }
+
+        .stat-card {
+            background:
+                linear-gradient(
+                    145deg,
+                    #202020,
+                    #151515
+                );
+
+            border: 1px solid var(--border);
+
+            border-radius: var(--radius);
+
+            padding: 20px;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .stat-card::after {
+            content: "";
+
+            position: absolute;
+
+            width: 100px;
+            height: 100px;
+
+            right: -40px;
+            bottom: -40px;
+
+            border-radius: 50%;
+
+            background: rgba(255, 255, 255, 0.025);
+        }
+
+        .stat-icon {
+            width: 42px;
+            height: 42px;
+
+            border-radius: 10px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 19px;
+
+            margin-bottom: 15px;
+        }
+
+        .stat-red .stat-icon {
+            background: rgba(183, 28, 28, 0.2);
+            color: #ff7070;
+        }
+
+        .stat-green .stat-icon {
+            background: rgba(34, 197, 94, 0.13);
+            color: #62e991;
+        }
+
+        .stat-blue .stat-icon {
+            background: rgba(59, 130, 246, 0.13);
+            color: #75aaff;
+        }
+
+        .stat-gold .stat-icon {
+            background: rgba(255, 179, 0, 0.13);
+            color: var(--gold);
+        }
+
+        .stat-value {
+            font-size: 30px;
+            font-weight: 900;
+        }
+
+        .stat-label {
+            color: var(--muted);
+            font-size: 13px;
+            margin-top: 3px;
+        }
+
+        /* =========================================================
+           CARDS
+        ========================================================= */
+
+        .card {
+            background:
+                linear-gradient(
+                    145deg,
+                    #202020,
+                    #151515
+                );
+
+            border: 1px solid var(--border);
+
+            border-radius: var(--radius);
+
+            margin-bottom: 22px;
+
+            overflow: hidden;
+        }
+
+        .card-header {
+            padding: 18px 20px;
+
+            border-bottom: 1px solid var(--border);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            flex-wrap: wrap;
+        }
+
+        .card-title {
+            font-size: 17px;
+            font-weight: 800;
+        }
+
+        .card-description {
+            color: var(--muted);
+            font-size: 12px;
+            margin-top: 4px;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        /* =========================================================
+           TOOLBAR
+        ========================================================= */
+
+        .toolbar {
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            flex-wrap: wrap;
+        }
+
+        .search-box {
+            min-width: 230px;
+        }
+
+        /* =========================================================
+           TABLE
+        ========================================================= */
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        .data-table {
+            width: 100%;
+
+            border-collapse: collapse;
+
+            min-width: 850px;
+        }
+
+        .data-table th {
+            color: #aaa;
+
+            font-size: 11px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.5px;
+
+            font-weight: 800;
+
+            text-align: left;
+
+            padding: 13px 14px;
+
+            background: rgba(255, 255, 255, 0.025);
+
+            border-bottom: 1px solid var(--border);
+
+            white-space: nowrap;
+        }
+
+        .data-table td {
+            padding: 13px 14px;
+
+            border-bottom: 1px solid rgba(255, 255, 255, 0.055);
+
+            vertical-align: middle;
+
+            font-size: 13px;
+        }
+
+        .data-table tbody tr {
+            transition: background 0.2s;
+        }
+
+        .data-table tbody tr:hover {
+            background: rgba(255, 255, 255, 0.025);
+        }
+
+        .food-image {
+            width: 55px;
+            height: 55px;
+
+            border-radius: 10px;
+
+            object-fit: cover;
+
+            background: #292929;
+
+            border: 1px solid var(--border);
+        }
+
+        .food-image-placeholder {
+            width: 55px;
+            height: 55px;
+
+            border-radius: 10px;
+
+            background: #292929;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            color: #777;
+
+            font-size: 20px;
+        }
+
+        .food-name {
+            font-weight: 800;
+            color: white;
+        }
+
+        .food-category {
+            color: var(--muted);
+            font-size: 11px;
+            margin-top: 3px;
+        }
+
+        .badge {
+            display: inline-flex;
+
+            align-items: center;
+
+            border-radius: 999px;
+
+            padding: 5px 9px;
+
+            font-size: 10px;
+
+            font-weight: 800;
+
+            letter-spacing: 0.3px;
+        }
+
+        .badge-veg {
+            color: #72e69a;
+
+            background: rgba(34, 197, 94, 0.1);
+
+            border: 1px solid rgba(34, 197, 94, 0.2);
+        }
+
+        .badge-nonveg {
+            color: #ff7c7c;
+
+            background: rgba(220, 38, 38, 0.1);
+
+            border: 1px solid rgba(220, 38, 38, 0.2);
+        }
+
+        .price {
+            font-weight: 800;
+            color: var(--gold);
+        }
+
+        .action-buttons {
+            display: flex;
+
+            gap: 6px;
+
+            flex-wrap: wrap;
+        }
+
+        /* =========================================================
+           EMPTY
+        ========================================================= */
+
+        .empty-state {
+            padding: 55px 20px;
+
+            text-align: center;
+
+            color: var(--muted);
+        }
+
+        .empty-icon {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .empty-state h3 {
+            color: #ddd;
+            margin-bottom: 5px;
+        }
+
+        /* =========================================================
+           GRID FOR SETTINGS
+        ========================================================= */
+
+        .two-column {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            gap: 20px;
+        }
+
+        /* =========================================================
+           MODAL
+        ========================================================= */
+
+        .modal-overlay {
+            display: none;
+
+            position: fixed;
+
+            inset: 0;
+
+            background:
+                rgba(0, 0, 0, 0.75);
+
+            backdrop-filter: blur(5px);
+
+            z-index: 1000;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 20px;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+        }
+
+        .modal {
+            width: 100%;
+
+            max-width: 700px;
+
+            max-height: 92vh;
+
+            overflow-y: auto;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #252525,
+                    #111
+                );
+
+            border: 1px solid var(--border);
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 25px 80px rgba(0, 0, 0, 0.65);
+
+            animation: modalIn 0.25s ease;
+        }
+
+        @keyframes modalIn {
+            from {
+                opacity: 0;
+                transform: scale(0.97) translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .modal-header {
+            padding: 18px 20px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            border-bottom: 1px solid var(--border);
+
+            position: sticky;
+
+            top: 0;
+
+            background: #1c1c1c;
+
+            z-index: 2;
+        }
+
+        .modal-title {
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+        .close-modal {
+            width: 35px;
+            height: 35px;
+
+            border: 0;
+
+            border-radius: 8px;
+
+            background: #333;
+
+            color: white;
+
+            font-size: 18px;
+        }
+
+        .close-modal:hover {
+            background: var(--red);
+        }
+
+        .modal-body {
+            padding: 20px;
+        }
+
+        .modal-footer {
+            padding: 15px 20px;
+
+            border-top: 1px solid var(--border);
+
+            display: flex;
+
+            justify-content: flex-end;
+
+            gap: 8px;
+
+            position: sticky;
+
+            bottom: 0;
+
+            background: #171717;
+        }
+
+        .form-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            gap: 15px;
+        }
+
+        .form-grid .full {
+            grid-column: 1 / -1;
+        }
+
+        /* =========================================================
+           IMAGE PREVIEW
+        ========================================================= */
+
+        .image-preview {
+            width: 120px;
+            height: 120px;
+
+            border-radius: 12px;
+
+            border: 1px solid var(--border);
+
+            background: #111;
+
+            object-fit: cover;
+
+            margin-top: 10px;
+        }
+
+        /* =========================================================
+           LOADING
+        ========================================================= */
+
+        .loading {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 10px;
+
+            padding: 35px;
+
+            color: var(--muted);
+        }
+
+        .spinner {
+            width: 20px;
+            height: 20px;
+
+            border: 2px solid #444;
+
+            border-top-color: var(--gold);
+
+            border-radius: 50%;
+
+            animation: spin 0.7s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* =========================================================
+           TOAST
+        ========================================================= */
+
+        .toast-container {
+            position: fixed;
+
+            right: 20px;
+            bottom: 20px;
+
+            z-index: 2000;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 10px;
+
+            max-width: 380px;
+        }
+
+        .toast {
+            min-width: 280px;
+
+            padding: 13px 15px;
+
+            border-radius: 10px;
+
+            border: 1px solid var(--border);
+
+            background: #222;
+
+            box-shadow: var(--shadow);
+
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 10px;
+
+            animation: toastIn 0.25s ease;
+
+            font-size: 13px;
+        }
+
+        .toast.success {
+            border-left: 4px solid var(--green);
+        }
+
+        .toast.error {
+            border-left: 4px solid #ef4444;
+        }
+
+        .toast.info {
+            border-left: 4px solid var(--blue);
+        }
+
+        @keyframes toastIn {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* =========================================================
+           STAR RATING
+        ========================================================= */
+
+        .stars {
+            color: var(--gold);
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+
+        .review-text {
+            max-width: 450px;
+
+            color: #ddd;
+
+            line-height: 1.55;
+
+            white-space: normal;
+            word-break: break-word;
+        }
+
+        .feedback-message {
+            max-width: 450px;
+
+            color: #ddd;
+
+            line-height: 1.55;
+
+            word-break: break-word;
+        }
+
+        .date-text {
+            color: var(--muted);
+            font-size: 11px;
+            white-space: nowrap;
+        }
+
+        /* =========================================================
+           MOBILE OVERLAY
+        ========================================================= */
+
+        .sidebar-overlay {
+            display: none;
+
+            position: fixed;
+
+            inset: 0;
+
+            background: rgba(0, 0, 0, 0.65);
+
+            z-index: 90;
+        }
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (max-width: 1100px) {
+            .stats-grid {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 800px) {
+            .sidebar {
+                transform: translateX(-100%);
+
+                transition: transform 0.25s ease;
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .sidebar-overlay.show {
+                display: block;
+            }
+
+            .main-content {
+                margin-left: 0;
+
+                width: 100%;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+
+                width: 38px;
+                height: 38px;
+
+                align-items: center;
+                justify-content: center;
+
+                border: 1px solid var(--border);
+
+                background: #222;
+
+                color: white;
+
+                border-radius: 9px;
+
+                font-size: 19px;
+            }
+
+            .topbar {
+                padding: 0 16px;
+            }
+
+            .content {
+                padding: 18px;
+            }
+
+            .admin-username {
+                display: none;
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-grid .full {
+                grid-column: auto;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .login-box {
+                padding: 25px 20px;
+            }
+
+            .page-title {
+                font-size: 17px;
+            }
+
+            .toolbar {
+                width: 100%;
+            }
+
+            .search-box {
+                min-width: 100%;
+            }
+
+            .card-header {
+                align-items: flex-start;
+            }
+
+            .toast-container {
+                left: 15px;
+                right: 15px;
+                bottom: 15px;
+                max-width: none;
+            }
+
+            .toast {
+                min-width: 0;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================================================
+         LOGIN SCREEN
+    ========================================================== -->
+
+    <section
+        id="loginScreen"
+        class="login-screen"
+    >
+
+        <div class="login-box">
+
+            <div class="login-logo">
+                🍽️
+            </div>
+
+            <h1>
+                Chotelal Hotel
+            </h1>
+
+            <p class="login-subtitle">
+                Secure Admin Panel
+            </p>
+
+            <div
+                id="loginError"
+                class="login-error"
+            ></div>
+
+            <form id="loginForm">
+
+                <div class="form-group">
+
+                    <label
+                        class="form-label"
+                        for="loginUsername"
+                    >
+                        Username
+                    </label>
+
+                    <input
+                        id="loginUsername"
+                        class="form-input"
+                        type="text"
+                        autocomplete="username"
+                        placeholder="Enter admin username"
+                        required
+                    >
+
+                </div>
+
+                <div class="form-group">
+
+                    <label
+                        class="form-label"
+                        for="loginPassword"
+                    >
+                        Password
+                    </label>
+
+                    <input
+                        id="loginPassword"
+                        class="form-input"
+                        type="password"
+                        autocomplete="current-password"
+                        placeholder="Enter admin password"
+                        required
+                    >
+
+                </div>
+
+                <button
+                    id="loginButton"
+                    class="btn btn-primary btn-full"
+                    type="submit"
+                >
+                    🔐 Login to Admin Panel
+                </button>
+
+            </form>
+
+            <div style="margin-top:20px;text-align:center;">
+
+                <a
+                    href="/"
+                    style="font-size:12px;color:#999;"
+                >
+                    ← Back to Website
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         ADMIN APP
+    ========================================================== -->
+
+    <section
+        id="adminApp"
+        class="admin-app"
+        style="display:none;"
+    >
+
+        <!-- SIDEBAR -->
+
+        <aside
+            id="sidebar"
+            class="sidebar"
+        >
+
+            <div class="brand">
+
+                <div class="brand-title">
+                    CHOTELAL HOTEL
+                </div>
+
+                <div class="brand-subtitle">
+                    Administration
+                </div>
+
+            </div>
+
+
+            <nav class="nav">
+
+                <div class="nav-section">
+                    Main
+                </div>
+
+                <button
+                    class="nav-link active"
+                    data-view="dashboard"
+                >
+                    <span class="nav-icon">📊</span>
+                    <span>Dashboard</span>
+                </button>
+
+                <div class="nav-section">
+                    Management
+                </div>
+
+                <button
+                    class="nav-link"
+                    data-view="menu"
+                >
+                    <span class="nav-icon">🍜</span>
+                    <span>Menu</span>
+                </button>
+
+                <button
+                    class="nav-link"
+                    data-view="reviews"
+                >
+                    <span class="nav-icon">⭐</span>
+                    <span>Reviews</span>
+                </button>
+
+
+                <div class="nav-section">
+                    Website
+                </div>
+
+                <button
+                    class="nav-link"
+                    data-view="settings"
+                >
+                    <span class="nav-icon">⚙️</span>
+                    <span>Website Settings</span>
+                </button>
+
+                <button
+                    class="nav-link"
+                    data-view="account"
+                >
+                    <span class="nav-icon">🔐</span>
+                    <span>Admin Account</span>
+                </button>
+
+            </nav>
+
+
+            <div class="sidebar-bottom">
+
+                <a
+                    href="/"
+                    class="customer-site"
+                >
+                    🌐 View Website
+                </a>
+
+                <button
+                    id="logoutButton"
+                    class="btn btn-danger btn-full"
+                >
+                    🚪 Logout
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <div
+            id="sidebarOverlay"
+            class="sidebar-overlay"
+        ></div>
+
+
+        <!-- MAIN -->
+
+        <main class="main-content">
+
+            <header class="topbar">
+
+                <div class="topbar-left">
+
+                    <button
+                        id="mobileMenuButton"
+                        class="mobile-menu-btn"
+                    >
+                        ☰
+                    </button>
+
+                    <div>
+
+                        <div
+                            id="pageTitle"
+                            class="page-title"
+                        >
+                            Dashboard
+                        </div>
+
+                        <div
+                            id="pageSubtitle"
+                            class="page-subtitle"
+                        >
+                            Manage your restaurant website
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="admin-user">
+
+                    <div class="admin-avatar">
+                        👤
+                    </div>
+
+                    <div
+                        id="adminUsername"
+                        class="admin-username"
+                    >
+                        Admin
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <div class="content">
+
+                <!-- =================================================
+                     DASHBOARD
+                ================================================== -->
+
+                <section
+                    id="view-dashboard"
+                    class="view active"
+                >
+
+                    <div class="stats-grid">
+
+                        <div class="stat-card stat-red">
+
+                            <div class="stat-icon">
+                                🍜
+                            </div>
+
+                            <div
+                                id="statMenu"
+                                class="stat-value"
+                            >
+                                0
+                            </div>
+
+                            <div class="stat-label">
+                                Total Menu Items
+                            </div>
+
+                        </div>
+
+
+                        <div class="stat-card stat-green">
+
+                            <div class="stat-icon">
+                                🥬
+                            </div>
+
+                            <div
+                                id="statVeg"
+                                class="stat-value"
+                            >
+                                0
+                            </div>
+
+                            <div class="stat-label">
+                                Vegetarian Items
+                            </div>
+
+                        </div>
+
+
+                        <div class="stat-card stat-red">
+
+                            <div class="stat-icon">
+                                🍗
+                            </div>
+
+                            <div
+                                id="statNonVeg"
+                                class="stat-value"
+                            >
+                                0
+                            </div>
+
+                            <div class="stat-label">
+                                Non-Vegetarian Items
+                            </div>
+
+                        </div>
+
+
+                        <div class="stat-card stat-gold">
+
+                            <div class="stat-icon">
+                                ⭐
+                            </div>
+
+                            <div
+                                id="statReviews"
+                                class="stat-value"
+                            >
+                                0
+                            </div>
+
+                            <div class="stat-label">
+                                Reviews
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <div class="card-title">
+                                    Quick Actions
+                                </div>
+
+                                <div class="card-description">
+                                    Manage your website quickly
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <div
+                                style="
+                                    display:flex;
+                                    gap:10px;
+                                    flex-wrap:wrap;
+                                "
+                            >
+
+                                <button
+                                    class="btn btn-gold"
+                                    onclick="openAddMenuModal()"
+                                >
+                                    ➕ Add Food Item
+                                </button>
+
+                                <button
+                                    class="btn btn-secondary"
+                                    onclick="showView('menu')"
+                                >
+                                    🍜 Manage Menu
+                                </button>
+
+                                <button
+                                    class="btn btn-secondary"
+                                    onclick="showView('reviews')"
+                                >
+                                    ⭐ View Reviews
+                                </button>
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <div class="card-title">
+                                    Admin Panel
+                                </div>
+
+                                <div class="card-description">
+                                    Chotelal Hotel website management
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <p
+                                style="
+                                    color:#aaa;
+                                    line-height:1.7;
+                                    font-size:14px;
+                                "
+                            >
+                                From this panel you can manage your
+                                restaurant menu, food images, prices,
+                                customer reviews, customer feedback,
+                                website information and your admin
+                                username/password.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     MENU
+                ================================================== -->
+
+                <section
+                    id="view-menu"
+                    class="view"
+                >
+
+                    <div class="card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <div class="card-title">
+                                    Menu Management
+                                </div>
+
+                                <div class="card-description">
+                                    Add, edit or remove food items
+                                </div>
+
+                            </div>
+
+                            <div class="toolbar">
+
+                                <input
+                                    id="menuSearch"
+                                    class="form-input search-box"
+                                    type="search"
+                                    placeholder="Search food..."
+                                >
+
+                                <select
+                                    id="menuTypeFilter"
+                                    class="form-select"
+                                    style="width:auto;"
+                                >
+
+                                    <option value="ALL">
+                                        All Types
+                                    </option>
+
+                                    <option value="VEG">
+                                        VEG
+                                    </option>
+
+                                    <option value="NON-VEG">
+                                        NON-VEG
+                                    </option>
+
+                                </select>
+
+                                <button
+                                    class="btn btn-gold"
+                                    onclick="openAddMenuModal()"
+                                >
+                                    ➕ Add Food
+                                </button>
+
+                                <button
+                                    class="btn btn-secondary"
+                                    onclick="loadMenu()"
+                                >
+                                    🔄 Refresh
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                        <div
+                            id="menuTableContainer"
+                            class="table-wrapper"
+                        >
+
+                            <div class="loading">
+                                <div class="spinner"></div>
+                                Loading menu...
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     REVIEWS
+                ================================================== -->
+
+                <section
+                    id="view-reviews"
+                    class="view"
+                >
+
+                    <div class="card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <div class="card-title">
+                                    Customer Reviews
+                                </div>
+
+                                <div class="card-description">
+                                    View and delete customer reviews
+                                </div>
+
+                            </div>
+
+                            <button
+                                class="btn btn-secondary"
+                                onclick="loadReviews()"
+                            >
+                                🔄 Refresh
+                            </button>
+
+                        </div>
+
+                        <div
+                            id="reviewsTableContainer"
+                            class="table-wrapper"
+                        >
+
+                            <div class="loading">
+                                <div class="spinner"></div>
+                                Loading reviews...
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     SETTINGS
+                ================================================== -->
+
+                <section
+                    id="view-settings"
+                    class="view"
+                >
+
+                    <div class="card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <div class="card-title">
+                                    Website Information
+                                </div>
+
+                                <div class="card-description">
+                                    Update restaurant information
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <form id="settingsForm">
+
+                                <div class="form-grid">
+
+                                    <div class="form-group">
+
+                                        <label
+                                            class="form-label"
+                                            for="settingRestaurantName"
+                                        >
+                                            Restaurant Name
+                                        </label>
+
+                                        <input
+                                            id="settingRestaurantName"
+                                            class="form-input"
+                                            name="restaurant_name"
+                                            required
+                                        >
+
+                                    </div>
+
+
+                                    <div class="form-group">
+
+                                        <label
+                                            class="form-label"
+                                            for="settingTagline"
+                                        >
+                                            Tagline
+                                        </label>
+
+                                        <input
+                                            id="settingTagline"
+                                            class="form-input"
+                                            name="tagline"
+                                        >
+
+                                    </div>
+
+
+                                    <div class="form-group">
+
+                                        <label
+                                            class="form-label"
+                                            for="settingPhone"
+                                        >
+                                            Phone
+                                        </label>
+
+                                        <input
+                                            id="settingPhone"
+                                            class="form-input"
+                                            name="phone"
+                                            type="tel"
+                                        >
+
+                                    </div>
+
+
+                                    <div class="form-group">
+
+                                        <label
+                                            class="form-label"
+                                            for="settingWhatsapp"
+                                        >
+                                            WhatsApp
+                                        </label>
+
+                                        <input
+                                            id="settingWhatsapp"
+                                            class="form-input"
+                                            name="whatsapp"
+                                            type="tel"
+                                        >
+
+                                    </div>
+
+
+                                    <div class="form-group full">
+
+                                        <label
+                                            class="form-label"
+                                            for="settingAddress"
+                                        >
+                                            Address
+                                        </label>
+
+                                        <textarea
+                                            id="settingAddress"
+                                            class="form-textarea"
+                                            name="address"
+                                        ></textarea>
+
+                                    </div>
+
+
+                                    <div class="form-group full">
+
+                                        <label
+                                            class="form-label"
+                                            for="settingHours"
+                                        >
+                                            Opening Hours
+                                        </label>
+
+                                        <input
+                                            id="settingHours"
+                                            class="form-input"
+                                            name="opening_hours"
+                                        >
+
+                                    </div>
+
+                                </div>
+
+
+                                <button
+                                    id="settingsSaveButton"
+                                    type="submit"
+                                    class="btn btn-gold"
+                                >
+                                    💾 Save Website Information
+                                </button>
+
+                            </form>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     ACCOUNT
+                ================================================== -->
+
+                <section
+                    id="view-account"
+                    class="view"
+                >
+
+                    <div class="card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <div class="card-title">
+                                    Admin Account
+                                </div>
+
+                                <div class="card-description">
+                                    Change your admin username and password
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <form id="accountForm">
+
+                                <div
+                                    class="two-column"
+                                    style="max-width:850px;"
+                                >
+
+                                    <div>
+
+                                        <div class="form-group">
+
+                                            <label
+                                                class="form-label"
+                                                for="accountUsername"
+                                            >
+                                                New Username
+                                            </label>
+
+                                            <input
+                                                id="accountUsername"
+                                                class="form-input"
+                                                type="text"
+                                                required
+                                            >
+
+                                        </div>
+
+
+                                        <div class="form-group">
+
+                                            <label
+                                                class="form-label"
+                                                for="currentPassword"
+                                            >
+                                                Current Password
+                                            </label>
+
+                                            <input
+                                                id="currentPassword"
+                                                class="form-input"
+                                                type="password"
+                                                autocomplete="current-password"
+                                                required
+                                            >
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div>
+
+                                        <div class="form-group">
+
+                                            <label
+                                                class="form-label"
+                                                for="newPassword"
+                                            >
+                                                New Password
+                                            </label>
+
+                                            <input
+                                                id="newPassword"
+                                                class="form-input"
+                                                type="password"
+                                                minlength="8"
+                                                autocomplete="new-password"
+                                                required
+                                            >
+
+                                            <div class="form-help">
+                                                Minimum 8 characters.
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="form-group">
+
+                                            <label
+                                                class="form-label"
+                                                for="confirmPassword"
+                                            >
+                                                Confirm New Password
+                                            </label>
+
+                                            <input
+                                                id="confirmPassword"
+                                                class="form-input"
+                                                type="password"
+                                                minlength="8"
+                                                autocomplete="new-password"
+                                                required
+                                            >
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div
+                                    style="
+                                        margin-top:5px;
+                                        padding:13px;
+                                        border-radius:10px;
+                                        background:rgba(255,179,0,.06);
+                                        border:1px solid rgba(255,179,0,.15);
+                                        color:#bbb;
+                                        font-size:12px;
+                                        margin-bottom:18px;
+                                    "
+                                >
+                                    ⚠️ After changing your username or
+                                    password, your current admin session
+                                    will be logged out and you must login
+                                    again.
+                                </div>
+
+
+                                <button
+                                    id="accountSaveButton"
+                                    class="btn btn-gold"
+                                    type="submit"
+                                >
+                                    🔐 Update Admin Account
+                                </button>
+
+                            </form>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </main>
+
+    </section>
+
+
+    <!-- =========================================================
+         MENU MODAL
+    ========================================================== -->
+
+    <div
+        id="menuModal"
+        class="modal-overlay"
+    >
+
+        <div class="modal">
+
+            <div class="modal-header">
+
+                <div
+                    id="menuModalTitle"
+                    class="modal-title"
+                >
+                    Add Food Item
+                </div>
+
+                <button
+                    class="close-modal"
+                    onclick="closeMenuModal()"
+                    type="button"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="menuForm">
+
+                <div class="modal-body">
+
+                    <input
+                        id="menuId"
+                        type="hidden"
+                    >
+
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label
+                                class="form-label"
+                                for="foodName"
+                            >
+                                Food Name *
+                            </label>
+
+                            <input
+                                id="foodName"
+                                class="form-input"
+                                name="name"
+                                placeholder="e.g. Chicken Hakka Noodles"
+                                maxlength="150"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label
+                                class="form-label"
+                                for="foodCategory"
+                            >
+                                Category *
+                            </label>
+
+                            <input
+                                id="foodCategory"
+                                class="form-input"
+                                name="category"
+                                placeholder="e.g. Chinese"
+                                maxlength="100"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label
+                                class="form-label"
+                                for="foodType"
+                            >
+                                Food Type *
+                            </label>
+
+                            <select
+                                id="foodType"
+                                class="form-select"
+                                name="food_type"
+                                required
+                            >
+
+                                <option value="VEG">
+                                    VEG
+                                </option>
+
+                                <option value="NON-VEG">
+                                    NON-VEG
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label
+                                class="form-label"
+                                for="foodHalfPrice"
+                            >
+                                Half Price
+                            </label>
+
+                            <input
+                                id="foodHalfPrice"
+                                class="form-input"
+                                name="half_price"
+                                type="number"
+                                min="0"
+                                step="0.01"
+                                placeholder="Optional"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label
+                                class="form-label"
+                                for="foodFullPrice"
+                            >
+                                Full Price
+                            </label>
+
+                            <input
+                                id="foodFullPrice"
+                                class="form-input"
+                                name="full_price"
+                                type="number"
+                                min="0"
+                                step="0.01"
+                                placeholder="Optional"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label
+                                class="form-label"
+                                for="foodImage"
+                            >
+                                Upload Image
+                            </label>
+
+                            <input
+                                id="foodImage"
+                                class="form-input"
+                                name="image"
+                                type="file"
+                                accept="image/jpeg,image/png,image/webp,image/gif"
+                            >
+
+                            <div class="form-help">
+                                JPG, PNG, WEBP or GIF. Maximum 5MB.
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group full">
+
+                            <label
+                                class="form-label"
+                                for="foodImageUrl"
+                            >
+                                Image URL
+                            </label>
+
+                            <input
+                                id="foodImageUrl"
+                                class="form-input"
+                                name="image_url"
+                                type="text"
+                                maxlength="500"
+                                placeholder="https://example.com/food.jpg"
+                            >
+
+                            <div class="form-help">
+                                You can either upload an image or provide
+                                an image URL.
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            id="imagePreviewContainer"
+                            class="form-group full"
+                            style="display:none;"
+                        >
+
+                            <label class="form-label">
+                                Image Preview
+                            </label>
+
+                            <img
+                                id="foodImagePreview"
+                                class="image-preview"
+                                alt="Food preview"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group full">
+
+                            <label
+                                class="form-label"
+                                for="foodDescription"
+                            >
+                                Description
+                            </label>
+
+                            <textarea
+                                id="foodDescription"
+                                class="form-textarea"
+                                name="description"
+                                maxlength="1000"
+                                placeholder="Food description..."
+                            ></textarea>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="modal-footer">
+
+                    <button
+                        type="button"
+                        class="btn btn-secondary"
+                        onclick="closeMenuModal()"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        id="menuSaveButton"
+                        type="submit"
+                        class="btn btn-gold"
+                    >
+                        💾 Save Food Item
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================================
+         TOAST
+    ========================================================== -->
+
+    <div
+        id="toastContainer"
+        class="toast-container"
+    ></div>
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================== -->
+
+    <script>
+
+        "use strict";
+
+
+        /* =========================================================
+           STATE
+        ========================================================= */
+
+        const state = {
+
+            admin: null,
+
+            menu: [],
+
+            reviews: [],
+
+            feedback: [],
+
+            currentView: "dashboard",
+
+            editingMenuId: null
+
+        };
+
+
+        /* =========================================================
+           API HELPER
+        ========================================================= */
+
+        async function api(
+            url,
+            options = {}
+        ) {
+
+            try {
+
+                const config = {
+                    ...options,
+
+                    credentials: "same-origin",
+
+                    headers: {
+                        ...(options.headers || {})
+                    }
+                };
+
+
+                const response = await fetch(
+                    url,
+                    config
+                );
+
+
+                const contentType =
+                    response.headers.get(
+                        "content-type"
+                    ) || "";
+
+
+                let data;
+
+
+                if (
+                    contentType.includes(
+                        "application/json"
+                    )
+                ) {
+
+                    data =
+                        await response.json();
+
+                } else {
+
+                    const text =
+                        await response.text();
+
+                    data = {
+                        success:
+                            response.ok,
+                        message:
+                            text ||
+                            "Request completed."
+                    };
+
+                }
+
+
+                if (
+                    response.status === 401
+                ) {
+
+                    if (
+                        !url.includes(
+                            "/api/admin/login"
+                        )
+                    ) {
+
+                        handleUnauthorized();
+
+                    }
+
+                }
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        data.message ||
+                        "Request failed."
+                    );
+
+                }
+
+
+                return data;
+
+            } catch (error) {
+
+                throw error;
+
+            }
+
+        }
+
+
+        /* =========================================================
+           UNAUTHORIZED
+        ========================================================== */
+
+        function handleUnauthorized() {
+
+            state.admin = null;
+
+            document
+                .getElementById("adminApp")
+                .style.display = "none";
+
+            document
+                .getElementById("loginScreen")
+                .style.display = "flex";
+
+            document
+                .getElementById("loginPassword")
+                .value = "";
+
+            showLoginError(
+                "Your admin session has expired. Please login again."
+            );
+
+        }
+
+
+        /* =========================================================
+           LOGIN ERROR
+        ========================================================== */
+
+        function showLoginError(
+            message
+        ) {
+
+            const element =
+                document.getElementById(
+                    "loginError"
+                );
+
+            element.textContent =
+                message;
+
+            element.style.display =
+                "block";
+
+        }
+
+
+        function hideLoginError() {
+
+            const element =
+                document.getElementById(
+                    "loginError"
+                );
+
+            element.textContent = "";
+
+            element.style.display =
+                "none";
+
+        }
+
+
+        /* =========================================================
+           LOGIN
+        ========================================================== */
+
+        document
+            .getElementById("loginForm")
+            .addEventListener(
+                "submit",
+                async function(event) {
+
+                    event.preventDefault();
+
+                    hideLoginError();
+
+
+                    const username =
+                        document
+                            .getElementById(
+                                "loginUsername"
+                            )
+                            .value
+                            .trim();
+
+                    const password =
+                        document
+                            .getElementById(
+                                "loginPassword"
+                            )
+                            .value;
+
+
+                    const button =
+                        document
+                            .getElementById(
+                                "loginButton"
+                            );
+
+
+                    button.disabled = true;
+
+                    button.textContent =
+                        "⏳ Logging in...";
+
+
+                    try {
+
+                        const data =
+                            await api(
+                                "/api/admin/login",
+                                {
+                                    method: "POST",
+
+                                    headers: {
+                                        "Content-Type":
+                                            "application/json"
+                                    },
+
+                                    body:
+                                        JSON.stringify({
+                                            username,
+                                            password
+                                        })
+                                }
+                            );
+
+
+                        state.admin =
+                            data.admin;
+
+
+                        document
+                            .getElementById(
+                                "loginScreen"
+                            )
+                            .style.display =
+                            "none";
+
+
+                        document
+                            .getElementById(
+                                "adminApp"
+                            )
+                            .style.display =
+                            "flex";
+
+
+                        document
+                            .getElementById(
+                                "adminUsername"
+                            )
+                            .textContent =
+                            state.admin.username;
+
+
+                        showView(
+                            "dashboard"
+                        );
+
+
+                        showToast(
+                            "Login successful.",
+                            "success"
+                        );
+
+
+                        await loadDashboard();
+
+                    } catch (error) {
+
+                        showLoginError(
+                            error.message ||
+                            "Invalid username or password."
+                        );
+
+                    } finally {
+
+                        button.disabled =
+                            false;
+
+                        button.textContent =
+                            "🔐 Login to Admin Panel";
+
+                    }
+
+                }
+            );
+
+
+        /* =========================================================
+           CHECK SESSION
+        ========================================================== */
+
+        async function checkSession() {
+
+            try {
+
+                const data =
+                    await api(
+                        "/api/admin/me"
+                    );
+
+
+                if (
+                    data.success &&
+                    data.admin
+                ) {
+
+                    state.admin =
+                        data.admin;
+
+
+                    document
+                        .getElementById(
+                            "loginScreen"
+                        )
+                        .style.display =
+                        "none";
+
+
+                    document
+                        .getElementById(
+                            "adminApp"
+                        )
+                        .style.display =
+                        "flex";
+
+
+                    document
+                        .getElementById(
+                            "adminUsername"
+                        )
+                        .textContent =
+                        state.admin.username;
+
+
+                    await loadDashboard();
+
+                }
+
+            } catch (error) {
+
+                document
+                    .getElementById(
+                        "loginScreen"
+                    )
+                    .style.display =
+                    "flex";
+
+            }
+
+        }
+
+
+        /* =========================================================
+           LOGOUT
+        ========================================================== */
+
+        document
+            .getElementById("logoutButton")
+            .addEventListener(
+                "click",
+                async function() {
+
+                    try {
+
+                        await api(
+                            "/api/admin/logout",
+                            {
+                                method: "POST"
+                            }
+                        );
+
+                    } catch (error) {
+
+                        console.error(
+                            error
+                        );
+
+                    }
+
+
+                    state.admin = null;
+
+
+                    document
+                        .getElementById(
+                            "adminApp"
+                        )
+                        .style.display =
+                        "none";
+
+
+                    document
+                        .getElementById(
+                            "loginScreen"
+                        )
+                        .style.display =
+                        "flex";
+
+
+                    document
+                        .getElementById(
+                            "loginPassword"
+                        )
+                        .value = "";
+
+
+                    showToast(
+                        "Logged out successfully.",
+                        "success"
+                    );
+
+                }
+            );
+
+
+        /* =========================================================
+           NAVIGATION
+        ========================================================== */
+
+        const pageInfo = {
+
+            dashboard: {
+                title: "Dashboard",
+                subtitle:
+                    "Manage your restaurant website"
+            },
+
+            menu: {
+                title: "Menu Management",
+                subtitle:
+                    "Add, edit and delete food items"
+            },
+
+            reviews: {
+                title: "Customer Reviews",
+                subtitle:
+                    "Manage customer reviews"
+            },
+
+            feedback: {
+                title: "Customer Feedback",
+                subtitle:
+                    "Manage customer feedback"
+            },
+
+            settings: {
+                title: "Website Settings",
+                subtitle:
+                    "Update restaurant information"
+            },
+
+            account: {
+                title: "Admin Account",
+                subtitle:
+                    "Manage admin username and password"
+            }
+
+        };
+
+
+        document
+            .querySelectorAll(".nav-link")
+            .forEach(
+                button => {
+
+                    button.addEventListener(
+                        "click",
+                        function() {
+
+                            showView(
+                                this.dataset.view
+                            );
+
+                            closeMobileSidebar();
+
+                        }
+                    );
+
+                }
+            );
+
+
+        function showView(
+            viewName
+        ) {
+
+            if (
+                !pageInfo[viewName]
+            ) {
+                return;
+            }
+
+
+            state.currentView =
+                viewName;
+
+
+            document
+                .querySelectorAll(".view")
+                .forEach(
+                    view => {
+
+                        view.classList.remove(
+                            "active"
+                        );
+
+                    }
+                );
+
+
+            const view =
+                document.getElementById(
+                    "view-" +
+                    viewName
+                );
+
+
+            if (view) {
+
+                view.classList.add(
+                    "active"
+                );
+
+            }
+
+
+            document
+                .querySelectorAll(".nav-link")
+                .forEach(
+                    button => {
+
+                        button.classList.toggle(
+                            "active",
+                            button.dataset.view ===
+                            viewName
+                        );
+
+                    }
+                );
+
+
+            document
+                .getElementById(
+                    "pageTitle"
+                )
+                .textContent =
+                pageInfo[viewName].title;
+
+
+            document
+                .getElementById(
+                    "pageSubtitle"
+                )
+                .textContent =
+                pageInfo[viewName].subtitle;
+
+
+            if (
+                viewName === "dashboard"
+            ) {
+
+                loadDashboard();
+
+            }
+
+            if (
+                viewName === "menu"
+            ) {
+
+                loadMenu();
+
+            }
+
+            if (
+                viewName === "reviews"
+            ) {
+
+                loadReviews();
+
+            }
+
+            if (
+                viewName === "feedback"
+            ) {
+
+                loadFeedback();
+
+            }
+
+            if (
+                viewName === "settings"
+            ) {
+
+                loadSettings();
+
+            }
+
+        }
+
+
+        /* =========================================================
+           DASHBOARD
+        ========================================================== */
+
+        async function loadDashboard() {
+
+            try {
+
+                const data =
+                    await api(
+                        "/api/admin/stats"
+                    );
+
+
+                const stats =
+                    data.stats || {};
+
+
+                document
+                    .getElementById(
+                        "statMenu"
+                    )
+                    .textContent =
+                    stats.menu ??
+                    stats.menuCount ??
+                    stats.totalMenu ??
+                    0;
+
+
+                document
+                    .getElementById(
+                        "statVeg"
+                    )
+                    .textContent =
+                    stats.veg ??
+                    stats.vegCount ??
+                    stats.totalVeg ??
+                    0;
+
+
+                document
+                    .getElementById(
+                        "statNonVeg"
+                    )
+                    .textContent =
+                    stats.nonVeg ??
+                    stats.nonVegCount ??
+                    stats.totalNonVeg ??
+                    0;
+
+
+                document
+                    .getElementById(
+                        "statReviews"
+                    )
+                    .textContent =
+                    stats.reviews ??
+                    stats.reviewCount ??
+                    stats.totalReviews ??
+                    0;
+
+
+                document
+                    .getElementById(
+                        "statFeedback"
+                    )
+                    .textContent =
+                    stats.feedback ??
+                    stats.feedbackCount ??
+                    stats.totalFeedback ??
+                    0;
+
+
+                document
+                    .getElementById(
+                        "statCategories"
+                    )
+                    .textContent =
+                    stats.categories ??
+                    0;
+
+            } catch (error) {
+
+                console.error(
+                    "Dashboard error:",
+                    error
+                );
+
+            }
+
+        }
+
+
+        /* =========================================================
+           MENU
+        ========================================================== */
+
+        async function loadMenu() {
+
+            const container =
+                document.getElementById(
+                    "menuTableContainer"
+                );
+
+
+            container.innerHTML = `
+                <div class="loading">
+                    <div class="spinner"></div>
+                    Loading menu...
+                </div>
+            `;
+
+
+            try {
+
+                const data =
+                    await api(
+                        "/api/admin/menu"
+                    );
+
+
+                state.menu =
+                    Array.isArray(
+                        data.menu
+                    )
+                        ? data.menu
+                        : [];
+
+
+                renderMenu();
+
+            } catch (error) {
+
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-icon">⚠️</div>
+                        <h3>Unable to load menu</h3>
+                        <p>${escapeHTML(error.message)}</p>
+                    </div>
+                `;
+
+            }
+
+        }
+
+
+        function renderMenu() {
+
+            const container =
+                document.getElementById(
+                    "menuTableContainer"
+                );
+
+
+            const search =
+                document
+                    .getElementById(
+                        "menuSearch"
+                    )
+                    .value
+                    .trim()
+                    .toLowerCase();
+
+
+            const type =
+                document
+                    .getElementById(
+                        "menuTypeFilter"
+                    )
+                    .value;
+
+
+            const filtered =
+                state.menu.filter(
+                    item => {
+
+                        const matchesSearch =
+                            !search ||
+                            String(
+                                item.name || ""
+                            )
+                                .toLowerCase()
+                                .includes(search) ||
+                            String(
+                                item.category || ""
+                            )
+                                .toLowerCase()
+                                .includes(search);
+
+
+                        const matchesType =
+                            type === "ALL" ||
+                            item.food_type ===
+                            type;
+
+
+                        return (
+                            matchesSearch &&
+                            matchesType
+                        );
+
+                    }
+                );
+
+
+            if (
+                filtered.length === 0
+            ) {
+
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-icon">🍽️</div>
+                        <h3>No food items found</h3>
+                        <p>Try changing your search or filter.</p>
+                    </div>
+                `;
+
+                return;
+
+            }
+
+
+            const rows =
+                filtered
+                    .map(
+                        item => {
+
+                            const image =
+                                item.image_url
+                                    ? `
+                                        <img
+                                            src="${escapeAttribute(item.image_url)}"
+                                            class="food-image"
+                                            alt="${escapeAttribute(item.name)}"
+                                            loading="lazy"
+                                            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+                                        >
+                                        <div
+                                            class="food-image-placeholder"
+                                            style="display:none;"
+                                        >
+                                            🍽️
+                                        </div>
+                                      `
+                                    : `
+                                        <div class="food-image-placeholder">
+                                            🍽️
+                                        </div>
+                                      `;
+
+
+                            const typeBadge =
+                                item.food_type ===
+                                "VEG"
+                                    ? `
+                                        <span class="badge badge-veg">
+                                            VEG
+                                        </span>
+                                      `
+                                    : `
+                                        <span class="badge badge-nonveg">
+                                            NON-VEG
+                                        </span>
+                                      `;
+
+
+                            const halfPrice =
+                                item.half_price !==
+                                null &&
+                                item.half_price !==
+                                undefined &&
+                                item.half_price !== ""
+                                    ? `
+                                        <span class="price">
+                                            ₹${formatPrice(item.half_price)}
+                                        </span>
+                                      `
+                                    : "—";
+
+
+                            const fullPrice =
+                                item.full_price !==
+                                null &&
+                                item.full_price !==
+                                undefined &&
+                                item.full_price !== ""
+                                    ? `
+                                        <span class="price">
+                                            ₹${formatPrice(item.full_price)}
+                                        </span>
+                                      `
+                                    : "—";
+
+
+                            return `
+                                <tr>
+
+                                    <td>
+                                        ${image}
+                                    </td>
+
+                                    <td>
+
+                                        <div class="food-name">
+                                            ${escapeHTML(item.name)}
+                                        </div>
+
+                                        <div class="food-category">
+                                            ${escapeHTML(item.category)}
+                                        </div>
+
+                                    </td>
+
+                                    <td>
+                                        ${typeBadge}
+                                    </td>
+
+                                    <td>
+                                        ${halfPrice}
+                                    </td>
+
+                                    <td>
+                                        ${fullPrice}
+                                    </td>
+
+                                    <td>
+                                        ${
+                                            item.description
+                                                ? escapeHTML(
+                                                    item.description
+                                                )
+                                                : "—"
+                                        }
+                                    </td>
+
+                                    <td>
+
+                                        <div class="action-buttons">
+
+                                            <button
+                                                class="btn btn-blue btn-small"
+                                                onclick="openEditMenuModal(${Number(item.id)})"
+                                            >
+                                                ✏️ Edit
+                                            </button>
+
+                                            <button
+                                                class="btn btn-danger btn-small"
+                                                onclick="deleteMenuItem(${Number(item.id)})"
+                                            >
+                                                🗑️ Delete
+                                            </button>
+
+                                        </div>
+
+                                    </td>
+
+                                </tr>
+                            `;
+
+                        }
+                    )
+                    .join("");
+
+
+            container.innerHTML = `
+
+                <table class="data-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Image
+                            </th>
+
+                            <th>
+                                Food
+                            </th>
+
+                            <th>
+                                Type
+                            </th>
+
+                            <th>
+                                Half
+                            </th>
+
+                            <th>
+                                Full
+                            </th>
+
+                            <th>
+                                Description
+                            </th>
+
+                            <th>
+                                Actions
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+                        ${rows}
+                    </tbody>
+
+                </table>
+
+            `;
+
+        }
+
+
+        document
+            .getElementById(
+                "menuSearch"
+            )
+            .addEventListener(
+                "input",
+                renderMenu
+            );
+
+
+        document
+            .getElementById(
+                "menuTypeFilter"
+            )
+            .addEventListener(
+                "change",
+                renderMenu
+            );
+
+
+        /* =========================================================
+           ADD MENU
+        ========================================================== */
+
+        function openAddMenuModal() {
+
+            state.editingMenuId =
+                null;
+
+
+            document
+                .getElementById(
+                    "menuModalTitle"
+                )
+                .textContent =
+                "Add Food Item";
+
+
+            document
+                .getElementById(
+                    "menuForm"
+                )
+                .reset();
+
+
+            document
+                .getElementById(
+                    "menuId"
+                )
+                .value = "";
+
+
+            document
+                .getElementById(
+                    "foodType"
+                )
+                .value =
+                "VEG";
+
+
+            hideImagePreview();
+
+
+            document
+                .getElementById(
+                    "menuModal"
+                )
+                .classList.add(
+                    "show"
+                );
+
+        }
+
+
+        /* =========================================================
+           EDIT MENU
+        ========================================================== */
+
+        function openEditMenuModal(
+            id
+        ) {
+
+            const item =
+                state.menu.find(
+                    menuItem =>
+                        Number(
+                            menuItem.id
+                        ) ===
+                        Number(id)
+                );
+
+
+            if (!item) {
+
+                showToast(
+                    "Food item not found.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            state.editingMenuId =
+                Number(id);
+
+
+            document
+                .getElementById(
+                    "menuModalTitle"
+                )
+                .textContent =
+                "Edit Food Item";
+
+
+            document
+                .getElementById(
+                    "menuId"
+                )
+                .value =
+                item.id;
+
+
+            document
+                .getElementById(
+                    "foodName"
+                )
+                .value =
+                item.name || "";
+
+
+            document
+                .getElementById(
+                    "foodCategory"
+                )
+                .value =
+                item.category || "";
+
+
+            document
+                .getElementById(
+                    "foodType"
+                )
+                .value =
+                item.food_type || "VEG";
+
+
+            document
+                .getElementById(
+                    "foodHalfPrice"
+                )
+                .value =
+                item.half_price ??
+                "";
+
+
+            document
+                .getElementById(
+                    "foodFullPrice"
+                )
+                .value =
+                item.full_price ??
+                "";
+
+
+            document
+                .getElementById(
+                    "foodImageUrl"
+                )
+                .value =
+                item.image_url || "";
+
+
+            document
+                .getElementById(
+                    "foodDescription"
+                )
+                .value =
+                item.description || "";
+
+
+            document
+                .getElementById(
+                    "foodImage"
+                )
+                .value = "";
+
+
+            if (
+                item.image_url
+            ) {
+
+                showImagePreview(
+                    item.image_url
+                );
+
+            } else {
+
+                hideImagePreview();
+
+            }
+
+
+            document
+                .getElementById(
+                    "menuModal"
+                )
+                .classList.add(
+                    "show"
+                );
+
+        }
+
+
+        /* =========================================================
+           CLOSE MENU MODAL
+        ========================================================== */
+
+        function closeMenuModal() {
+
+            document
+                .getElementById(
+                    "menuModal"
+                )
+                .classList.remove(
+                    "show"
+                );
+
+
+            state.editingMenuId =
+                null;
+
+        }
+
+
+        /* =========================================================
+           MENU FORM
+        ========================================================== */
+
+        document
+            .getElementById(
+                "menuForm"
+            )
+            .addEventListener(
+                "submit",
+                async function(event) {
+
+                    event.preventDefault();
+
+
+                    const id =
+                        document
+                            .getElementById(
+                                "menuId"
+                            )
+                            .value
+                            .trim();
+
+
+                    const formData =
+                        new FormData();
+
+
+                    formData.append(
+                        "name",
+                        document
+                            .getElementById(
+                                "foodName"
+                            )
+                            .value
+                            .trim()
+                    );
+
+
+                    formData.append(
+                        "category",
+                        document
+                            .getElementById(
+                                "foodCategory"
+                            )
+                            .value
+                            .trim()
+                    );
+
+
+                    formData.append(
+                        "food_type",
+                        document
+                            .getElementById(
+                                "foodType"
+                            )
+                            .value
+                    );
+
+
+                    formData.append(
+                        "half_price",
+                        document
+                            .getElementById(
+                                "foodHalfPrice"
+                            )
+                            .value
+                            .trim()
+                    );
+
+
+                    formData.append(
+                        "full_price",
+                        document
+                            .getElementById(
+                                "foodFullPrice"
+                            )
+                            .value
+                            .trim()
+                    );
+
+
+                    formData.append(
+                        "image_url",
+                        document
+                            .getElementById(
+                                "foodImageUrl"
+                            )
+                            .value
+                            .trim()
+                    );
+
+
+                    formData.append(
+                        "description",
+                        document
+                            .getElementById(
+                                "foodDescription"
+                            )
+                            .value
+                            .trim()
+                    );
+
+
+                    const imageFile =
+                        document
+                            .getElementById(
+                                "foodImage"
+                            )
+                            .files[0];
+
+
+                    if (imageFile) {
+
+                        formData.append(
+                            "image",
+                            imageFile
+                        );
+
+                    }
+
+
+                    const button =
+                        document
+                            .getElementById(
+                                "menuSaveButton"
+                            );
+
+
+                    button.disabled =
+                        true;
+
+                    button.textContent =
+                        "⏳ Saving...";
+
+
+                    try {
+
+                        let data;
+
+
+                        if (id) {
+
+                            data =
+                                await api(
+                                    `/api/admin/menu/${encodeURIComponent(id)}`,
+                                    {
+                                        method:
+                                            "PUT",
+
+                                        body:
+                                            formData
+                                    }
+                                );
+
+                        } else {
+
+                            data =
+                                await api(
+                                    "/api/admin/menu",
+                                    {
+                                        method:
+                                            "POST",
+
+                                        body:
+                                            formData
+                                    }
+                                );
+
+                        }
+
+
+                        closeMenuModal();
+
+
+                        showToast(
+                            id
+                                ? "Food item updated successfully."
+                                : "Food item added successfully.",
+                            "success"
+                        );
+
+
+                        await loadMenu();
+
+                        await loadDashboard();
+
+                    } catch (error) {
+
+                        showToast(
+                            error.message ||
+                            "Could not save food item.",
+                            "error"
+                        );
+
+                    } finally {
+
+                        button.disabled =
+                            false;
+
+                        button.textContent =
+                            "💾 Save Food Item";
+
+                    }
+
+                }
+            );
+
+
+        /* =========================================================
+           IMAGE PREVIEW
+        ========================================================== */
+
+        document
+            .getElementById(
+                "foodImage"
+            )
+            .addEventListener(
+                "change",
+                function() {
+
+                    const file =
+                        this.files[0];
+
+
+                    if (!file) {
+                        return;
+                    }
+
+
+                    if (
+                        !file.type.startsWith(
+                            "image/"
+                        )
+                    ) {
+
+                        showToast(
+                            "Please select a valid image.",
+                            "error"
+                        );
+
+                        this.value = "";
+
+                        return;
+
+                    }
+
+
+                    if (
+                        file.size >
+                        5 * 1024 * 1024
+                    ) {
+
+                        showToast(
+                            "Image must be smaller than 5MB.",
+                            "error"
+                        );
+
+                        this.value = "";
+
+                        return;
+
+                    }
+
+
+                    const reader =
+                        new FileReader();
+
+
+                    reader.onload =
+                        function(event) {
+
+                            showImagePreview(
+                                event.target.result
+                            );
+
+                        };
+
+
+                    reader.readAsDataURL(
+                        file
+                    );
+
+                }
+            );
+
+
+        document
+            .getElementById(
+                "foodImageUrl"
+            )
+            .addEventListener(
+                "input",
+                function() {
+
+                    if (
+                        this.value.trim()
+                    ) {
+
+                        showImagePreview(
+                            this.value.trim()
+                        );
+
+                    }
+
+                }
+            );
+
+
+        function showImagePreview(
+            source
+        ) {
+
+            const container =
+                document.getElementById(
+                    "imagePreviewContainer"
+                );
+
+            const image =
+                document.getElementById(
+                    "foodImagePreview"
+                );
+
+
+            image.src =
+                source;
+
+
+            image.onerror =
+                function() {
+
+                    container.style.display =
+                        "none";
+
+                };
+
+
+            image.onload =
+                function() {
+
+                    container.style.display =
+                        "block";
+
+                };
+
+
+            container.style.display =
+                "block";
+
+        }
+
+
+        function hideImagePreview() {
+
+            document
+                .getElementById(
+                    "imagePreviewContainer"
+                )
+                .style.display =
+                "none";
+
+
+            document
+                .getElementById(
+                    "foodImagePreview"
+                )
+                .removeAttribute(
+                    "src"
+                );
+
+        }
+
+
+        /* =========================================================
+           DELETE MENU
+        ========================================================== */
+
+        async function deleteMenuItem(
+            id
+        ) {
+
+            const item =
+                state.menu.find(
+                    menuItem =>
+                        Number(
+                            menuItem.id
+                        ) ===
+                        Number(id)
+                );
+
+
+            const name =
+                item
+                    ? item.name
+                    : "this food item";
+
+
+            const confirmed =
+                window.confirm(
+                    `Are you sure you want to delete "${name}"?\n\nThis action cannot be undone.`
+                );
+
+
+            if (!confirmed) {
+                return;
+            }
+
+
+            try {
+
+                await api(
+                    `/api/admin/menu/${encodeURIComponent(id)}`,
+                    {
+                        method: "DELETE"
+                    }
+                );
+
+
+                showToast(
+                    "Food item deleted successfully.",
+                    "success"
+                );
+
+
+                await loadMenu();
+
+                await loadDashboard();
+
+            } catch (error) {
+
+                showToast(
+                    error.message ||
+                    "Could not delete food item.",
+                    "error"
+                );
+
+            }
+
+        }
+
+
+        /* =========================================================
+           REVIEWS
+        ========================================================== */
+
+        async function loadReviews() {
+
+            const container =
+                document.getElementById(
+                    "reviewsTableContainer"
+                );
+
+
+            container.innerHTML = `
+                <div class="loading">
+                    <div class="spinner"></div>
+                    Loading reviews...
+                </div>
+            `;
+
+
+            try {
+
+                const data =
+                    await api(
+                        "/api/admin/reviews"
+                    );
+
+
+                state.reviews =
+                    Array.isArray(
+                        data.reviews
+                    )
+                        ? data.reviews
+                        : [];
+
+
+                renderReviews();
+
+            } catch (error) {
+
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-icon">⚠️</div>
+                        <h3>Unable to load reviews</h3>
+                        <p>${escapeHTML(error.message)}</p>
+                    </div>
+                `;
+
+            }
+
+        }
+
+
+        function renderReviews() {
+
+            const container =
+                document.getElementById(
+                    "reviewsTableContainer"
+                );
+
+
+            if (
+                state.reviews.length === 0
+            ) {
+
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-icon">⭐</div>
+                        <h3>No reviews yet</h3>
+                        <p>Customer reviews will appear here.</p>
+                    </div>
+                `;
+
+                return;
+
+            }
+
+
+            const rows =
+                state.reviews
+                    .map(
+                        review => {
+
+                            const rating =
+                                Math.max(
+                                    0,
+                                    Math.min(
+                                        5,
+                                        Number(
+                                            review.rating
+                                        ) || 0
+                                    )
+                                );
+
+
+                            const stars =
+                                "★".repeat(
+                                    rating
+                                ) +
+                                "☆".repeat(
+                                    5 - rating
+                                );
+
+
+                            return `
+
+                                <tr>
+
+                                    <td>
+                                        <strong>
+                                            ${escapeHTML(review.name)}
+                                        </strong>
+                                    </td>
+
+                                    <td>
+                                        <span class="stars">
+                                            ${stars}
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <div class="review-text">
+                                            ${escapeHTML(review.review)}
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <span class="date-text">
+                                            ${formatDate(review.created_at)}
+                                        </span>
+                                    </td>
+
+                                    <td>
+
+                                        <button
+                                            class="btn btn-danger btn-small"
+                                            onclick="deleteReview(${Number(review.id)})"
+                                        >
+                                            🗑️ Delete
+                                        </button>
+
+                                    </td>
+
+                                </tr>
+
+                            `;
+
+                        }
+                    )
+                    .join("");
+
+
+            container.innerHTML = `
+
+                <table class="data-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Name
+                            </th>
+
+                            <th>
+                                Rating
+                            </th>
+
+                            <th>
+                                Review
+                            </th>
+
+                            <th>
+                                Date
+                            </th>
+
+                            <th>
+                                Action
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+                        ${rows}
+                    </tbody>
+
+                </table>
+
+            `;
+
+        }
+
+
+        /* =========================================================
+           DELETE REVIEW
+        ========================================================== */
+
+        async function deleteReview(
+            id
+        ) {
+
+            const review =
+                state.reviews.find(
+                    item =>
+                        Number(item.id) ===
+                        Number(id)
+                );
+
+
+            const confirmed =
+                window.confirm(
+                    `Delete the review from "${review?.name || "this customer"}"?`
+                );
+
+
+            if (!confirmed) {
+                return;
+            }
+
+
+            try {
+
+                await api(
+                    `/api/admin/reviews/${encodeURIComponent(id)}`,
+                    {
+                        method: "DELETE"
+                    }
+                );
+
+
+                showToast(
+                    "Review deleted successfully.",
+                    "success"
+                );
+
+
+                await loadReviews();
+
+                await loadDashboard();
+
+            } catch (error) {
+
+                showToast(
+                    error.message ||
+                    "Could not delete review.",
+                    "error"
+                );
+
+            }
+
+        }
+
+
+        /* =========================================================
+           FEEDBACK
+        ========================================================== */
+
+        async function loadFeedback() {
+
+            const container =
+                document.getElementById(
+                    "feedbackTableContainer"
+                );
+
+
+            container.innerHTML = `
+                <div class="loading">
+                    <div class="spinner"></div>
+                    Loading feedback...
+                </div>
+            `;
+
+
+            try {
+
+                const data =
+                    await api(
+                        "/api/admin/feedback"
+                    );
+
+
+                state.feedback =
+                    Array.isArray(
+                        data.feedback
+                    )
+                        ? data.feedback
+                        : [];
+
+
+                renderFeedback();
+
+            } catch (error) {
+
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-icon">⚠️</div>
+                        <h3>Unable to load feedback</h3>
+                        <p>${escapeHTML(error.message)}</p>
+                    </div>
+                `;
+
+            }
+
+        }
+
+
+        function renderFeedback() {
+
+            const container =
+                document.getElementById(
+                    "feedbackTableContainer"
+                );
+
+
+            if (
+                state.feedback.length === 0
+            ) {
+
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-icon">💬</div>
+                        <h3>No feedback yet</h3>
+                        <p>Customer feedback will appear here.</p>
+                    </div>
+                `;
+
+                return;
+
+            }
+
+
+            const rows =
+                state.feedback
+                    .map(
+                        item => {
+
+                            return `
+
+                                <tr>
+
+                                    <td>
+                                        <strong>
+                                            ${escapeHTML(item.name)}
+                                        </strong>
+                                    </td>
+
+                                    <td>
+                                        ${
+                                            item.email
+                                                ? `
+                                                    <a
+                                                        href="mailto:${escapeAttribute(item.email)}"
+                                                        style="color:#7db5ff;"
+                                                    >
+                                                        ${escapeHTML(item.email)}
+                                                    </a>
+                                                  `
+                                                : "—"
+                                        }
+                                    </td>
+
+                                    <td>
+
+                                        <div class="feedback-message">
+                                            ${escapeHTML(item.message)}
+                                        </div>
+
+                                    </td>
+
+                                    <td>
+                                        <span class="date-text">
+                                            ${formatDate(item.created_at)}
+                                        </span>
+                                    </td>
+
+                                    <td>
+
+                                        <button
+                                            class="btn btn-danger btn-small"
+                                            onclick="deleteFeedback(${Number(item.id)})"
+                                        >
+                                            🗑️ Delete
+                                        </button>
+
+                                    </td>
+
+                                </tr>
+
+                            `;
+
+                        }
+                    )
+                    .join("");
+
+
+            container.innerHTML = `
+
+                <table class="data-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Name
+                            </th>
+
+                            <th>
+                                Email
+                            </th>
+
+                            <th>
+                                Message
+                            </th>
+
+                            <th>
+                                Date
+                            </th>
+
+                            <th>
+                                Action
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+                        ${rows}
+                    </tbody>
+
+                </table>
+
+            `;
+
+        }
+
+
+        /* =========================================================
+           DELETE FEEDBACK
+        ========================================================== */
+
+        async function deleteFeedback(
+            id
+        ) {
+
+            const feedback =
+                state.feedback.find(
+                    item =>
+                        Number(item.id) ===
+                        Number(id)
+                );
+
+
+            const confirmed =
+                window.confirm(
+                    `Delete feedback from "${feedback?.name || "this customer"}"?`
+                );
+
+
+            if (!confirmed) {
+                return;
+            }
+
+
+            try {
+
+                await api(
+                    `/api/admin/feedback/${encodeURIComponent(id)}`,
+                    {
+                        method: "DELETE"
+                    }
+                );
+
+
+                showToast(
+                    "Feedback deleted successfully.",
+                    "success"
+                );
+
+
+                await loadFeedback();
+
+                await loadDashboard();
+
+            } catch (error) {
+
+                showToast(
+                    error.message ||
+                    "Could not delete feedback.",
+                    "error"
+                );
+
+            }
+
+        }
+
+
+        /* =========================================================
+           SETTINGS
+        ========================================================== */
+
+        async function loadSettings() {
+
+            try {
+
+                const data =
+                    await api(
+                        "/api/admin/settings"
+                    );
+
+
+                const settings =
+                    data.settings || {};
+
+
+                document
+                    .getElementById(
+                        "settingRestaurantName"
+                    )
+                    .value =
+                    settings.restaurant_name ||
+                    "";
+
+
+                document
+                    .getElementById(
+                        "settingTagline"
+                    )
+                    .value =
+                    settings.tagline ||
+                    "";
+
+
+                document
+                    .getElementById(
+                        "settingPhone"
+                    )
+                    .value =
+                    settings.phone ||
+                    "";
+
+
+                document
+                    .getElementById(
+                        "settingWhatsapp"
+                    )
+                    .value =
+                    settings.whatsapp ||
+                    "";
+
+
+                document
+                    .getElementById(
+                        "settingAddress"
+                    )
+                    .value =
+                    settings.address ||
+                    "";
+
+
+                document
+                    .getElementById(
+                        "settingHours"
+                    )
+                    .value =
+                    settings.opening_hours ||
+                    "";
+
+            } catch (error) {
+
+                showToast(
+                    error.message ||
+                    "Could not load settings.",
+                    "error"
+                );
+
+            }
+
+        }
+
+
+        /* =========================================================
+           SAVE SETTINGS
+        ========================================================== */
+
+        document
+            .getElementById(
+                "settingsForm"
+            )
+            .addEventListener(
+                "submit",
+                async function(event) {
+
+                    event.preventDefault();
+
+
+                    const button =
+                        document
+                            .getElementById(
+                                "settingsSaveButton"
+                            );
+
+
+                    const payload = {
+
+                        restaurant_name:
+                            document
+                                .getElementById(
+                                    "settingRestaurantName"
+                                )
+                                .value
+                                .trim(),
+
+                        tagline:
+                            document
+                                .getElementById(
+                                    "settingTagline"
+                                )
+                                .value
+                                .trim(),
+
+                        phone:
+                            document
+                                .getElementById(
+                                    "settingPhone"
+                                )
+                                .value
+                                .trim(),
+
+                        whatsapp:
+                            document
+                                .getElementById(
+                                    "settingWhatsapp"
+                                )
+                                .value
+                                .trim(),
+
+                        address:
+                            document
+                                .getElementById(
+                                    "settingAddress"
+                                )
+                                .value
+                                .trim(),
+
+                        opening_hours:
+                            document
+                                .getElementById(
+                                    "settingHours"
+                                )
+                                .value
+                                .trim()
+
+                    };
+
+
+                    button.disabled =
+                        true;
+
+                    button.textContent =
+                        "⏳ Saving...";
+
+
+                    try {
+
+                        await api(
+                            "/api/admin/settings",
+                            {
+                                method: "PUT",
+
+                                headers: {
+                                    "Content-Type":
+                                        "application/json"
+                                },
+
+                                body:
+                                    JSON.stringify(
+                                        payload
+                                    )
+                            }
+                        );
+
+
+                        showToast(
+                            "Website information updated successfully.",
+                            "success"
+                        );
+
+                    } catch (error) {
+
+                        showToast(
+                            error.message ||
+                            "Could not update settings.",
+                            "error"
+                        );
+
+                    } finally {
+
+                        button.disabled =
+                            false;
+
+                        button.textContent =
+                            "💾 Save Website Information";
+
+                    }
+
+                }
+            );
+
+
+        /* =========================================================
+           ACCOUNT
+        ========================================================== */
+
+        document
+            .getElementById(
+                "accountForm"
+            )
+            .addEventListener(
+                "submit",
+                async function(event) {
+
+                    event.preventDefault();
+
+
+                    const username =
+                        document
+                            .getElementById(
+                                "accountUsername"
+                            )
+                            .value
+                            .trim();
+
+
+                    const currentPassword =
+                        document
+                            .getElementById(
+                                "currentPassword"
+                            )
+                            .value;
+
+
+                    const newPassword =
+                        document
+                            .getElementById(
+                                "newPassword"
+                            )
+                            .value;
+
+
+                    const confirmPassword =
+                        document
+                            .getElementById(
+                                "confirmPassword"
+                            )
+                            .value;
+
+
+                    if (
+                        newPassword !==
+                        confirmPassword
+                    ) {
+
+                        showToast(
+                            "New passwords do not match.",
+                            "error"
+                        );
+
+                        return;
+
+                    }
+
+
+                    if (
+                        newPassword.length <
+                        8
+                    ) {
+
+                        showToast(
+                            "New password must be at least 8 characters.",
+                            "error"
+                        );
+
+                        return;
+
+                    }
+
+
+                    const button =
+                        document
+                            .getElementById(
+                                "accountSaveButton"
+                            );
+
+
+                    button.disabled =
+                        true;
+
+                    button.textContent =
+                        "⏳ Updating...";
+
+
+                    try {
+
+                        const data =
+                            await api(
+                                "/api/admin/account",
+                                {
+                                    method: "PUT",
+
+                                    headers: {
+                                        "Content-Type":
+                                            "application/json"
+                                    },
+
+                                    body:
+                                        JSON.stringify({
+
+                                            username,
+
+                                            current_password:
+                                                currentPassword,
+
+                                            new_password:
+                                                newPassword
+
+                                        })
+                                }
+                            );
+
+
+                        showToast(
+                            data.message ||
+                            "Account updated.",
+                            "success"
+                        );
+
+
+                        document
+                            .getElementById(
+                                "accountForm"
+                            )
+                            .reset();
+
+
+                        setTimeout(
+                            function() {
+
+                                handleUnauthorized();
+
+                            },
+                            1200
+                        );
+
+                    } catch (error) {
+
+                        showToast(
+                            error.message ||
+                            "Could not update account.",
+                            "error"
+                        );
+
+                    } finally {
+
+                        button.disabled =
+                            false;
+
+                        button.textContent =
+                            "🔐 Update Admin Account";
+
+                    }
+
+                }
+            );
+
+
+        /* =========================================================
+           MOBILE SIDEBAR
+        ========================================================== */
+
+        document
+            .getElementById(
+                "mobileMenuButton"
+            )
+            .addEventListener(
+                "click",
+                function() {
+
+                    document
+                        .getElementById(
+                            "sidebar"
+                        )
+                        .classList.add(
+                            "open"
+                        );
+
+                    document
+                        .getElementById(
+                            "sidebarOverlay"
+                        )
+                        .classList.add(
+                            "show"
+                        );
+
+                }
+            );
+
+
+        document
+            .getElementById(
+                "sidebarOverlay"
+            )
+            .addEventListener(
+                "click",
+                closeMobileSidebar
+            );
+
+
+        function closeMobileSidebar() {
+
+            document
+                .getElementById(
+                    "sidebar"
+                )
+                .classList.remove(
+                    "open"
+                );
+
+            document
+                .getElementById(
+                    "sidebarOverlay"
+                )
+                .classList.remove(
+                    "show"
+                );
+
+        }
+
+
+        /* =========================================================
+           MODAL CLICK OUTSIDE
+        ========================================================== */
+
+        document
+            .getElementById(
+                "menuModal"
+            )
+            .addEventListener(
+                "click",
+                function(event) {
+
+                    if (
+                        event.target ===
+                        this
+                    ) {
+
+                        closeMenuModal();
+
+                    }
+
+                }
+            );
+
+
+        /* =========================================================
+           ESC KEY
+        ========================================================== */
+
+        document
+            .addEventListener(
+                "keydown",
+                function(event) {
+
+                    if (
+                        event.key ===
+                        "Escape"
+                    ) {
+
+                        closeMenuModal();
+
+                        closeMobileSidebar();
+
+                    }
+
+                }
+            );
+
+
+        /* =========================================================
+           TOAST
+        ========================================================== */
+
+        function showToast(
+            message,
+            type = "info"
+        ) {
+
+            const container =
+                document.getElementById(
+                    "toastContainer"
+                );
+
+
+            const toast =
+                document.createElement(
+                    "div"
+                );
+
+
+            toast.className =
+                `toast ${type}`;
+
+
+            let icon = "ℹ️";
+
+
+            if (
+                type === "success"
+            ) {
+
+                icon = "✅";
+
+            } else if (
+                type === "error"
+            ) {
+
+                icon = "❌";
+
+            }
+
+
+            toast.innerHTML = `
+
+                <span>
+                    ${icon}
+                </span>
+
+                <span>
+                    ${escapeHTML(message)}
+                </span>
+
+            `;
+
+
+            container.appendChild(
+                toast
+            );
+
+
+            setTimeout(
+                function() {
+
+                    toast.style.opacity =
+                        "0";
+
+                    toast.style.transform =
+                        "translateX(20px)";
+
+
+                    setTimeout(
+                        function() {
+
+                            toast.remove();
+
+                        },
+                        250
+                    );
+
+                },
+                3500
+            );
+
+        }
+
+
+        /* =========================================================
+           SECURITY / HTML ESCAPING
+        ========================================================== */
+
+        function escapeHTML(
+            value
+        ) {
+
+            return String(
+                value ?? ""
+            )
+                .replace(
+                    /&/g,
+                    "&amp;"
+                )
+                .replace(
+                    /</g,
+                    "&lt;"
+                )
+                .replace(
+                    />/g,
+                    "&gt;"
+                )
+                .replace(
+                    /"/g,
+                    "&quot;"
+                )
+                .replace(
+                    /'/g,
+                    "&#039;"
+                );
+
+        }
+
+
+        function escapeAttribute(
+            value
+        ) {
+
+            return escapeHTML(
+                value
+            );
+
+        }
+
+
+        /* =========================================================
+           FORMAT PRICE
+        ========================================================== */
+
+        function formatPrice(
+            value
+        ) {
+
+            const number =
+                Number(value);
+
+
+            if (
+                !Number.isFinite(
+                    number
+                )
+            ) {
+
+                return "0";
+
+            }
+
+
+            return number.toLocaleString(
+                "en-IN",
+                {
+                    minimumFractionDigits:
+                        number % 1 === 0
+                            ? 0
+                            : 2,
+
+                    maximumFractionDigits:
+                        2
+                }
+            );
+
+        }
+
+
+        /* =========================================================
+           FORMAT DATE
+        ========================================================== */
+
+        function formatDate(
+            value
+        ) {
+
+            if (!value) {
+                return "—";
+            }
+
+
+            const date =
+                new Date(value);
+
+
+            if (
+                Number.isNaN(
+                    date.getTime()
+                )
+            ) {
+
+                return escapeHTML(
+                    value
+                );
+
+            }
+
+
+            return date.toLocaleString(
+                "en-IN",
+                {
+                    day: "2-digit",
+                    month: "short",
+                    year: "numeric",
+                    hour: "2-digit",
+                    minute: "2-digit"
+                }
+            );
+
+        }
+
+
+        /* =========================================================
+           INITIALIZE
+        ========================================================== */
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function() {
+
+                checkSession();
+
+            }
+        );
+
+    </script>
+
+</body>
+</html>

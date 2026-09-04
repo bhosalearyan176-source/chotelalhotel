@@ -1,0 +1,3621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title id="pageTitle">Chotelal Hotel | Chinese & North Indian Fast Food</title>
+
+    <meta
+        name="description"
+        id="pageDescription"
+        content="Chotelal Hotel at Barkat Ali Nagar, Salt Pan Road, Wadala East, Mumbai. Chinese and North Indian fast food."
+    >
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        /* =========================================================
+           RESET
+        ========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: "Oswald", sans-serif;
+            background: #fffaf5;
+            color: #171717;
+            overflow-x: hidden;
+        }
+
+
+        /* =========================================================
+           DARK RED COLOR SYSTEM
+        ========================================================= */
+
+        :root {
+
+            --red: #8b0000;
+            --dark-red: #5c0000;
+            --deep-red: #350000;
+
+            --bright-red: #a90000;
+            --light-red: #c62828;
+
+            --black: #080808;
+            --white: #ffffff;
+
+            --cream: #f5f0e8;
+            --muted: #b8b3aa;
+
+            --border: #e5e5e5;
+
+            --red-border: rgba(139, 0, 0, 0.45);
+            --red-glow: rgba(139, 0, 0, 0.25);
+        }
+
+
+        /* =========================================================
+           NAVIGATION
+        ========================================================= */
+
+        .navbar {
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+
+            z-index: 1000;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            padding: 20px 5%;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(0, 0, 0, 0.88),
+                    rgba(0, 0, 0, 0)
+                );
+
+            color: white;
+
+            border-bottom:
+                1px solid rgba(139, 0, 0, 0.25);
+        }
+
+
+        /* =========================================================
+           BRAND
+        ========================================================= */
+
+        .brand {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            text-decoration: none;
+
+            color: white;
+        }
+
+
+        .brand-mark {
+
+            width: 44px;
+            height: 44px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border:
+                1px solid rgba(255, 255, 255, 0.8);
+
+            border-radius: 50%;
+
+            color: #ffffff;
+
+            font-size: 22px;
+
+            background:
+                rgba(0, 0, 0, 0.35);
+
+            box-shadow:
+                0 0 0 2px rgba(139, 0, 0, 0.35);
+        }
+
+
+        .brand-text {
+
+            display: flex;
+
+            flex-direction: column;
+
+            line-height: 1;
+        }
+
+
+        .brand-name {
+
+            font-family: "Oswald", sans-serif;
+
+            font-size: 24px;
+
+            font-weight: 600;
+
+            letter-spacing: 1.5px;
+
+            color: var(--cream);
+        }
+
+
+        .brand-location {
+
+            margin-top: 6px;
+
+            font-size: 9px;
+
+            font-weight: 700;
+
+            letter-spacing: 2.1px;
+
+            color: #d9d9d9;
+        }
+
+
+        /* =========================================================
+           NAV RIGHT
+        ========================================================= */
+
+        .nav-right {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 38px;
+        }
+
+
+        .nav-links {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 34px;
+
+            list-style: none;
+        }
+
+
+        .nav-links a {
+
+            position: relative;
+
+            color:
+                rgba(255, 255, 255, 0.9);
+
+            text-decoration: none;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            letter-spacing: 0.4px;
+
+            transition:
+                color 0.3s ease;
+        }
+
+
+        .nav-links a::after {
+
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+
+            bottom: -7px;
+
+            width: 0;
+
+            height: 2px;
+
+            background: var(--red);
+
+            transition:
+                width 0.3s ease;
+        }
+
+
+        .nav-links a:hover {
+
+            color: #ffffff;
+        }
+
+
+        .nav-links a:hover::after {
+
+            width: 100%;
+        }
+
+
+        /* =========================================================
+           NAV CTA
+        ========================================================= */
+
+        .nav-cta {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            padding:
+                9px 16px;
+
+            border:
+                1px solid rgba(255, 255, 255, 0.35);
+
+            border-radius: 50px;
+
+            transition:
+                0.3s ease;
+        }
+
+
+        .nav-cta:hover {
+
+            border-color:
+                rgba(139, 0, 0, 0.8);
+
+            background:
+                rgba(139, 0, 0, 0.12);
+        }
+
+
+        .nav-cta a {
+
+            color: #ffffff;
+
+            text-decoration: none;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            letter-spacing: 1.3px;
+        }
+
+
+        .nav-arrow {
+
+            font-size: 18px;
+
+            color: #ffffff;
+
+            transition:
+                transform 0.3s ease;
+        }
+
+
+        .nav-cta:hover .nav-arrow {
+
+            transform:
+                translate(3px, -3px);
+        }
+
+
+        /* =========================================================
+           MOBILE MENU
+        ========================================================= */
+
+        .mobile-menu-btn {
+
+            display: none;
+
+            width: 42px;
+            height: 42px;
+
+            background:
+                rgba(0, 0, 0, 0.3);
+
+            border:
+                1px solid rgba(255, 255, 255, 0.55);
+
+            border-radius: 50%;
+
+            color: white;
+
+            font-size: 20px;
+
+            cursor: pointer;
+        }
+
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        .hero {
+
+            min-height: 100vh;
+
+            height: 100vh;
+
+            position: relative;
+
+            overflow: hidden;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: flex-start;
+
+            padding:
+                120px 7% 70px;
+
+            background-color: #080808;
+
+            background-image:
+
+                linear-gradient(
+                    90deg,
+                    rgba(0, 0, 0, 0.93) 0%,
+                    rgba(0, 0, 0, 0.80) 32%,
+                    rgba(0, 0, 0, 0.55) 57%,
+                    rgba(0, 0, 0, 0.35) 76%,
+                    rgba(0, 0, 0, 0.58) 100%
+                ),
+
+                linear-gradient(
+                    180deg,
+                    rgba(0, 0, 0, 0.75) 0%,
+                    rgba(0, 0, 0, 0.08) 35%,
+                    rgba(0, 0, 0, 0.48) 100%
+                ),
+
+                url("homepage.png");
+
+            background-size: cover;
+
+            background-position:
+                center center;
+
+            background-repeat: no-repeat;
+
+            border-bottom:
+                2px solid var(--red);
+        }
+
+
+        /* =========================================================
+           HERO ZOOM
+        ========================================================= */
+
+        .hero::before {
+
+            content: "";
+
+            position: absolute;
+
+            inset: -3%;
+
+            background:
+                inherit;
+
+            z-index: 0;
+
+            animation:
+                heroZoom 18s ease-in-out infinite alternate;
+
+            pointer-events: none;
+        }
+
+
+        @keyframes heroZoom {
+
+            from {
+                transform:
+                    scale(1);
+            }
+
+            to {
+                transform:
+                    scale(1.055);
+            }
+        }
+
+
+        /* =========================================================
+           HERO VIGNETTE
+        ========================================================= */
+
+        .hero::after {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+
+                radial-gradient(
+                    circle at 75% 45%,
+                    transparent 0%,
+                    rgba(0, 0, 0, 0.10) 40%,
+                    rgba(0, 0, 0, 0.58) 100%
+                );
+
+            z-index: 1;
+
+            pointer-events: none;
+        }
+
+
+        /* =========================================================
+           HERO CONTENT
+        ========================================================= */
+
+        .hero-content {
+
+            position: relative;
+
+            z-index: 5;
+
+            width: 100%;
+
+            max-width: 680px;
+
+            color: white;
+        }
+
+
+        /* =========================================================
+           HERO TAG
+        ========================================================= */
+
+        .hero-tag {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 16px;
+
+            margin-bottom: 22px;
+
+            color: #ffffff;
+
+            font-family:
+                "Oswald",
+                sans-serif;
+
+            font-size: 13px;
+
+            font-weight: 500;
+
+            letter-spacing: 2.5px;
+
+            text-transform: uppercase;
+        }
+
+
+        .hero-tag::before {
+
+            content: "";
+
+            width: 55px;
+
+            height: 2px;
+
+            background:
+                var(--red);
+
+            flex-shrink: 0;
+        }
+
+
+        /* =========================================================
+           HERO HEADING
+        ========================================================= */
+
+        .hero h1 {
+
+            margin: 0;
+
+            font-family:
+                "Oswald",
+                sans-serif;
+
+            font-size:
+                clamp(72px, 9vw, 132px);
+
+            font-weight: 700;
+
+            line-height: 0.87;
+
+            letter-spacing: -2px;
+
+            text-transform: uppercase;
+
+            color:
+                var(--cream);
+
+            text-shadow:
+                0 8px 35px
+                rgba(0, 0, 0, 0.65);
+        }
+
+
+        .hero h1 .line {
+
+            display: block;
+        }
+
+
+        /* DARK RED SECOND LINE */
+
+        .hero h1 span:last-child {
+
+            display: block;
+
+            color:
+                var(--red);
+        }
+
+
+        /* =========================================================
+           HERO DESCRIPTION
+        ========================================================= */
+
+        .hero p {
+
+            max-width: 490px;
+
+            margin-top: 30px;
+
+            font-size: 18px;
+
+            font-weight: 400;
+
+            line-height: 1.65;
+
+            letter-spacing: 0.15px;
+
+            color:
+                rgba(245, 240, 232, 0.88);
+        }
+
+
+        /* =========================================================
+           DECORATIVE LINE
+        ========================================================= */
+
+        .hero-description-line {
+
+            width: 65px;
+
+            height: 2px;
+
+            margin-top: 27px;
+
+            background:
+                var(--red);
+        }
+
+
+        /* =========================================================
+           HERO BUTTONS
+        ========================================================= */
+
+        .hero-buttons {
+
+            margin-top: 29px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: flex-start;
+
+            gap: 14px;
+
+            flex-wrap: wrap;
+        }
+
+
+        .btn {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            min-height: 54px;
+
+            padding:
+                0 27px;
+
+            border-radius: 50px;
+
+            text-decoration: none;
+
+            font-family:
+                "DM Sans",
+                sans-serif;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            letter-spacing: 0.3px;
+
+            transition:
+                transform 0.3s ease,
+                background 0.3s ease,
+                color 0.3s ease,
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+
+            cursor: pointer;
+        }
+
+
+        /* =========================================================
+           PRIMARY BUTTON — DARK RED
+        ========================================================= */
+
+        .btn-primary {
+
+            background:
+                var(--red);
+
+            color:
+                #ffffff;
+
+            border:
+                1px solid var(--red);
+
+            box-shadow:
+                0 10px 30px
+                rgba(0, 0, 0, 0.35);
+        }
+
+
+        .btn-primary:hover {
+
+            transform:
+                translateY(-3px);
+
+            background:
+                var(--bright-red);
+
+            border-color:
+                var(--bright-red);
+
+            box-shadow:
+                0 14px 35px
+                rgba(139, 0, 0, 0.35);
+        }
+
+
+        /* =========================================================
+           OUTLINE BUTTON
+        ========================================================= */
+
+        .btn-outline {
+
+            background:
+                rgba(0, 0, 0, 0.18);
+
+            color:
+                var(--cream);
+
+            border:
+                1px solid
+                rgba(245, 240, 232, 0.55);
+
+            backdrop-filter:
+                blur(5px);
+        }
+
+
+        .btn-outline:hover {
+
+            transform:
+                translateY(-3px);
+
+            border-color:
+                var(--red);
+
+            color:
+                #ffffff;
+
+            background:
+                rgba(139, 0, 0, 0.18);
+        }
+
+
+        /* =========================================================
+           SCROLL INDICATOR
+        ========================================================= */
+
+        .hero-scroll {
+
+            position: absolute;
+
+            z-index: 5;
+
+            left: 50%;
+
+            bottom: 25px;
+
+            transform:
+                translateX(-50%);
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            gap: 8px;
+
+            color:
+                rgba(255, 255, 255, 0.7);
+
+            font-size: 9px;
+
+            font-weight: 600;
+
+            letter-spacing: 3px;
+
+            text-transform: uppercase;
+        }
+
+
+        .scroll-icon {
+
+            width: 24px;
+
+            height: 39px;
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.7);
+
+            border-radius: 20px;
+
+            display: flex;
+
+            justify-content: center;
+
+            padding-top: 7px;
+        }
+
+
+        .scroll-dot {
+
+            width: 3px;
+
+            height: 7px;
+
+            border-radius: 5px;
+
+            background:
+                var(--red);
+
+            animation:
+                scrollMove 1.7s infinite;
+        }
+
+
+        @keyframes scrollMove {
+
+            0% {
+
+                transform:
+                    translateY(0);
+
+                opacity: 1;
+            }
+
+            70% {
+
+                transform:
+                    translateY(11px);
+
+                opacity: 0.2;
+            }
+
+            100% {
+
+                transform:
+                    translateY(0);
+
+                opacity: 1;
+            }
+        }
+
+
+        /* =========================================================
+           GRAIN
+        ========================================================= */
+
+        .hero-grain {
+
+            position: absolute;
+
+            inset: 0;
+
+            z-index: 4;
+
+            pointer-events: none;
+
+            opacity: 0.08;
+
+            background-image:
+
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
+        }
+
+
+        /* =========================================================
+           GENERAL SECTIONS
+        ========================================================= */
+
+        section {
+
+            padding:
+                50px 7%;
+        }
+
+
+        .section-title {
+
+            font-family: "Oswald", sans-serif;
+
+            text-align: center;
+
+            font-size: 24px;
+
+            font-weight: 600;
+
+            letter-spacing: 1.5px;
+
+            color: var(--black);
+        }
+
+
+        .section-title h2 {
+
+            font-size: 38px;
+
+            margin-bottom: 10px;
+
+            color:
+                var(--black);
+        }
+
+
+        .section-title h2::after {
+
+            content: "";
+
+            display: block;
+
+            width: 65px;
+
+            height: 4px;
+
+            margin:
+                12px auto 0;
+
+            background:
+                var(--red);
+
+            border-radius: 5px;
+        }
+
+
+        .section-title p {
+            padding-bottom: 20px;
+
+            color: #666;
+
+            line-height: 1.6;
+        }
+
+
+        /* =========================================================
+           ABOUT
+        ========================================================= */
+
+        .about {
+
+            background:
+                #ffffff;
+        }
+
+
+        .about-grid {
+
+            width: 100%;
+
+            max-width: none;
+
+            margin: 0;
+
+            display: grid;
+
+            grid-template-columns:
+                1fr;
+
+            gap: 30px;
+        }
+
+
+        .about-box {
+
+            width: 100%;
+
+            padding: 35px;
+
+            border-radius: 15px;
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    #ffffff,
+                    #fff8f8
+                );
+
+            border:
+                1px solid var(--border);
+
+            border-left:
+                5px solid var(--red);
+
+            box-shadow:
+                0 8px 25px
+                rgba(0, 0, 0, 0.05);
+        }
+
+
+        .about-box h3 {
+
+            font-size: 28px;
+
+            margin-bottom: 15px;
+
+            color:
+                var(--red);
+        }
+
+
+        .about-box p {
+
+            line-height: 1.8;
+
+            color: #555;
+        }
+
+
+        .about-box strong {
+
+            color:
+                var(--red);
+        }
+
+
+        /* =========================================================
+           HIGHLIGHTS
+        ========================================================= */
+
+        .highlights {
+
+            width: 100%;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 15px;
+
+            margin-top: 25px;
+        }
+
+
+        .highlight {
+
+            min-height: 120px;
+
+            padding: 18px;
+
+            border-radius: 10px;
+
+            background:
+                #fff5f5;
+
+            border:
+                1px solid #edd1d1;
+
+            text-align: center;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            transition:
+                0.3s ease;
+        }
+
+
+        .highlight:hover {
+
+            transform:
+                translateY(-4px);
+
+            border-color:
+                var(--red);
+
+            box-shadow:
+                0 8px 20px
+                rgba(139, 0, 0, 0.08);
+        }
+
+
+        .highlight-icon {
+
+            font-size: 25px;
+
+            margin-bottom: 7px;
+        }
+
+
+        .highlight strong {
+
+            display: block;
+
+            color:
+                var(--dark-red);
+
+            font-size: 14px;
+        }
+
+
+        .highlight span {
+
+            display: block;
+
+            color: #666;
+
+            font-size: 12px;
+
+            margin-top: 4px;
+        }
+
+
+        /* =========================================================
+           MENU
+        ========================================================= */
+
+        .menu-section {
+
+            background:
+
+                linear-gradient(
+                    180deg,
+                    #ffffff,
+                    #fff7f7
+                );
+        }
+
+
+        .menu-buttons {
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 12px;
+
+            flex-wrap: wrap;
+
+            margin-bottom: 35px;
+        }
+
+
+        .filter-btn {
+
+            border: none;
+
+            padding:
+                12px 22px;
+
+            border-radius: 25px;
+
+            background:
+                #eeeeee;
+
+            color:
+                #111111;
+
+            cursor: pointer;
+
+            font-weight: bold;
+
+            transition:
+                0.3s ease;
+        }
+
+
+        .filter-btn.active,
+        .filter-btn:hover {
+
+            background:
+                var(--red);
+
+            color:
+                white;
+
+            box-shadow:
+                0 4px 12px
+                rgba(139, 0, 0, 0.25);
+        }
+
+
+        /* =========================================================
+           MENU GRID
+        ========================================================= */
+
+        .menu-grid {
+
+            max-width: 1100px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+
+        .menu-card {
+
+            background:
+                white;
+
+            padding: 22px;
+
+            border-radius: 12px;
+
+            border:
+                1px solid var(--border);
+
+            border-top:
+                4px solid var(--red);
+
+            transition:
+                0.3s ease;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+
+        .menu-card::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+
+            right: 0;
+
+            width: 45px;
+
+            height: 45px;
+
+            border-left:
+                1px solid
+                rgba(139, 0, 0, 0.25);
+
+            border-bottom:
+                1px solid
+                rgba(139, 0, 0, 0.25);
+
+            border-radius:
+                0 0 0 40px;
+        }
+
+
+        .menu-card:hover {
+
+            transform:
+                translateY(-5px);
+
+            border-color:
+                var(--red);
+
+            box-shadow:
+                0 12px 30px
+                rgba(80, 0, 0, 0.14);
+        }
+
+
+        .food-type {
+
+            display: inline-block;
+
+            font-size: 11px;
+
+            font-weight: bold;
+
+            margin-bottom: 10px;
+
+            color:
+                #198754;
+        }
+
+
+        .food-type.nonveg {
+
+            color:
+                var(--red);
+        }
+
+
+        .menu-card h3 {
+
+            font-size: 18px;
+
+            margin-bottom: 8px;
+
+            color:
+                #111111;
+        }
+
+
+        .category {
+
+            font-size: 13px;
+
+            color:
+                #888888;
+
+            margin-bottom: 15px;
+        }
+
+
+        .price {
+
+            font-weight: bold;
+
+            color:
+                var(--red);
+        }
+
+
+        .menu-cta {
+
+            text-align: center;
+
+            margin-top: 40px;
+        }
+
+
+        .menu-cta p {
+
+            color:
+                #666;
+
+            margin-bottom: 15px;
+
+            font-size: 14px;
+        }
+
+
+        .loading {
+
+            text-align: center;
+
+            color:
+                #777;
+
+            grid-column:
+                1 / -1;
+
+            padding:
+                50px 20px;
+        }
+
+
+        /* =========================================================
+           CONTACT
+        ========================================================= */
+
+        .contact-section {
+
+            background:
+                white;
+        }
+
+
+        .contact-card {
+
+            max-width: 800px;
+
+            margin: auto;
+
+            text-align: center;
+
+            padding:
+                45px 30px;
+
+            border-radius: 15px;
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    #080808,
+                    #350000
+                );
+
+            color:
+                white;
+
+            border:
+                2px solid var(--red);
+
+            box-shadow:
+                0 12px 35px
+                rgba(0, 0, 0, 0.18);
+        }
+
+
+        .contact-card h3 {
+
+            color:
+                #ffffff;
+
+            font-size: 28px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .contact-card p {
+
+            color:
+                #eeeeee;
+
+            line-height: 1.8;
+        }
+
+
+        .contact-details {
+
+            margin-top: 25px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 15px;
+        }
+
+
+        .contact-item {
+
+            padding:
+                18px;
+
+            background:
+                rgba(255, 255, 255, 0.05);
+
+            border:
+                1px solid
+                rgba(139, 0, 0, 0.45);
+
+            border-radius:
+                10px;
+        }
+
+
+        .contact-item strong {
+
+            display: block;
+
+            color:
+                #ffffff;
+
+            margin-bottom: 6px;
+        }
+
+
+        .contact-item span {
+
+            color:
+                #ddd;
+
+            font-size: 14px;
+        }
+
+
+        .location-buttons {
+
+            margin-top: 25px;
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 12px;
+
+            flex-wrap: wrap;
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        footer {
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    #050505,
+                    #350000
+                );
+
+            color:
+                white;
+
+            text-align:
+                center;
+
+            padding:
+                45px 20px;
+
+            border-top:
+                4px solid var(--red);
+        }
+
+
+        footer h2 {
+
+            color:
+                #ffffff;
+
+            margin-bottom:
+                12px;
+
+            font-family:
+                "Oswald",
+                sans-serif;
+
+            letter-spacing:
+                2px;
+        }
+
+
+        footer p {
+
+            color:
+                #eeeeee;
+
+            line-height:
+                1.7;
+        }
+
+
+        .copyright {
+
+            margin-top:
+                25px;
+
+            font-size:
+                13px;
+
+            color:
+                #888888;
+        }
+
+
+        /* =========================================================
+           BACK TO TOP
+        ========================================================= */
+
+        .back-to-top {
+
+            position: fixed;
+
+            right: 20px;
+
+            bottom: 20px;
+
+            width: 45px;
+
+            height: 45px;
+
+            border-radius: 50%;
+
+            border:
+                1px solid
+                var(--red);
+
+            background:
+                var(--red);
+
+            color:
+                white;
+
+            font-size:
+                18px;
+
+            cursor:
+                pointer;
+
+            display:
+                none;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            z-index:
+                999;
+
+            box-shadow:
+                0 5px 20px
+                rgba(0, 0, 0, 0.25);
+
+            transition:
+                0.3s;
+        }
+
+
+        .back-to-top.show {
+
+            display:
+                flex;
+        }
+
+
+        .back-to-top:hover {
+
+            background:
+                var(--dark-red);
+
+            transform:
+                translateY(-3px);
+        }
+
+
+        /* =========================================================
+           TABLET
+        ========================================================= */
+
+        @media (max-width: 1100px) {
+
+            .navbar {
+
+                padding:
+                    20px 4%;
+            }
+
+
+            .hero {
+
+                padding-left:
+                    6%;
+            }
+
+
+            .hero h1 {
+
+                font-size:
+                    clamp(68px, 10vw, 105px);
+            }
+
+
+            .nav-links {
+
+                gap:
+                    22px;
+            }
+
+
+            .nav-right {
+
+                gap:
+                    25px;
+            }
+        }
+
+
+        /* =========================================================
+           TABLET SMALL
+        ========================================================= */
+
+        @media (max-width: 900px) {
+
+            .menu-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
+            .highlights {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
+            .hero {
+
+                background-position:
+                    62% center;
+            }
+
+
+            .hero h1 {
+
+                font-size:
+                    clamp(68px, 12vw, 100px);
+            }
+        }
+
+
+        /* =========================================================
+           MOBILE
+        ========================================================= */
+
+        @media (max-width: 700px) {
+
+            .navbar {
+
+                position:
+                    absolute;
+
+                padding:
+                    17px 5%;
+            }
+
+
+            .brand-mark {
+
+                width:
+                    38px;
+
+                height:
+                    38px;
+
+                font-size:
+                    18px;
+            }
+
+
+            .brand-name {
+
+                font-size:
+                    20px;
+
+                letter-spacing:
+                    1.3px;
+            }
+
+
+            .brand-location {
+
+                font-size:
+                    7px;
+
+                letter-spacing:
+                    1.5px;
+            }
+
+
+            .nav-right {
+
+                gap:
+                    0;
+            }
+
+
+            .nav-links {
+
+                position:
+                    absolute;
+
+                top:
+                    100%;
+
+                left:
+                    0;
+
+                width:
+                    100%;
+
+                background:
+                    rgba(8, 8, 8, 0.98);
+
+                border-top:
+                    1px solid
+                    rgba(139, 0, 0, 0.5);
+
+                display:
+                    none;
+
+                flex-direction:
+                    column;
+
+                gap:
+                    0;
+
+                backdrop-filter:
+                    blur(12px);
+            }
+
+
+            .nav-links.show {
+
+                display:
+                    flex;
+            }
+
+
+            .nav-links li {
+
+                width:
+                    100%;
+            }
+
+
+            .nav-links a {
+
+                display:
+                    block;
+
+                padding:
+                    16px 5%;
+
+                border-bottom:
+                    1px solid
+                    rgba(255, 255, 255, 0.07);
+            }
+
+
+
+            .mobile-menu-btn {
+
+                display:
+                    flex;
+
+                align-items:
+                    center;
+
+                justify-content:
+                    center;
+            }
+
+
+            .hero {
+
+                min-height:
+                    100svh;
+
+                height:
+                    100svh;
+
+                padding:
+                    125px 7% 85px;
+
+                align-items:
+                    center;
+
+                background-position:
+                    66% center;
+            }
+
+
+            .hero::before {
+
+                animation:
+                    none;
+            }
+
+
+            .hero-content {
+
+                max-width:
+                    100%;
+            }
+
+
+            .hero-tag {
+
+                font-size:
+                    10px;
+
+                letter-spacing:
+                    1.7px;
+
+                gap:
+                    10px;
+
+                margin-bottom:
+                    19px;
+            }
+
+
+            .hero-tag::before {
+
+                width:
+                    38px;
+            }
+
+
+            .hero h1 {
+
+                font-size:
+                    clamp(58px, 17vw, 78px);
+
+                line-height:
+                    0.88;
+
+                letter-spacing:
+                    -1px;
+            }
+
+
+            .hero p {
+
+                max-width:
+                    370px;
+
+                margin-top:
+                    24px;
+
+                font-size:
+                    15px;
+
+                line-height:
+                    1.6;
+            }
+
+
+            .hero-description-line {
+
+                margin-top:
+                    21px;
+
+                width:
+                    48px;
+            }
+
+
+            .hero-buttons {
+
+                margin-top:
+                    23px;
+
+                gap:
+                    10px;
+            }
+
+
+            .hero-buttons .btn {
+
+                min-height:
+                    50px;
+
+                padding:
+                    0 22px;
+
+                font-size:
+                    13px;
+            }
+
+
+            .hero-scroll {
+
+                bottom:
+                    17px;
+            }
+
+
+            section {
+
+                padding:
+                    65px 5%;
+            }
+
+
+            .menu-grid {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .contact-details {
+
+                grid-template-columns:
+                    1fr;
+            }
+        }
+
+
+        /* =========================================================
+           SMALL MOBILE
+        ========================================================= */
+
+        @media (max-width: 500px) {
+
+            .hero {
+
+                background-position:
+                    68% center;
+
+                padding:
+                    120px 6% 80px;
+            }
+
+
+            .hero h1 {
+
+                font-size:
+                    clamp(56px, 17vw, 70px);
+            }
+
+
+            .hero p {
+
+                font-size:
+                    14px;
+
+                max-width:
+                    320px;
+            }
+
+
+            .hero-buttons {
+
+                flex-direction:
+                    column;
+
+                align-items:
+                    flex-start;
+
+                width:
+                    100%;
+            }
+
+
+            .hero-buttons .btn {
+
+                width:
+                    auto;
+
+                min-width:
+                    205px;
+            }
+
+
+            .highlights {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .about-box {
+
+                padding:
+                    25px 20px;
+            }
+
+
+            .section-title h2 {
+
+                font-size:
+                    31px;
+            }
+
+
+            .contact-card {
+
+                padding:
+                    35px 20px;
+            }
+        }
+
+
+        /* =========================================================
+           VERY SMALL PHONES
+        ========================================================= */
+
+        @media (max-width: 380px) {
+
+            .brand-name {
+
+                font-size:
+                    18px;
+            }
+
+
+            .brand-location {
+
+                font-size:
+                    6px;
+            }
+
+
+            .hero {
+
+                padding-top:
+                    110px;
+            }
+
+
+            .hero h1 {
+
+                font-size:
+                    52px;
+            }
+
+
+            .hero p {
+
+                font-size:
+                    13px;
+            }
+        }
+
+
+        /* =========================================================
+           REVIEWS & FEEDBACK
+        ========================================================= */
+        .reviews-feedback-section { background: var(--cream); }
+        .reviews-wrap { max-width: 1200px; margin: 0 auto; }
+        .review-summary { text-align:center; margin: 0 auto 30px; font-family:"DM Sans",sans-serif; }
+        .review-average { font-size:42px; font-weight:700; color:var(--red); }
+        .review-stars { color:#f2b01e; font-size:22px; letter-spacing:2px; margin:4px 0; }
+        .review-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+        .review-card { background:#fff; border:1px solid var(--border); padding:24px; box-shadow:0 10px 30px rgba(0,0,0,.06); }
+        .review-card-head { display:flex; justify-content:space-between; gap:12px; align-items:center; margin-bottom:10px; font-family:"DM Sans",sans-serif; }
+        .review-card-name { font-weight:700; }
+        .review-card-stars { color:#f2b01e; letter-spacing:1px; white-space:nowrap; }
+        .review-card-text { color:#555; line-height:1.65; font-family:"DM Sans",sans-serif; font-size:14px; }
+        .review-form-wrap { margin-top:35px; background:#080808; color:#fff; padding:30px; }
+        .review-form-title { font-size:27px; margin-bottom:18px; }
+        .review-form { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+        .review-form input, .review-form textarea, .review-form select { width:100%; border:1px solid #444; background:#151515; color:#fff; padding:13px 14px; font-family:"DM Sans",sans-serif; border-radius:4px; outline:none; }
+        .review-form textarea { min-height:110px; resize:vertical; grid-column:1 / -1; }
+        .review-form select { appearance:auto; }
+        .review-form .btn { border:none; grid-column:1 / -1; justify-self:start; }
+        .review-status { display:none; margin-top:12px; font-family:"DM Sans",sans-serif; font-size:13px; }
+        .feedback-box { margin-top:22px; padding-top:22px; border-top:1px solid #333; }
+        .feedback-box h4 { font-size:20px; margin-bottom:8px; }
+        .feedback-box p { color:#aaa; margin-bottom:14px; font-family:"DM Sans",sans-serif; font-size:13px; }
+        .feedback-form { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+        .feedback-form textarea { grid-column:1 / -1; min-height:100px; }
+        .feedback-form .btn { grid-column:1 / -1; justify-self:start; }
+        @media (max-width: 800px) { .review-grid { grid-template-columns:1fr; } .review-form, .feedback-form { grid-template-columns:1fr; } .review-form textarea, .review-form .btn, .feedback-form textarea, .feedback-form .btn { grid-column:auto; } .review-form-wrap { padding:24px 18px; } }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =========================================================
+         NAVIGATION
+    ========================================================= -->
+
+    <nav class="navbar">
+
+        <a href="#home" class="brand">
+
+            <div class="brand-mark">
+                龍
+            </div>
+
+            <div class="brand-text">
+
+                <span class="brand-name" id="siteRestaurantName">
+                    CHOTELAL HOTEL
+                </span>
+
+                <span class="brand-location">
+                    WADALA EAST • MUMBAI
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <div class="nav-right">
+
+            <ul class="nav-links" id="navLinks">
+                <li>
+                    <a href="#home">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#about">
+                        About Us
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#menu">
+                        Menu
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#contact">
+                        Find Us
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/admin">
+                        Admin
+                    </a>
+                </li>
+            </ul>
+
+
+            <button
+                class="mobile-menu-btn"
+                id="mobileMenuBtn"
+                aria-label="Open menu"
+                aria-expanded="false"
+            >
+                ☰
+            </button>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- =========================================================
+         HERO
+    ========================================================= -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-grain"></div>
+
+
+        <div class="hero-content">
+
+
+            <!-- SMALL TOP TEXT -->
+
+            <div class="hero-tag" id="siteHeroTag">
+                WELCOME TO CHOTELAL HOTEL
+            </div>
+
+
+            <!-- MAIN TITLE -->
+
+            <h1>
+
+                <span class="line" id="siteHeroNameLine">
+                    CHOTELAL
+                </span>
+
+                <span id="siteHeroNameLine2">
+                    HOTEL.
+                </span>
+
+            </h1>
+
+
+            <!-- DESCRIPTION -->
+
+            <p id="siteTagline">
+                Chinese comfort, North Indian fire,
+                and a warm table in Wadala.
+            </p>
+
+
+            <!-- RED LINE -->
+
+            <div class="hero-description-line"></div>
+
+
+            <!-- BUTTONS -->
+
+            <div class="hero-buttons">
+
+                <a
+                    href="#menu"
+                    class="btn btn-primary"
+                >
+                    Explore the menu ↗
+                </a>
+
+
+                <a
+                    href="#contact"
+                    class="btn btn-outline"
+                >
+                    Find the kitchen
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- SCROLL -->
+
+        <div class="hero-scroll">
+
+            <div class="scroll-icon">
+
+                <span class="scroll-dot"></span>
+
+            </div>
+
+            <span>
+                Scroll
+            </span>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         ABOUT
+    ========================================================= -->
+
+    <section
+        class="about"
+        id="about"
+    >
+
+        <div class="section-title">
+
+            <h2 id="aboutRestaurantName">
+                About Us
+            </h2>
+
+            <p>
+                Great food, great taste,
+                and a place to enjoy it.
+            </p>
+
+        </div>
+
+
+        <div class="about-grid">
+
+            <div class="about-box">
+
+                <h3>
+                    Our Food
+                </h3>
+
+                <p>
+                    Explore a wide variety of
+                    vegetarian and non-vegetarian
+                    dishes including soups, starters,
+                    rice, noodles and more.
+                </p>
+
+                <br>
+
+                <p>
+                    Our menu currently features
+
+                    <strong id="menuCount">
+                        Loading...
+                    </strong>
+
+                    dishes.
+                </p>
+
+
+                <div class="highlights">
+
+
+                    <div class="highlight">
+
+                        <div class="highlight-icon">
+                            🥬
+                        </div>
+
+                        <strong>
+                            Vegetarian
+                        </strong>
+
+                        <span>
+                            Delicious Veg Options
+                        </span>
+
+                    </div>
+
+
+                    <div class="highlight">
+
+                        <div class="highlight-icon">
+                            🍗
+                        </div>
+
+                        <strong>
+                            Non-Veg
+                        </strong>
+
+                        <span>
+                            Tasty Non-Veg Options
+                        </span>
+
+                    </div>
+
+
+                    <div class="highlight">
+
+                        <div class="highlight-icon">
+                            🍜
+                        </div>
+
+                        <strong>
+                            Chinese
+                        </strong>
+
+                        <span>
+                            Soups, Noodles & More
+                        </span>
+
+                    </div>
+
+
+                    <div class="highlight">
+
+                        <div class="highlight-icon">
+                            🍛
+                        </div>
+
+                        <strong>
+                            North Indian
+                        </strong>
+
+                        <span>
+                            Favourite Indian Dishes
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         MENU
+    ========================================================= -->
+
+    <section
+        class="menu-section"
+        id="menu"
+    >
+
+        <div class="section-title">
+
+            <h2>
+                Our Menu
+            </h2>
+
+            <p>
+                Explore some of our favourite dishes.
+            </p>
+
+        </div>
+
+
+        <div class="menu-buttons">
+
+            <button
+                class="filter-btn active"
+                data-filter="ALL"
+            >
+                🍽️ All
+            </button>
+
+
+            <button
+                class="filter-btn"
+                data-filter="VEG"
+            >
+                🟢 Veg
+            </button>
+
+
+            <button
+                class="filter-btn"
+                data-filter="NON-VEG"
+            >
+                🔴 Non-Veg
+            </button>
+
+        </div>
+
+
+        <div
+            class="menu-grid"
+            id="menuContainer"
+        >
+
+            <div class="loading">
+                Loading menu...
+            </div>
+
+        </div>
+
+
+        <div class="menu-cta">
+
+            <p>
+                Want to explore every dish and category?
+            </p>
+
+            <a
+                href="menu.html"
+                class="btn btn-primary"
+            >
+                View Full Menu →
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+
+    <!-- =========================================================
+         REVIEWS & FEEDBACK
+    ========================================================= -->
+    <section class="reviews-feedback-section" id="reviews">
+        <div class="section-title">
+            <h2>Reviews & Feedback</h2>
+            <p>See what our customers say and share your experience with us.</p>
+        </div>
+
+        <div class="reviews-wrap">
+            <div class="review-summary" id="reviewSummary">
+                <div class="review-average" id="reviewAverage">—</div>
+                <div class="review-stars" id="reviewAverageStars">☆☆☆☆☆</div>
+                <div id="reviewCount">Loading reviews...</div>
+            </div>
+
+            <div class="review-grid" id="reviewsContainer">
+                <div class="loading">Loading reviews...</div>
+            </div>
+
+            <div class="review-form-wrap">
+                <div class="review-form-title">⭐ Leave a Review</div>
+                <form class="review-form" id="reviewForm">
+                    <input type="text" id="reviewName" maxlength="100" placeholder="Your name" required>
+                    <select id="reviewRating" required>
+                        <option value="">Select rating</option>
+                        <option value="5">★★★★★ — Excellent</option>
+                        <option value="4">★★★★☆ — Very Good</option>
+                        <option value="3">★★★☆☆ — Good</option>
+                        <option value="2">★★☆☆☆ — Fair</option>
+                        <option value="1">★☆☆☆☆ — Poor</option>
+                    </select>
+                    <textarea id="reviewText" maxlength="1000" placeholder="Tell us about your experience..." required></textarea>
+                    <button type="submit" class="btn btn-primary">Submit Review ↗</button>
+                </form>
+                <div class="review-status" id="reviewStatus"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================================
+         CONTACT
+    ========================================================= -->
+
+    <section
+        class="contact-section"
+        id="contact"
+    >
+
+        <div class="section-title">
+
+            <h2 id="visitRestaurantName">
+            </h2>
+
+            <p>
+                Come and enjoy your favourite dishes with us.
+            </p>
+
+        </div>
+
+
+        <div class="contact-card">
+
+            <h3 id="contactRestaurantName">
+                📍 Chotelal Hotel
+            </h3>
+
+
+            <p id="siteAddress">
+
+                Barkat Ali Nagar,<br>
+
+                Salt Pan Road,<br>
+
+                Wadala East / Antop Hill,<br>
+
+                Mumbai - 400037
+
+            </p>
+
+
+            <div class="contact-details">
+
+
+                <div class="contact-item">
+
+                    <strong>
+                        📞 Call Us
+                    </strong>
+
+                    <span id="sitePhone">
+                        +91 76667 54889
+                    </span>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <strong>
+                        🕙 Opening Hours
+                    </strong>
+
+                    <span id="siteHours">
+                        10:00 AM – 11:30 PM
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="location-buttons">
+
+
+                <a
+                    href="tel:+917666754889"
+                    id="callRestaurantBtn"
+                    class="btn btn-primary"
+                >
+                    📞 Call Restaurant
+                </a>
+
+
+                <a
+                    href="https://maps.app.goo.gl/Pu3RqLnmRQqbbLkT7"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-outline"
+                >
+                    📍 Google Maps
+                </a>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================= -->
+
+    <footer>
+
+        <h2 id="footerRestaurantName">
+            CHOTELAL HOTEL
+        </h2>
+
+
+        <p id="footerAddress">
+
+            Barkat Ali Nagar,
+            Salt Pan Road,
+            Wadala East,
+            Mumbai - 400037
+
+        </p>
+
+
+        <p>
+
+            📞 <span id="footerPhone">+91 76667 54889</span>
+
+            &nbsp; | &nbsp;
+
+            🕙 <span id="footerHours">10:00 AM – 11:30 PM</span>
+
+        </p>
+
+
+        <div class="copyright">
+
+            © 2026 Chotelal Hotel.
+            All Rights Reserved.
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =========================================================
+         BACK TO TOP
+    ========================================================= -->
+
+    <button
+        class="back-to-top"
+        id="backToTop"
+        aria-label="Back to top"
+    >
+        ↑
+    </button>
+
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================= -->
+
+    <script>
+
+        /* =========================================================
+           GLOBAL VARIABLES
+        ========================================================= */
+
+        let allMenu = [];
+
+        let selectedFilter = "ALL";
+
+
+        /* =========================================================
+           MOBILE NAVIGATION
+        ========================================================= */
+
+        const mobileMenuBtn =
+            document.getElementById("mobileMenuBtn");
+
+        const navLinks =
+            document.getElementById("navLinks");
+
+
+        mobileMenuBtn.addEventListener(
+            "click",
+            () => {
+
+                navLinks.classList.toggle("show");
+
+                const isOpen =
+                    navLinks.classList.contains("show");
+
+                mobileMenuBtn.setAttribute(
+                    "aria-expanded",
+                    isOpen
+                );
+
+                mobileMenuBtn.textContent =
+                    isOpen ? "✕" : "☰";
+
+            }
+        );
+
+
+        navLinks
+            .querySelectorAll("a")
+            .forEach(link => {
+
+                link.addEventListener(
+                    "click",
+                    () => {
+
+                        navLinks.classList.remove("show");
+
+                        mobileMenuBtn.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+                        mobileMenuBtn.textContent =
+                            "☰";
+
+                    }
+                );
+
+            });
+
+
+
+        /* =========================================================
+           LOAD WEBSITE SETTINGS FROM API
+           These values are managed from the Admin Panel.
+           CSS/design is intentionally unchanged.
+        ========================================================= */
+
+        const DEFAULT_SITE_SETTINGS = {
+            restaurant_name: "Chotelal Hotel",
+            tagline: "Chinese comfort, North Indian fire, and a warm table in Wadala.",
+            phone: "+91 76667 54889",
+            whatsapp: "+91 76667 54889",
+            address: "Barkat Ali Nagar,\nSalt Pan Road,\nWadala East / Antop Hill,\nMumbai - 400037",
+            opening_hours: "10:00 AM – 11:30 PM"
+        };
+
+        function cleanSetting(value, fallback) {
+            const text = String(value ?? "").trim();
+            return text || fallback;
+        }
+
+        function phoneForTel(value) {
+            return String(value || "")
+                .replace(/[^0-9+]/g, "");
+        }
+
+        function addressToHTML(value) {
+            return escapeHTML(value)
+                .replace(/\r?\n/g, "<br>");
+        }
+
+        function applySiteSettings(settings) {
+            const site = {
+                restaurant_name: cleanSetting(
+                    settings.restaurant_name,
+                    DEFAULT_SITE_SETTINGS.restaurant_name
+                ),
+                tagline: cleanSetting(
+                    settings.tagline,
+                    DEFAULT_SITE_SETTINGS.tagline
+                ),
+                phone: cleanSetting(
+                    settings.phone,
+                    DEFAULT_SITE_SETTINGS.phone
+                ),
+                whatsapp: cleanSetting(
+                    settings.whatsapp,
+                    DEFAULT_SITE_SETTINGS.whatsapp
+                ),
+                address: cleanSetting(
+                    settings.address,
+                    DEFAULT_SITE_SETTINGS.address
+                ),
+                opening_hours: cleanSetting(
+                    settings.opening_hours,
+                    DEFAULT_SITE_SETTINGS.opening_hours
+                )
+            };
+
+            const pageTitle =
+                document.getElementById("pageTitle");
+
+            const pageDescription =
+                document.getElementById("pageDescription");
+
+            const restaurantName =
+                document.getElementById("siteRestaurantName");
+
+            const heroTag =
+                document.getElementById("siteHeroTag");
+
+            const heroNameLine =
+                document.getElementById("siteHeroNameLine");
+
+            const heroNameLine2 =
+                document.getElementById("siteHeroNameLine2");
+
+            const tagline =
+                document.getElementById("siteTagline");
+
+            const aboutRestaurantName =
+                document.getElementById("aboutRestaurantName");
+
+            const visitRestaurantName =
+                document.getElementById("visitRestaurantName");
+
+            const contactRestaurantName =
+                document.getElementById("contactRestaurantName");
+
+            const siteAddress =
+                document.getElementById("siteAddress");
+
+            const sitePhone =
+                document.getElementById("sitePhone");
+
+            const siteHours =
+                document.getElementById("siteHours");
+
+            const callRestaurantBtn =
+                document.getElementById("callRestaurantBtn");
+
+            const footerRestaurantName =
+                document.getElementById("footerRestaurantName");
+
+            const footerAddress =
+                document.getElementById("footerAddress");
+
+            const footerPhone =
+                document.getElementById("footerPhone");
+
+            const footerHours =
+                document.getElementById("footerHours");
+
+            if (pageTitle) {
+                pageTitle.textContent =
+                    `${site.restaurant_name} | ${site.tagline}`;
+            }
+
+            if (pageDescription) {
+                pageDescription.setAttribute(
+                    "content",
+                    `${site.restaurant_name} at ${site.address.replace(/\n/g, ", ")}. ${site.tagline}`
+                );
+            }
+
+            document.title =
+                `${site.restaurant_name} | ${site.tagline}`;
+
+            if (restaurantName) {
+                restaurantName.textContent =
+                    site.restaurant_name;
+            }
+
+            if (heroTag) {
+                heroTag.textContent =
+                    `WELCOME TO ${site.restaurant_name}`;
+            }
+
+            if (heroNameLine && heroNameLine2) {
+                const words =
+                    site.restaurant_name
+                        .trim()
+                        .split(/\s+/)
+                        .filter(Boolean);
+
+                if (words.length > 1) {
+                    const lastWord = words.pop();
+                    heroNameLine.textContent = words.join(" ");
+                    heroNameLine2.textContent = `${lastWord}.`;
+                    heroNameLine2.style.display = "block";
+                } else {
+                    heroNameLine.textContent =
+                        site.restaurant_name;
+                    heroNameLine2.textContent = "";
+                    heroNameLine2.style.display = "none";
+                }
+            }
+
+            if (tagline) {
+                tagline.textContent = site.tagline;
+            }
+
+            if (aboutRestaurantName) {
+                aboutRestaurantName.textContent =
+                    `About ${site.restaurant_name}`;
+            }
+
+            if (visitRestaurantName) {
+                visitRestaurantName.textContent =
+                    `Visit ${site.restaurant_name}`;
+            }
+
+            if (contactRestaurantName) {
+                contactRestaurantName.textContent =
+                    `📍 ${site.restaurant_name}`;
+            }
+
+            if (siteAddress) {
+                siteAddress.innerHTML =
+                    addressToHTML(site.address);
+            }
+
+            if (sitePhone) {
+                sitePhone.textContent = site.phone;
+            }
+
+            if (siteHours) {
+                siteHours.textContent =
+                    site.opening_hours;
+            }
+
+            if (callRestaurantBtn) {
+                const tel = phoneForTel(site.phone);
+
+                if (tel) {
+                    callRestaurantBtn.href = `tel:${tel}`;
+                    callRestaurantBtn.style.display = "inline-flex";
+                } else {
+                    callRestaurantBtn.removeAttribute("href");
+                    callRestaurantBtn.style.display = "none";
+                }
+            }
+
+            if (footerRestaurantName) {
+                footerRestaurantName.textContent =
+                    site.restaurant_name;
+            }
+
+            if (footerAddress) {
+                footerAddress.innerHTML =
+                    addressToHTML(site.address);
+            }
+
+            if (footerPhone) {
+                footerPhone.textContent = site.phone;
+            }
+
+            if (footerHours) {
+                footerHours.textContent =
+                    site.opening_hours;
+            }
+        }
+
+        async function loadSiteSettings() {
+            try {
+                const response = await fetch(
+                    "/api/settings",
+                    {
+                        method: "GET",
+                        cache: "no-store"
+                    }
+                );
+
+                if (!response.ok) {
+                    throw new Error(
+                        "Unable to load website settings."
+                    );
+                }
+
+                const data = await response.json();
+
+                if (!data.success || !data.settings) {
+                    throw new Error(
+                        data.message ||
+                        "Website settings are unavailable."
+                    );
+                }
+
+                applySiteSettings(data.settings);
+            }
+            catch (error) {
+                console.error(
+                    "Website Settings Error:",
+                    error
+                );
+
+                // Keep the original website values if the API is unavailable.
+                applySiteSettings(DEFAULT_SITE_SETTINGS);
+            }
+        }
+
+        /* =========================================================
+           LOAD MENU FROM API
+        ========================================================= */
+
+        async function loadMenu() {
+
+            const container =
+                document.getElementById(
+                    "menuContainer"
+                );
+
+
+            try {
+
+                const response =
+                    await fetch("/api/menu");
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "Server returned an error."
+                    );
+
+                }
+
+
+                const data =
+                    await response.json();
+
+
+                if (!data.success) {
+
+                    throw new Error(
+                        data.message ||
+                        "Unable to load menu."
+                    );
+
+                }
+
+
+                allMenu =
+                    Array.isArray(data.menu)
+                        ? data.menu
+                        : [];
+
+
+                document
+                    .getElementById("menuCount")
+                    .textContent =
+                    `${data.count || allMenu.length}+`;
+
+
+                displayMenu();
+
+            }
+
+
+            catch (error) {
+
+                console.error(
+                    "Menu Error:",
+                    error
+                );
+
+
+                document
+                    .getElementById("menuCount")
+                    .textContent =
+                    "98+";
+
+
+                container.innerHTML = `
+
+                    <div class="loading">
+
+                        Unable to load menu.
+
+                        <br><br>
+
+                        Please try again later.
+
+                    </div>
+
+                `;
+
+            }
+
+        }
+
+
+
+        /* =========================================================
+           DISPLAY MENU
+        ========================================================= */
+
+        function displayMenu() {
+
+            const container =
+                document.getElementById(
+                    "menuContainer"
+                );
+
+
+            let filtered =
+                allMenu;
+
+
+            if (selectedFilter !== "ALL") {
+
+                filtered =
+                    allMenu.filter(
+                        item =>
+
+                            String(
+                                item.food_type || ""
+                            )
+                            .toUpperCase() ===
+                            selectedFilter
+                    );
+
+            }
+
+
+            if (filtered.length === 0) {
+
+                container.innerHTML = `
+
+                    <div class="loading">
+
+                        No menu items found.
+
+                    </div>
+
+                `;
+
+                return;
+            }
+
+
+            /*
+             * Show first 12 dishes
+             */
+
+            const preview =
+                filtered.slice(0, 12);
+
+
+            container.innerHTML =
+                preview
+                    .map(
+                        item =>
+                            createMenuCard(item)
+                    )
+                    .join("");
+
+        }
+
+
+
+        /* =========================================================
+           CREATE MENU CARD
+        ========================================================= */
+
+        function createMenuCard(item) {
+
+            const type =
+                String(
+                    item.food_type || ""
+                );
+
+
+            const typeClass =
+
+                type.toUpperCase() === "NON-VEG"
+                    ? "nonveg"
+                    : "";
+
+
+            let price = "";
+
+
+            const hasHalf =
+
+                item.half_price !== null &&
+                item.half_price !== undefined &&
+                item.half_price !== "";
+
+
+            const hasFull =
+
+                item.full_price !== null &&
+                item.full_price !== undefined &&
+                item.full_price !== "";
+
+
+            if (hasHalf && hasFull) {
+
+                price =
+                    `Half ₹${formatPrice(item.half_price)}
+                     • Full ₹${formatPrice(item.full_price)}`;
+
+            }
+
+            else if (hasFull) {
+
+                price =
+                    `Full ₹${formatPrice(item.full_price)}`;
+
+            }
+
+            else if (hasHalf) {
+
+                price =
+                    `Half ₹${formatPrice(item.half_price)}`;
+
+            }
+
+            else {
+
+                price =
+                    "Price available at restaurant";
+
+            }
+
+
+            return `
+
+                <article class="menu-card">
+
+                    <div class="food-type ${typeClass}">
+
+                        ${escapeHTML(type)}
+
+                    </div>
+
+
+                    <h3>
+
+                        ${escapeHTML(item.name)}
+
+                    </h3>
+
+
+                    <div class="category">
+
+                        ${escapeHTML(item.category)}
+
+                    </div>
+
+
+                    <div class="price">
+
+                        ${price}
+
+                    </div>
+
+                </article>
+
+            `;
+
+        }
+
+
+
+        /* =========================================================
+           FILTER BUTTONS
+        ========================================================= */
+
+        document
+            .querySelectorAll(".filter-btn")
+            .forEach(button => {
+
+                button.addEventListener(
+                    "click",
+                    function () {
+
+                        document
+                            .querySelectorAll(".filter-btn")
+                            .forEach(btn => {
+
+                                btn.classList.remove(
+                                    "active"
+                                );
+
+                            });
+
+
+                        this.classList.add(
+                            "active"
+                        );
+
+
+                        selectedFilter =
+                            this.dataset.filter;
+
+
+                        displayMenu();
+
+                    }
+                );
+
+            });
+
+
+
+        /* =========================================================
+           FORMAT PRICE
+        ========================================================= */
+
+        function formatPrice(price) {
+
+            const number =
+                Number(price);
+
+
+            if (Number.isNaN(number)) {
+
+                return escapeHTML(price);
+
+            }
+
+
+            return number.toLocaleString(
+                "en-IN",
+                {
+                    maximumFractionDigits: 0
+                }
+            );
+
+        }
+
+
+
+        /* =========================================================
+           HTML SECURITY
+        ========================================================= */
+
+        function escapeHTML(value) {
+
+            return String(value ?? "")
+
+                .replace(
+                    /&/g,
+                    "&amp;"
+                )
+
+                .replace(
+                    /</g,
+                    "&lt;"
+                )
+
+                .replace(
+                    />/g,
+                    "&gt;"
+                )
+
+                .replace(
+                    /"/g,
+                    "&quot;"
+                )
+
+                .replace(
+                    /'/g,
+                    "&#039;"
+                );
+
+        }
+
+
+
+        /* =========================================================
+           BACK TO TOP
+        ========================================================= */
+
+        const backToTop =
+            document.getElementById(
+                "backToTop"
+            );
+
+
+        window.addEventListener(
+            "scroll",
+            () => {
+
+                if (window.scrollY > 500) {
+
+                    backToTop.classList.add(
+                        "show"
+                    );
+
+                }
+
+                else {
+
+                    backToTop.classList.remove(
+                        "show"
+                    );
+
+                }
+
+            }
+        );
+
+
+        backToTop.addEventListener(
+            "click",
+            () => {
+
+                window.scrollTo({
+
+                    top: 0,
+
+                    behavior: "smooth"
+
+                });
+
+            }
+        );
+
+
+
+        /* =========================================================
+           START WEBSITE
+        ========================================================= */
+
+        loadSiteSettings();
+        loadMenu();
+
+
+        /* =========================================================
+           REVIEWS & FEEDBACK
+        ========================================================= */
+        function reviewStars(rating) {
+            const n = Number(rating) || 0;
+            return "★★★★★".slice(0, n) + "☆☆☆☆☆".slice(0, 5 - n);
+        }
+
+        function escapeReviewHTML(value) {
+            const div = document.createElement("div");
+            div.textContent = value == null ? "" : String(value);
+            return div.innerHTML;
+        }
+
+        async function loadPublicReviews() {
+            const container = document.getElementById("reviewsContainer");
+            try {
+                const response = await fetch("/api/reviews", { cache: "no-store" });
+                const data = await response.json();
+                if (!response.ok || !data.success) throw new Error(data.message || "Unable to load reviews.");
+                const reviews = Array.isArray(data.reviews) ? data.reviews : [];
+                const totalReviewCount = reviews.length;
+                const recentReviews = reviews.slice(0, 3);
+                if (!reviews.length) {
+                    container.innerHTML = '<div class="review-card"><div class="review-card-text">No reviews yet. Be the first to share your experience!</div></div>';
+                    document.getElementById("reviewAverage").textContent = "—";
+                    document.getElementById("reviewCount").textContent = "Be the first to review us";
+                    return;
+                }
+                const average = reviews.reduce((sum, item) => sum + Number(item.rating || 0), 0) / reviews.length;
+                document.getElementById("reviewAverage").textContent = average.toFixed(1);
+                document.getElementById("reviewAverageStars").textContent = reviewStars(Math.round(average));
+                document.getElementById("reviewCount").textContent = `${totalReviewCount} customer review${totalReviewCount === 1 ? "" : "s"}`;
+                container.innerHTML = recentReviews.map(item => `
+                    <article class="review-card">
+                        <div class="review-card-head">
+                            <span class="review-card-name">${escapeReviewHTML(item.name)}</span>
+                            <span class="review-card-stars">${reviewStars(item.rating)}</span>
+                        </div>
+                        <div class="review-card-text">${escapeReviewHTML(item.review)}</div>
+                    </article>`).join("");
+            } catch (error) {
+                container.innerHTML = `<div class="review-card"><div class="review-card-text">Unable to load reviews right now.</div></div>`;
+                document.getElementById("reviewCount").textContent = "";
+                console.error("Reviews error:", error);
+            }
+        }
+
+        function setReviewStatus(id, message, success) {
+            const el = document.getElementById(id);
+            el.textContent = message;
+            el.style.display = "block";
+            el.style.color = success ? "#7ee787" : "#ff8f8f";
+        }
+
+        document.getElementById("reviewForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+            const button = this.querySelector("button");
+            button.disabled = true;
+            try {
+                const response = await fetch("/api/reviews", {
+                    method: "POST", headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        name: document.getElementById("reviewName").value.trim(),
+                        rating: Number(document.getElementById("reviewRating").value),
+                        review: document.getElementById("reviewText").value.trim()
+                    })
+                });
+                const data = await response.json();
+                if (!response.ok || !data.success) throw new Error(data.message || "Could not submit review.");
+                this.reset();
+                setReviewStatus("reviewStatus", "Thank you for your review!", true);
+                await loadPublicReviews();
+            } catch (error) { setReviewStatus("reviewStatus", error.message || "Could not submit review.", false); }
+            finally { button.disabled = false; }
+        });
+
+        document.getElementById("feedbackForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+            const button = this.querySelector("button");
+            button.disabled = true;
+            try {
+                const response = await fetch("/api/feedback", {
+                    method: "POST", headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        name: document.getElementById("feedbackName").value.trim(),
+                        email: document.getElementById("feedbackEmail").value.trim(),
+                        message: document.getElementById("feedbackMessage").value.trim()
+                    })
+                });
+                const data = await response.json();
+                if (!response.ok || !data.success) throw new Error(data.message || "Could not send feedback.");
+                this.reset();
+                setReviewStatus("feedbackStatus", "Thank you! Your feedback has been sent.", true);
+            } catch (error) { setReviewStatus("feedbackStatus", error.message || "Could not send feedback.", false); }
+            finally { button.disabled = false; }
+        });
+
+        loadPublicReviews();
+
+    </script>
+
+</body>
+</html>

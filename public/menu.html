@@ -1,0 +1,4343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Menu | Chotelal Hotel</title>
+
+    <meta
+        name="description"
+        content="Explore the complete menu of Chotelal Hotel, Barkat Ali Nagar, Wadala East, Mumbai."
+    >
+
+    <!-- GOOGLE FONTS -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <style>
+
+        /* =========================================================
+           RESET
+        ========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+
+        body {
+            font-family: "DM Sans", sans-serif;
+            background: #fffaf5;
+            color: #171717;
+            overflow-x: hidden;
+        }
+
+
+        /* =========================================================
+           COLOR SYSTEM
+        ========================================================= */
+
+        :root {
+
+            --red: #8b0000;
+
+            --dark-red: #5c0000;
+
+            --deep-red: #350000;
+
+            --bright-red: #a90000;
+
+            --light-red: #c62828;
+
+            --black: #080808;
+
+            --white: #ffffff;
+
+            --cream: #f5f0e8;
+
+            --muted: #b8b3aa;
+
+            --border: #e5e5e5;
+
+            --red-border: rgba(139, 0, 0, 0.45);
+
+            --red-glow: rgba(139, 0, 0, 0.25);
+
+        }
+
+
+        /* =========================================================
+           NAVIGATION
+        ========================================================= */
+
+        .navbar {
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+
+            z-index: 1000;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            padding: 20px 5%;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(0, 0, 0, 0.90),
+                    rgba(0, 0, 0, 0)
+                );
+
+            color: white;
+
+            border-bottom:
+                1px solid rgba(139, 0, 0, 0.25);
+        }
+
+
+        /* =========================================================
+           BRAND
+        ========================================================= */
+
+        .brand {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            text-decoration: none;
+
+            color: white;
+        }
+
+
+        .brand-mark {
+
+            width: 44px;
+            height: 44px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border:
+                1px solid rgba(255, 255, 255, 0.8);
+
+            border-radius: 50%;
+
+            color: #ffffff;
+
+            font-family: serif;
+
+            font-size: 22px;
+
+            background:
+                rgba(0, 0, 0, 0.35);
+
+            box-shadow:
+                0 0 0 2px rgba(139, 0, 0, 0.35);
+        }
+
+
+        .brand-text {
+
+            display: flex;
+
+            flex-direction: column;
+
+            line-height: 1;
+        }
+
+
+        .brand-name {
+
+            font-family: "Oswald", sans-serif;
+
+            font-size: 24px;
+
+            font-weight: 600;
+
+            letter-spacing: 1.5px;
+
+            color: var(--cream);
+        }
+
+
+        .brand-location {
+
+            margin-top: 6px;
+
+            font-size: 9px;
+
+            font-weight: 700;
+
+            letter-spacing: 2.1px;
+
+            color: #d9d9d9;
+        }
+
+
+        /* =========================================================
+           NAV RIGHT
+        ========================================================= */
+
+        .nav-right {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 38px;
+        }
+
+
+        .nav-links {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 34px;
+
+            list-style: none;
+        }
+
+
+        .nav-links a {
+
+            position: relative;
+
+            color:
+                rgba(255, 255, 255, 0.9);
+
+            text-decoration: none;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            letter-spacing: 0.4px;
+
+            transition:
+                color 0.3s ease;
+        }
+
+
+        .nav-links a::after {
+
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+
+            bottom: -7px;
+
+            width: 0;
+
+            height: 2px;
+
+            background: var(--red);
+
+            transition:
+                width 0.3s ease;
+        }
+
+
+        .nav-links a:hover {
+
+            color: #ffffff;
+        }
+
+
+        .nav-links a:hover::after {
+
+            width: 100%;
+        }
+
+
+        .nav-links a.active {
+
+            color: #ffffff;
+        }
+
+
+        .nav-links a.active::after {
+
+            width: 100%;
+        }
+
+
+        /* =========================================================
+           NAV CTA
+        ========================================================= */
+
+        .nav-cta {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            padding:
+                9px 16px;
+
+            border:
+                1px solid rgba(255, 255, 255, 0.35);
+
+            border-radius: 50px;
+
+            transition:
+                0.3s ease;
+        }
+
+
+        .nav-cta:hover {
+
+            border-color:
+                rgba(139, 0, 0, 0.8);
+
+            background:
+                rgba(139, 0, 0, 0.12);
+        }
+
+
+        .nav-cta a {
+
+            color: #ffffff;
+
+            text-decoration: none;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            letter-spacing: 1.3px;
+        }
+
+
+        .nav-arrow {
+
+            font-size: 18px;
+
+            color: #ffffff;
+
+            transition:
+                transform 0.3s ease;
+        }
+
+
+        .nav-cta:hover .nav-arrow {
+
+            transform:
+                translate(3px, -3px);
+        }
+
+
+        /* =========================================================
+           MOBILE MENU
+        ========================================================= */
+
+        .mobile-menu-btn {
+
+            display: none;
+
+            width: 42px;
+            height: 42px;
+
+            background:
+                rgba(0, 0, 0, 0.3);
+
+            border:
+                1px solid rgba(255, 255, 255, 0.55);
+
+            border-radius: 50%;
+
+            color: white;
+
+            font-size: 20px;
+
+            cursor: pointer;
+        }
+
+
+        /* =========================================================
+           MENU HERO
+        ========================================================= */
+
+        .menu-hero {
+
+            min-height: 62vh;
+
+            position: relative;
+
+            overflow: hidden;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            padding:
+                130px 7% 80px;
+
+            background:
+
+                radial-gradient(
+                    circle at 72% 42%,
+                    rgba(139, 0, 0, 0.40),
+                    transparent 38%
+                ),
+
+                linear-gradient(
+                    90deg,
+                    rgba(0, 0, 0, 0.96),
+                    rgba(53, 0, 0, 0.82),
+                    rgba(0, 0, 0, 0.94)
+                ),
+
+                linear-gradient(
+                    180deg,
+                    #080808,
+                    #350000
+                );
+
+            border-bottom:
+                2px solid var(--red);
+        }
+
+
+        /* =========================================================
+           HERO DECORATION
+        ========================================================= */
+
+        .menu-hero::before {
+
+            content: "龍";
+
+            position: absolute;
+
+            top: 50%;
+
+            left: 50%;
+
+            transform:
+                translate(-50%, -50%);
+
+            font-family: serif;
+
+            font-size:
+                clamp(230px, 38vw, 520px);
+
+            line-height: 1;
+
+            color:
+                rgba(139, 0, 0, 0.075);
+
+            pointer-events: none;
+
+            animation:
+                dragonFloat 8s ease-in-out infinite alternate;
+        }
+
+
+        @keyframes dragonFloat {
+
+            from {
+
+                transform:
+                    translate(-50%, -50%)
+                    scale(1);
+
+            }
+
+            to {
+
+                transform:
+                    translate(-50%, -51%)
+                    scale(1.04);
+
+            }
+        }
+
+
+        /* =========================================================
+           HERO VIGNETTE
+        ========================================================= */
+
+        .menu-hero::after {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+
+                radial-gradient(
+                    circle at center,
+                    transparent 0%,
+                    rgba(0, 0, 0, 0.12) 50%,
+                    rgba(0, 0, 0, 0.60) 100%
+                );
+
+            pointer-events: none;
+        }
+
+
+        /* =========================================================
+           GRAIN
+        ========================================================= */
+
+        .hero-grain {
+
+            position: absolute;
+
+            inset: 0;
+
+            z-index: 2;
+
+            pointer-events: none;
+
+            opacity: 0.07;
+
+            background-image:
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
+        }
+
+
+        /* =========================================================
+           HERO CONTENT
+        ========================================================= */
+
+        .menu-hero-content {
+
+            position: relative;
+
+            z-index: 5;
+
+            width: 100%;
+
+            max-width: 850px;
+
+            color: white;
+        }
+
+
+        .menu-tag {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 15px;
+
+            margin-bottom: 22px;
+
+            font-family:
+                "Oswald",
+                sans-serif;
+
+            font-size: 12px;
+
+            font-weight: 500;
+
+            letter-spacing: 3px;
+
+            color: #ffffff;
+
+            text-transform: uppercase;
+        }
+
+
+        .menu-tag::before,
+        .menu-tag::after {
+
+            content: "";
+
+            width: 48px;
+
+            height: 2px;
+
+            background: var(--red);
+        }
+
+
+        .menu-hero h1 {
+
+            font-family:
+                "Oswald",
+                sans-serif;
+
+            font-size:
+                clamp(68px, 11vw, 135px);
+
+            line-height: 0.86;
+
+            font-weight: 700;
+
+            letter-spacing: -2px;
+
+            text-transform: uppercase;
+
+            color: var(--cream);
+
+            text-shadow:
+                0 8px 35px rgba(0, 0, 0, 0.65);
+        }
+
+
+        .menu-hero h1 span {
+
+            color: var(--red);
+        }
+
+
+        .menu-hero-description {
+
+            max-width: 600px;
+
+            margin:
+                28px auto 0;
+
+            color:
+                rgba(245, 240, 232, 0.85);
+
+            font-size: 16px;
+
+            line-height: 1.7;
+
+            letter-spacing: 0.2px;
+        }
+
+
+        .hero-line {
+
+            width: 65px;
+
+            height: 2px;
+
+            margin:
+                25px auto 0;
+
+            background:
+                var(--red);
+        }
+
+
+        /* =========================================================
+           MENU MAIN
+        ========================================================= */
+
+        .menu-main {
+
+            position: relative;
+
+            background:
+
+                linear-gradient(
+                    180deg,
+                    #fffaf5 0%,
+                    #ffffff 30%,
+                    #fff7f7 100%
+                );
+
+            padding:
+                70px 7% 90px;
+        }
+
+
+        .menu-main-inner {
+
+            width: 100%;
+
+            max-width: 1250px;
+
+            margin: 0 auto;
+        }
+
+
+        /* =========================================================
+           SECTION INTRO
+        ========================================================= */
+
+        .menu-intro {
+
+            text-align: center;
+
+            margin-bottom: 38px;
+        }
+
+
+        .menu-intro h2 {
+
+            font-family:
+                "Oswald",
+                sans-serif;
+
+            font-size: 38px;
+
+            font-weight: 600;
+
+            letter-spacing: 1.5px;
+
+            color: var(--black);
+
+            text-transform: uppercase;
+        }
+
+
+        .menu-intro h2::after {
+
+            content: "";
+
+            display: block;
+
+            width: 65px;
+
+            height: 4px;
+
+            margin:
+                12px auto 0;
+
+            background:
+                var(--red);
+
+            border-radius: 5px;
+        }
+
+
+        .menu-intro p {
+
+            margin-top: 14px;
+
+            color: #666;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+        }
+
+
+        /* =========================================================
+           SEARCH + SORT
+        ========================================================= */
+
+        .menu-tools {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 210px;
+
+            gap: 14px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .search-box {
+
+            position: relative;
+        }
+
+
+        .search-icon {
+
+            position: absolute;
+
+            left: 18px;
+
+            top: 50%;
+
+            transform:
+                translateY(-50%);
+
+            font-size: 17px;
+
+            color:
+                #777;
+
+            pointer-events: none;
+        }
+
+
+        #searchInput {
+
+            width: 100%;
+
+            height: 54px;
+
+            padding:
+                0 20px 0 48px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 50px;
+
+            outline: none;
+
+            background:
+                #ffffff;
+
+            color:
+                #171717;
+
+            font-family:
+                "DM Sans",
+                sans-serif;
+
+            font-size: 14px;
+
+            transition:
+                0.3s ease;
+        }
+
+
+        #searchInput::placeholder {
+
+            color: #999;
+        }
+
+
+        #searchInput:focus {
+
+            border-color:
+                var(--red);
+
+            box-shadow:
+                0 0 0 4px
+                rgba(139, 0, 0, 0.08);
+        }
+
+
+        #sortSelect {
+
+            height: 54px;
+
+            padding:
+                0 18px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 50px;
+
+            outline: none;
+
+            background:
+                #ffffff;
+
+            color:
+                #333;
+
+            font-family:
+                "DM Sans",
+                sans-serif;
+
+            font-size: 14px;
+
+            cursor: pointer;
+
+            transition:
+                0.3s ease;
+        }
+
+
+        #sortSelect:focus {
+
+            border-color:
+                var(--red);
+
+            box-shadow:
+                0 0 0 4px
+                rgba(139, 0, 0, 0.08);
+        }
+
+
+        /* =========================================================
+           FILTER AREA
+        ========================================================= */
+
+        .filters-panel {
+
+            background:
+                #ffffff;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 16px;
+
+            padding:
+                20px;
+
+            margin-bottom: 28px;
+
+            box-shadow:
+                0 8px 25px
+                rgba(0, 0, 0, 0.035);
+        }
+
+
+        .filter-row {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 10px;
+
+            flex-wrap: wrap;
+        }
+
+
+        .filter-label {
+
+            width: 100%;
+
+            text-align: center;
+
+            margin-bottom: 4px;
+
+            font-family:
+                "Oswald",
+                sans-serif;
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            color:
+                #777;
+        }
+
+
+        .filter-btn {
+
+            border:
+                1px solid #dedede;
+
+            padding:
+                10px 19px;
+
+            border-radius: 50px;
+
+            background:
+                #f4f4f4;
+
+            color:
+                #222;
+
+            cursor: pointer;
+
+            font-family:
+                "DM Sans",
+                sans-serif;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            transition:
+                0.3s ease;
+        }
+
+
+        .filter-btn:hover {
+
+            border-color:
+                var(--red);
+
+            color:
+                var(--red);
+
+            transform:
+                translateY(-2px);
+        }
+
+
+        .filter-btn.active {
+
+            background:
+                var(--red);
+
+            color:
+                #ffffff;
+
+            border-color:
+                var(--red);
+
+            box-shadow:
+                0 6px 18px
+                rgba(139, 0, 0, 0.22);
+        }
+
+
+        /* =========================================================
+           CATEGORY FILTER
+        ========================================================= */
+
+        .category-wrapper {
+
+            margin-top: 20px;
+
+            padding-top: 18px;
+
+            border-top:
+                1px solid #eeeeee;
+        }
+
+
+        .category-buttons {
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 8px;
+
+            flex-wrap: wrap;
+        }
+
+
+        .category-btn {
+
+            border:
+                1px solid #e0e0e0;
+
+            padding:
+                8px 15px;
+
+            border-radius: 50px;
+
+            background:
+                #ffffff;
+
+            color:
+                #555;
+
+            cursor: pointer;
+
+            font-family:
+                "DM Sans",
+                sans-serif;
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            transition:
+                0.3s ease;
+        }
+
+
+        .category-btn:hover {
+
+            border-color:
+                var(--red);
+
+            color:
+                var(--red);
+        }
+
+
+        .category-btn.active {
+
+            background:
+                #fff1f1;
+
+            color:
+                var(--red);
+
+            border-color:
+                var(--red);
+        }
+
+
+        /* =========================================================
+           RESULTS BAR
+        ========================================================= */
+
+        .results-bar {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 15px;
+
+            margin:
+                0 0 22px;
+
+            padding:
+                0 4px;
+        }
+
+
+        .results-count {
+
+            font-family:
+                "Oswald",
+                sans-serif;
+
+            font-size: 15px;
+
+            letter-spacing: 0.7px;
+
+            color:
+                #555;
+        }
+
+
+        .results-count strong {
+
+            color:
+                var(--red);
+        }
+
+
+        .clear-filters {
+
+            border: none;
+
+            background: transparent;
+
+            color:
+                var(--red);
+
+            font-family:
+                "DM Sans",
+                sans-serif;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            text-decoration:
+                underline;
+
+            text-underline-offset: 3px;
+        }
+
+
+        .clear-filters:hover {
+
+            color:
+                var(--dark-red);
+        }
+
+
+        /* =========================================================
+           MENU GRID
+        ========================================================= */
+
+        .menu-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+
+        /* =========================================================
+           MENU CARD
+        ========================================================= */
+
+        .menu-card {
+
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+                #ffffff;
+
+            border:
+                1px solid var(--border);
+
+            border-top:
+                4px solid var(--red);
+
+            border-radius:
+                13px;
+
+            padding:
+                24px 22px 22px;
+
+            min-height:
+                420px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            transition:
+                transform 0.3s ease,
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+
+        .menu-card::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+
+            right: 0;
+
+            width: 58px;
+
+            height: 58px;
+
+            border-left:
+                1px solid
+                rgba(139, 0, 0, 0.22);
+
+            border-bottom:
+                1px solid
+                rgba(139, 0, 0, 0.22);
+
+            border-radius:
+                0 0 0 50px;
+
+            pointer-events: none;
+
+            z-index: 3;
+        }
+
+
+        .menu-card::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 120px;
+
+            height: 120px;
+
+            right: -80px;
+
+            bottom: -80px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(139, 0, 0, 0.035);
+
+            transition:
+                0.3s ease;
+
+            pointer-events: none;
+        }
+
+
+        .menu-card:hover {
+
+            transform:
+                translateY(-6px);
+
+            border-color:
+                var(--red);
+
+            box-shadow:
+                0 14px 32px
+                rgba(80, 0, 0, 0.12);
+        }
+
+
+        .menu-card:hover::after {
+
+            transform:
+                scale(1.6);
+        }
+
+
+        /* =========================================================
+           DATABASE FOOD IMAGE
+        ========================================================= */
+
+        .menu-image {
+
+            position: relative;
+
+            z-index: 2;
+
+            width: 100%;
+
+            height: 190px;
+
+            object-fit: cover;
+
+            display: block;
+
+            border-radius: 10px;
+
+            margin-bottom: 18px;
+
+            background:
+                #f2f2f2;
+
+            border:
+                1px solid #eeeeee;
+
+            transition:
+                transform 0.4s ease;
+        }
+
+
+        .menu-card:hover .menu-image {
+
+            transform:
+                scale(1.025);
+        }
+
+
+        .menu-image-placeholder {
+
+            position: relative;
+
+            z-index: 2;
+
+            width: 100%;
+
+            height: 190px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 10px;
+
+            margin-bottom: 18px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f5f5f5,
+                    #eeeeee
+                );
+
+            color:
+                #999;
+
+            font-size:
+                42px;
+
+            border:
+                1px solid #eeeeee;
+        }
+
+
+        /* =========================================================
+           CARD TOP
+        ========================================================= */
+
+        .card-top {
+
+            position: relative;
+
+            z-index: 2;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 10px;
+
+            margin-bottom: 13px;
+        }
+
+
+        .food-type {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 6px;
+
+            font-family:
+                "DM Sans",
+                sans-serif;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+
+            color:
+                #198754;
+        }
+
+
+        .food-type::before {
+
+            content: "";
+
+            width: 9px;
+
+            height: 9px;
+
+            border:
+                2px solid #198754;
+
+            border-radius: 2px;
+        }
+
+
+        .food-type.nonveg {
+
+            color:
+                var(--red);
+        }
+
+
+        .food-type.nonveg::before {
+
+            border-color:
+                var(--red);
+        }
+
+
+        .dish-id {
+
+            font-family:
+                "Oswald",
+                sans-serif;
+
+            font-size: 10px;
+
+            letter-spacing: 1px;
+
+            color:
+                #aaa;
+        }
+
+
+        /* =========================================================
+           CARD NAME
+        ========================================================= */
+
+        .menu-card h3 {
+
+            position: relative;
+
+            z-index: 2;
+
+            font-family:
+                "Oswald",
+                sans-serif;
+
+            font-size: 21px;
+
+            font-weight: 600;
+
+            line-height: 1.2;
+
+            letter-spacing: 0.2px;
+
+            color:
+                #111111;
+
+            margin-bottom:
+                8px;
+        }
+
+
+        /* =========================================================
+           CATEGORY
+        ========================================================= */
+
+        .category {
+
+            position: relative;
+
+            z-index: 2;
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            color:
+                #888;
+
+            letter-spacing:
+                0.2px;
+
+            margin-bottom:
+                10px;
+        }
+
+
+        /* =========================================================
+           DESCRIPTION
+        ========================================================= */
+
+        .description {
+
+            position: relative;
+
+            z-index: 2;
+
+            color:
+                #777;
+
+            font-size:
+                12px;
+
+            line-height:
+                1.55;
+
+            margin-bottom:
+                18px;
+
+            display:
+                -webkit-box;
+
+                -webkit-line-clamp:2;
+
+                -webkit-box-orient:vertical;
+
+                overflow:hidden;
+        }
+
+
+        /* =========================================================
+           PRICE
+        ========================================================= */
+
+        .price-area {
+
+            position: relative;
+
+            z-index: 2;
+
+            margin-top: auto;
+
+            padding-top:
+                14px;
+
+            border-top:
+                1px solid #eeeeee;
+        }
+
+
+        .price {
+
+            color:
+                var(--red);
+
+            font-family:
+                "Oswald",
+                sans-serif;
+
+            font-size:
+                16px;
+
+            font-weight:
+                600;
+
+            letter-spacing:
+                0.4px;
+        }
+
+
+        /* =========================================================
+           LOADING
+        ========================================================= */
+
+        .loading {
+
+            grid-column:
+                1 / -1;
+
+            text-align:
+                center;
+
+            padding:
+                70px 20px;
+
+            color:
+                #777;
+
+            font-size:
+                14px;
+        }
+
+
+        .loading-spinner {
+
+            width:
+                38px;
+
+            height:
+                38px;
+
+            margin:
+                0 auto 18px;
+
+            border:
+                3px solid #eeeeee;
+
+            border-top-color:
+                var(--red);
+
+            border-radius:
+                50%;
+
+            animation:
+                spin 0.8s linear infinite;
+        }
+
+
+        @keyframes spin {
+
+            to {
+
+                transform:
+                    rotate(360deg);
+            }
+        }
+
+
+        /* =========================================================
+           EMPTY STATE
+        ========================================================= */
+
+        .empty-state {
+
+            grid-column:
+                1 / -1;
+
+            text-align:
+                center;
+
+            padding:
+                70px 20px;
+
+            background:
+                #ffffff;
+
+            border:
+                1px solid var(--border);
+
+            border-radius:
+                15px;
+        }
+
+
+        .empty-state-icon {
+
+            font-size:
+                42px;
+
+            margin-bottom:
+                12px;
+        }
+
+
+        .empty-state h3 {
+
+            font-family:
+                "Oswald",
+                sans-serif;
+
+            font-size:
+                25px;
+
+            color:
+                #222;
+
+            margin-bottom:
+                8px;
+        }
+
+
+        .empty-state p {
+
+            color:
+                #777;
+
+            font-size:
+                13px;
+        }
+
+
+        /* =========================================================
+           CTA
+        ========================================================= */
+
+        .menu-cta {
+
+            margin-top:
+                65px;
+
+            text-align:
+                center;
+
+            padding:
+                50px 25px;
+
+            border-radius:
+                18px;
+
+            background:
+
+                radial-gradient(
+                    circle at 85% 30%,
+                    rgba(139, 0, 0, 0.22),
+                    transparent 30%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    #080808,
+                    #350000
+                );
+
+            border:
+                1px solid
+                rgba(139, 0, 0, 0.65);
+
+            box-shadow:
+                0 15px 40px
+                rgba(0, 0, 0, 0.15);
+
+            position:
+                relative;
+
+            overflow:
+                hidden;
+        }
+
+
+        .menu-cta::before {
+
+            content:
+                "龍";
+
+            position:
+                absolute;
+
+            right:
+                5%;
+
+            bottom:
+                -45px;
+
+            font-family:
+                serif;
+
+            font-size:
+                170px;
+
+            color:
+                rgba(255, 255, 255, 0.025);
+
+            pointer-events:
+                none;
+        }
+
+
+        .menu-cta h2 {
+
+            position:
+                relative;
+
+            z-index:
+                2;
+
+            font-family:
+                "Oswald",
+                sans-serif;
+
+            font-size:
+                30px;
+
+            font-weight:
+                600;
+
+            color:
+                #ffffff;
+
+            margin-bottom:
+                10px;
+
+            letter-spacing:
+                0.8px;
+        }
+
+
+        .menu-cta p {
+
+            position:
+                relative;
+
+            z-index:
+                2;
+
+            color:
+                #cccccc;
+
+            font-size:
+                14px;
+
+            margin-bottom:
+                25px;
+
+            line-height:
+                1.6;
+        }
+
+
+        /* =========================================================
+           BUTTONS
+        ========================================================= */
+
+        .btn {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            min-height:
+                52px;
+
+            padding:
+                0 25px;
+
+            border-radius:
+                50px;
+
+            text-decoration:
+                none;
+
+            font-family:
+                "DM Sans",
+                sans-serif;
+
+            font-size:
+                13px;
+
+            font-weight:
+                700;
+
+            letter-spacing:
+                0.3px;
+
+            transition:
+                transform 0.3s ease,
+                background 0.3s ease,
+                color 0.3s ease,
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+
+            cursor:
+                pointer;
+        }
+
+
+        .btn-primary {
+
+            background:
+                var(--red);
+
+            color:
+                #ffffff;
+
+            border:
+                1px solid var(--red);
+
+            box-shadow:
+                0 10px 30px
+                rgba(0, 0, 0, 0.25);
+        }
+
+
+        .btn-primary:hover {
+
+            transform:
+                translateY(-3px);
+
+            background:
+                var(--bright-red);
+
+            border-color:
+                var(--bright-red);
+
+            box-shadow:
+                0 14px 35px
+                rgba(139, 0, 0, 0.35);
+        }
+
+
+        .btn-outline {
+
+            background:
+                rgba(0, 0, 0, 0.18);
+
+            color:
+                var(--cream);
+
+            border:
+                1px solid
+                rgba(245, 240, 232, 0.55);
+
+            backdrop-filter:
+                blur(5px);
+        }
+
+
+        .btn-outline:hover {
+
+            transform:
+                translateY(-3px);
+
+            border-color:
+                var(--red);
+
+            color:
+                #ffffff;
+
+            background:
+                rgba(139, 0, 0, 0.18);
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        footer {
+
+            background:
+
+                linear-gradient(
+                    135deg,
+                    #050505,
+                    #350000
+                );
+
+            color:
+                white;
+
+            text-align:
+                center;
+
+            padding:
+                45px 20px;
+
+            border-top:
+                4px solid var(--red);
+        }
+
+
+        footer h2 {
+
+            color:
+                #ffffff;
+
+            margin-bottom:
+                12px;
+
+            font-family:
+                "Oswald",
+                sans-serif;
+
+            letter-spacing:
+                2px;
+        }
+
+
+        footer p {
+
+            color:
+                #eeeeee;
+
+            line-height:
+                1.7;
+
+            font-size:
+                13px;
+        }
+
+
+        .copyright {
+
+            margin-top:
+                25px;
+
+            font-size:
+                13px;
+
+            color:
+                #888888;
+        }
+
+
+        /* =========================================================
+           BACK TO TOP
+        ========================================================= */
+
+        .back-to-top {
+
+            position:
+                fixed;
+
+            right:
+                20px;
+
+            bottom:
+                20px;
+
+            width:
+                45px;
+
+            height:
+                45px;
+
+            border-radius:
+                50%;
+
+            border:
+                1px solid var(--red);
+
+            background:
+                var(--red);
+
+            color:
+                white;
+
+            font-size:
+                18px;
+
+            cursor:
+                pointer;
+
+            display:
+                none;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            z-index:
+                999;
+
+            box-shadow:
+                0 5px 20px
+                rgba(0, 0, 0, 0.25);
+
+            transition:
+                0.3s;
+        }
+
+
+        .back-to-top.show {
+
+            display:
+                flex;
+        }
+
+
+        .back-to-top:hover {
+
+            background:
+                var(--dark-red);
+
+            transform:
+                translateY(-3px);
+        }
+
+
+        /* =========================================================
+           TABLET
+        ========================================================= */
+
+        @media (max-width: 1100px) {
+
+            .navbar {
+
+                padding:
+                    20px 4%;
+            }
+
+
+            .nav-links {
+
+                gap:
+                    22px;
+            }
+
+
+            .nav-right {
+
+                gap:
+                    25px;
+            }
+
+
+            .menu-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+
+        /* =========================================================
+           TABLET SMALL
+        ========================================================= */
+
+        @media (max-width: 900px) {
+
+            .menu-hero {
+
+                min-height:
+                    58vh;
+
+                padding:
+                    125px 6% 75px;
+            }
+
+
+            .menu-hero h1 {
+
+                font-size:
+                    clamp(68px, 12vw, 105px);
+            }
+
+
+            .menu-main {
+
+                padding:
+                    60px 5% 80px;
+            }
+
+        }
+
+
+        /* =========================================================
+           MOBILE
+        ========================================================= */
+
+        @media (max-width: 700px) {
+
+            .navbar {
+
+                position:
+                    absolute;
+
+                padding:
+                    17px 5%;
+            }
+
+
+            .brand-mark {
+
+                width:
+                    38px;
+
+                height:
+                    38px;
+
+                font-size:
+                    18px;
+            }
+
+
+            .brand-name {
+
+                font-size:
+                    20px;
+
+                letter-spacing:
+                    1.3px;
+            }
+
+
+            .brand-location {
+
+                font-size:
+                    7px;
+
+                letter-spacing:
+                    1.5px;
+            }
+
+
+            .nav-right {
+
+                gap:
+                    0;
+            }
+
+
+            .nav-links {
+
+                position:
+                    absolute;
+
+                top:
+                    100%;
+
+                left:
+                    0;
+
+                width:
+                    100%;
+
+                background:
+                    rgba(8, 8, 8, 0.98);
+
+                border-top:
+                    1px solid
+                    rgba(139, 0, 0, 0.5);
+
+                display:
+                    none;
+
+                flex-direction:
+                    column;
+
+                gap:
+                    0;
+
+                backdrop-filter:
+                    blur(12px);
+            }
+
+
+            .nav-links.show {
+
+                display:
+                    flex;
+            }
+
+
+            .nav-links li {
+
+                width:
+                    100%;
+            }
+
+
+            .nav-links a {
+
+                display:
+                    block;
+
+                padding:
+                    16px 5%;
+
+                border-bottom:
+                    1px solid
+                    rgba(255, 255, 255, 0.07);
+            }
+
+
+            .nav-links a::after {
+
+                display:
+                    none;
+            }
+
+
+            .mobile-menu-btn {
+
+                display:
+                    flex;
+
+                align-items:
+                    center;
+
+                justify-content:
+                    center;
+            }
+
+
+            .menu-hero {
+
+                min-height:
+                    60svh;
+
+                padding:
+                    120px 6% 70px;
+            }
+
+
+            .menu-tag {
+
+                font-size:
+                    9px;
+
+                letter-spacing:
+                    1.8px;
+
+                gap:
+                    9px;
+            }
+
+
+            .menu-tag::before,
+            .menu-tag::after {
+
+                width:
+                    30px;
+            }
+
+
+            .menu-hero h1 {
+
+                font-size:
+                    clamp(58px, 17vw, 82px);
+
+                line-height:
+                    0.88;
+
+                letter-spacing:
+                    -1px;
+            }
+
+
+            .menu-hero-description {
+
+                max-width:
+                    350px;
+
+                margin-top:
+                    23px;
+
+                font-size:
+                    14px;
+
+                line-height:
+                    1.6;
+            }
+
+
+            .hero-line {
+
+                margin-top:
+                    20px;
+
+                width:
+                    48px;
+            }
+
+
+            .menu-main {
+
+                padding:
+                    55px 5% 70px;
+            }
+
+
+            .menu-intro {
+
+                margin-bottom:
+                    30px;
+            }
+
+
+            .menu-intro h2 {
+
+                font-size:
+                    31px;
+            }
+
+
+            .menu-tools {
+
+                grid-template-columns:
+                    1fr;
+
+                gap:
+                    10px;
+            }
+
+
+            #sortSelect {
+
+                width:
+                    100%;
+            }
+
+
+            .filters-panel {
+
+                padding:
+                    17px 13px;
+            }
+
+
+            .filter-btn {
+
+                padding:
+                    9px 15px;
+
+                font-size:
+                    12px;
+            }
+
+
+            .category-btn {
+
+                padding:
+                    7px 12px;
+
+                font-size:
+                    11px;
+            }
+
+
+            .results-bar {
+
+                align-items:
+                    flex-start;
+
+                flex-direction:
+                    column;
+
+                gap:
+                    7px;
+            }
+
+
+            .menu-grid {
+
+                grid-template-columns:
+                    1fr;
+
+                gap:
+                    16px;
+            }
+
+
+            .menu-card {
+
+                min-height:
+                    390px;
+
+                padding:
+                    22px 19px 20px;
+            }
+
+
+            .menu-image,
+            .menu-image-placeholder {
+
+                height:
+                    180px;
+            }
+
+
+            .menu-card h3 {
+
+                font-size:
+                    20px;
+            }
+
+
+            .menu-cta {
+
+                margin-top:
+                    50px;
+
+                padding:
+                    40px 20px;
+            }
+
+
+            .menu-cta h2 {
+
+                font-size:
+                    26px;
+            }
+
+        }
+
+
+        /* =========================================================
+           SMALL MOBILE
+        ========================================================= */
+
+        @media (max-width: 500px) {
+
+            .brand-name {
+
+                font-size:
+                    19px;
+            }
+
+
+            .brand-location {
+
+                font-size:
+                    6.5px;
+            }
+
+
+            .menu-hero {
+
+                min-height:
+                    58svh;
+
+                padding:
+                    115px 5% 65px;
+            }
+
+
+            .menu-hero h1 {
+
+                font-size:
+                    clamp(55px, 17vw, 72px);
+            }
+
+
+            .menu-hero-description {
+
+                font-size:
+                    13px;
+
+                max-width:
+                    310px;
+            }
+
+
+            .filter-row {
+
+                gap:
+                    7px;
+            }
+
+
+            .filter-btn {
+
+                padding:
+                    8px 12px;
+
+                font-size:
+                    11px;
+            }
+
+
+            .menu-card {
+
+                padding:
+                    20px 17px;
+            }
+
+
+            .menu-image,
+            .menu-image-placeholder {
+
+                height:
+                    165px;
+            }
+
+
+            .menu-card h3 {
+
+                font-size:
+                    19px;
+            }
+
+
+            .description {
+
+                font-size:
+                    11.5px;
+            }
+
+
+            .price {
+
+                font-size:
+                    15px;
+            }
+
+
+            .back-to-top {
+
+                right:
+                    14px;
+
+                bottom:
+                    14px;
+            }
+
+        }
+
+
+        /* =========================================================
+           VERY SMALL PHONES
+        ========================================================= */
+
+        @media (max-width: 380px) {
+
+            .brand-name {
+
+                font-size:
+                    17px;
+            }
+
+
+            .brand-location {
+
+                font-size:
+                    6px;
+
+                letter-spacing:
+                    1.2px;
+            }
+
+
+            .menu-hero {
+
+                padding-top:
+                    105px;
+            }
+
+
+            .menu-hero h1 {
+
+                font-size:
+                    51px;
+            }
+
+
+            .menu-hero-description {
+
+                font-size:
+                    12px;
+            }
+
+
+            .menu-intro h2 {
+
+                font-size:
+                    28px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================================
+         NAVIGATION
+    ========================================================= -->
+
+    <nav class="navbar">
+
+        <a href="index.html" class="brand">
+
+            <div class="brand-mark">
+                龍
+            </div>
+
+            <div class="brand-text">
+
+                <span class="brand-name">
+                    Chotelal Hotel
+                </span>
+
+                <span class="brand-location">
+                    WADALA EAST • MUMBAI
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <div class="nav-right">
+
+            <ul class="nav-links" id="navLinks">
+
+                <li>
+                    <a href="index.html">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="index.html#about">
+                        About us
+                    </a>
+                </li>
+
+                <li>
+                    <a href="menu.html" class="active">
+                        Menu
+                    </a>
+                </li>
+
+                <li>
+                    <a href="index.html#contact">
+                        Find Us
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/admin">
+                        Admin
+                    </a>
+                </li>
+
+            </ul>
+
+
+            <button
+                class="mobile-menu-btn"
+                id="mobileMenuBtn"
+                aria-label="Open menu"
+                aria-expanded="false"
+            >
+                ☰
+            </button>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================================================
+         MENU HERO
+    ========================================================= -->
+
+    <section class="menu-hero">
+
+        <div class="hero-grain"></div>
+
+
+        <div class="menu-hero-content">
+
+            <div class="menu-tag">
+                CHOTELAL HOTEL
+            </div>
+
+
+            <h1>
+                OUR
+                <span>MENU.</span>
+            </h1>
+
+
+            <p class="menu-hero-description">
+
+                From comforting Chinese favourites to
+                bold North Indian flavours, discover
+                everything served at Chotelal Hotel.
+
+            </p>
+
+
+            <div class="hero-line"></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         MAIN MENU
+    ========================================================= -->
+
+    <main class="menu-main">
+
+        <div class="menu-main-inner">
+
+
+            <!-- =====================================================
+                 INTRO
+            ====================================================== -->
+
+            <div class="menu-intro">
+
+                <h2>
+                    Explore Our Menu
+                </h2>
+
+                <p>
+                    Browse our complete selection of dishes,
+                    categories and prices.
+                </p>
+
+            </div>
+
+
+            <!-- =====================================================
+                 SEARCH + SORT
+            ====================================================== -->
+
+            <div class="menu-tools">
+
+                <div class="search-box">
+
+                    <span class="search-icon">
+                        ⌕
+                    </span>
+
+                    <input
+                        type="search"
+                        id="searchInput"
+                        placeholder="Search dishes, categories..."
+                        autocomplete="off"
+                    >
+
+                </div>
+
+
+                <select id="sortSelect">
+
+                    <option value="default">
+                        Sort: Default
+                    </option>
+
+                    <option value="name-asc">
+                        Name: A → Z
+                    </option>
+
+                    <option value="name-desc">
+                        Name: Z → A
+                    </option>
+
+                    <option value="price-low">
+                        Price: Low → High
+                    </option>
+
+                    <option value="price-high">
+                        Price: High → Low
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- =====================================================
+                 FILTERS
+            ====================================================== -->
+
+            <div class="filters-panel">
+
+
+                <div class="filter-row">
+
+                    <div class="filter-label">
+                        Food Type
+                    </div>
+
+
+                    <button
+                        class="filter-btn active"
+                        data-filter="ALL"
+                    >
+                        🍽️ All
+                    </button>
+
+
+                    <button
+                        class="filter-btn"
+                        data-filter="VEG"
+                    >
+                        🟢 Veg
+                    </button>
+
+
+                    <button
+                        class="filter-btn"
+                        data-filter="NON-VEG"
+                    >
+                        🔴 Non-Veg
+                    </button>
+
+                </div>
+
+
+                <!-- CATEGORY FILTERS -->
+
+                <div class="category-wrapper">
+
+                    <div class="filter-label">
+                        Categories
+                    </div>
+
+
+                    <div
+                        class="category-buttons"
+                        id="categoryButtons"
+                    >
+
+                        <button
+                            class="category-btn active"
+                            data-category="ALL"
+                        >
+                            All Categories
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================================
+                 RESULTS BAR
+            ====================================================== -->
+
+            <div class="results-bar">
+
+                <div
+                    class="results-count"
+                    id="resultsCount"
+                >
+                    Showing <strong>0</strong> dishes
+                </div>
+
+
+                <button
+                    class="clear-filters"
+                    id="clearFilters"
+                >
+                    Clear all filters
+                </button>
+
+            </div>
+
+
+            <!-- =====================================================
+                 MENU GRID
+            ====================================================== -->
+
+            <div
+                class="menu-grid"
+                id="menuContainer"
+            >
+
+                <div class="loading">
+
+                    <div class="loading-spinner"></div>
+
+                    Loading menu...
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================================
+                 CTA
+            ====================================================== -->
+
+            <div class="menu-cta">
+
+                <h2>
+                    Hungry Yet?
+                </h2>
+
+
+                <p>
+                    Come visit Chotelal Hotel and enjoy
+                    your favourite dishes in Wadala.
+                </p>
+
+
+                <a
+                    href="index.html#contact"
+                    class="btn btn-primary"
+                >
+                    Find Chotelal Hotel ↗
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================= -->
+
+    <footer>
+
+        <h2>
+            Chotelal Hotel
+        </h2>
+
+
+        <p>
+            Barkat Ali Nagar,
+            Salt Pan Road,
+            Wadala East,
+            Mumbai - 400037
+        </p>
+
+
+        <p>
+            📞 +91 76667 54889
+            &nbsp; | &nbsp;
+            🕙 10:00 AM – 11:30 PM
+        </p>
+
+
+        <div class="copyright">
+
+            © 2026 Chotelal Hotel.
+            All Rights Reserved.
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================================================
+         BACK TO TOP
+    ========================================================= -->
+
+    <button
+        class="back-to-top"
+        id="backToTop"
+        aria-label="Back to top"
+    >
+        ↑
+    </button>
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================= -->
+
+    <script>
+
+
+        /* =========================================================
+           GLOBAL VARIABLES
+        ========================================================= */
+
+        let menuItems = [];
+
+        let selectedFoodType = "ALL";
+
+        let selectedCategory = "ALL";
+
+        let selectedSort = "default";
+
+
+        /* =========================================================
+           DOM ELEMENTS
+        ========================================================= */
+
+        const menuContainer =
+            document.getElementById("menuContainer");
+
+        const searchInput =
+            document.getElementById("searchInput");
+
+        const sortSelect =
+            document.getElementById("sortSelect");
+
+        const categoryButtons =
+            document.getElementById("categoryButtons");
+
+        const resultsCount =
+            document.getElementById("resultsCount");
+
+        const clearFilters =
+            document.getElementById("clearFilters");
+
+        const mobileMenuBtn =
+            document.getElementById("mobileMenuBtn");
+
+        const navLinks =
+            document.getElementById("navLinks");
+
+        const backToTop =
+            document.getElementById("backToTop");
+
+
+        /* =========================================================
+           MOBILE NAVIGATION
+        ========================================================= */
+
+        mobileMenuBtn.addEventListener(
+            "click",
+            () => {
+
+                navLinks.classList.toggle("show");
+
+                const isOpen =
+                    navLinks.classList.contains("show");
+
+                mobileMenuBtn.setAttribute(
+                    "aria-expanded",
+                    isOpen
+                );
+
+                mobileMenuBtn.textContent =
+                    isOpen ? "✕" : "☰";
+
+            }
+        );
+
+
+        navLinks
+            .querySelectorAll("a")
+            .forEach(link => {
+
+                link.addEventListener(
+                    "click",
+                    () => {
+
+                        navLinks.classList.remove("show");
+
+                        mobileMenuBtn.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+                        mobileMenuBtn.textContent =
+                            "☰";
+
+                    }
+                );
+
+            });
+
+
+        /* =========================================================
+           LOAD MENU FROM API
+        ========================================================= */
+
+        async function loadMenu() {
+
+            try {
+
+                /*
+                 * Always fetch the latest menu saved from Admin Panel.
+                 * cache: "no-store" prevents an old browser/proxy response
+                 * from keeping the public menu stuck on an older version.
+                 * The timestamp query also makes every request unique.
+                 */
+                const response =
+                    await fetch(
+                        `/api/menu?_=${Date.now()}`,
+                        {
+                            method: "GET",
+                            cache: "no-store",
+                            headers: {
+                                "Cache-Control": "no-cache"
+                            }
+                        }
+                    );
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "Server returned an error."
+                    );
+
+                }
+
+
+                const data =
+                    await response.json();
+
+
+                if (!data.success) {
+
+                    throw new Error(
+                        data.message ||
+                        "Unable to load menu."
+                    );
+
+                }
+
+
+                menuItems =
+                    Array.isArray(data.menu)
+                        ? data.menu
+                        : [];
+
+
+                generateCategories();
+
+                applyFilters();
+
+            }
+
+
+            catch (error) {
+
+                console.error(
+                    "Menu Error:",
+                    error
+                );
+
+
+                menuContainer.innerHTML = `
+
+                    <div class="empty-state">
+
+                        <div class="empty-state-icon">
+                            🍽️
+                        </div>
+
+                        <h3>
+                            Menu Temporarily Unavailable
+                        </h3>
+
+                        <p>
+                            We couldn't load the menu right now.
+                            Please try again later.
+                        </p>
+
+                    </div>
+
+                `;
+
+
+                resultsCount.innerHTML =
+                    "Unable to load menu.";
+
+            }
+
+        }
+
+
+        /* =========================================================
+           GENERATE CATEGORIES
+        ========================================================= */
+
+        function generateCategories() {
+
+            const categories = new Set();
+
+
+            menuItems.forEach(item => {
+
+                const category =
+                    String(
+                        item.category || ""
+                    ).trim();
+
+
+                if (category) {
+
+                    categories.add(category);
+
+                }
+
+            });
+
+
+            const sortedCategories =
+                [...categories].sort(
+                    (a, b) =>
+                        a.localeCompare(
+                            b,
+                            undefined,
+                            {
+                                sensitivity: "base"
+                            }
+                        )
+                );
+
+
+            categoryButtons.innerHTML = `
+
+                <button
+                    class="category-btn active"
+                    data-category="ALL"
+                >
+                    All Categories
+                </button>
+
+            `;
+
+
+            sortedCategories.forEach(category => {
+
+                const button =
+                    document.createElement("button");
+
+
+                button.className =
+                    "category-btn";
+
+
+                button.dataset.category =
+                    category;
+
+
+                button.textContent =
+                    category;
+
+
+                categoryButtons.appendChild(
+                    button
+                );
+
+            });
+
+
+            categoryButtons
+                .querySelectorAll(".category-btn")
+                .forEach(button => {
+
+                    button.addEventListener(
+                        "click",
+                        () => {
+
+                            categoryButtons
+                                .querySelectorAll(
+                                    ".category-btn"
+                                )
+                                .forEach(btn => {
+
+                                    btn.classList.remove(
+                                        "active"
+                                    );
+
+                                });
+
+
+                            button.classList.add(
+                                "active"
+                            );
+
+
+                            selectedCategory =
+                                button.dataset.category;
+
+
+                            applyFilters();
+
+                        }
+                    );
+
+                });
+
+        }
+
+
+        /* =========================================================
+           FOOD TYPE FILTER BUTTONS
+        ========================================================= */
+
+        document
+            .querySelectorAll(".filter-btn")
+            .forEach(button => {
+
+                button.addEventListener(
+                    "click",
+                    function () {
+
+                        document
+                            .querySelectorAll(
+                                ".filter-btn"
+                            )
+                            .forEach(btn => {
+
+                                btn.classList.remove(
+                                    "active"
+                                );
+
+                            });
+
+
+                        this.classList.add(
+                            "active"
+                        );
+
+
+                        selectedFoodType =
+                            this.dataset.filter;
+
+
+                        applyFilters();
+
+                    }
+                );
+
+            });
+
+
+        /* =========================================================
+           SEARCH
+        ========================================================= */
+
+        searchInput.addEventListener(
+            "input",
+            () => {
+
+                applyFilters();
+
+            }
+        );
+
+
+        /* =========================================================
+           SORT
+        ========================================================= */
+
+        sortSelect.addEventListener(
+            "change",
+            () => {
+
+                selectedSort =
+                    sortSelect.value;
+
+                applyFilters();
+
+            }
+        );
+
+
+        /* =========================================================
+           APPLY FILTERS
+        ========================================================= */
+
+        function applyFilters() {
+
+            const searchTerm =
+                searchInput.value
+                    .trim()
+                    .toLowerCase();
+
+
+            let filtered =
+                [...menuItems];
+
+
+            /* FOOD TYPE */
+
+            if (selectedFoodType !== "ALL") {
+
+                filtered =
+                    filtered.filter(item => {
+
+                        return normalizeFoodType(
+                            item.food_type
+                        ) === selectedFoodType;
+
+                    });
+
+            }
+
+
+            /* CATEGORY */
+
+            if (selectedCategory !== "ALL") {
+
+                filtered =
+                    filtered.filter(item => {
+
+                        return String(
+                            item.category || ""
+                        )
+                            .trim()
+                            .toLowerCase() ===
+                        selectedCategory
+                            .trim()
+                            .toLowerCase();
+
+                    });
+
+            }
+
+
+            /* SEARCH */
+
+            if (searchTerm) {
+
+                filtered =
+                    filtered.filter(item => {
+
+                        const name =
+                            String(
+                                item.name || ""
+                            ).toLowerCase();
+
+
+                        const category =
+                            String(
+                                item.category || ""
+                            ).toLowerCase();
+
+
+                        const description =
+                            String(
+                                item.description || ""
+                            ).toLowerCase();
+
+
+                        return (
+
+                            name.includes(searchTerm) ||
+
+                            category.includes(searchTerm) ||
+
+                            description.includes(searchTerm)
+
+                        );
+
+                    });
+
+            }
+
+
+            /* SORT */
+
+            filtered =
+                sortItems(
+                    filtered
+                );
+
+
+            /* RESULT COUNT */
+
+            updateResultsCount(
+                filtered.length
+            );
+
+
+            /* DISPLAY */
+
+            displayMenu(
+                filtered
+            );
+
+        }
+
+
+        /* =========================================================
+           NORMALIZE FOOD TYPE
+        ========================================================= */
+
+        function normalizeFoodType(value) {
+
+            return String(
+                value || ""
+            )
+                .trim()
+                .toUpperCase();
+
+        }
+
+
+        /* =========================================================
+           SORT ITEMS
+        ========================================================= */
+
+        function sortItems(items) {
+
+            switch (selectedSort) {
+
+                case "name-asc":
+
+                    return items.sort(
+                        (a, b) =>
+                            String(
+                                a.name || ""
+                            ).localeCompare(
+                                String(
+                                    b.name || ""
+                                )
+                            )
+                    );
+
+
+                case "name-desc":
+
+                    return items.sort(
+                        (a, b) =>
+                            String(
+                                b.name || ""
+                            ).localeCompare(
+                                String(
+                                    a.name || ""
+                                )
+                            )
+                    );
+
+
+                case "price-low":
+
+                    return items.sort(
+                        (a, b) =>
+                            getLowestPrice(a) -
+                            getLowestPrice(b)
+                    );
+
+
+                case "price-high":
+
+                    return items.sort(
+                        (a, b) =>
+                            getLowestPrice(b) -
+                            getLowestPrice(a)
+                    );
+
+
+                default:
+
+                    return items;
+
+            }
+
+        }
+
+
+        /* =========================================================
+           GET LOWEST PRICE
+        ========================================================= */
+
+        function getLowestPrice(item) {
+
+            const prices = [];
+
+
+            if (
+                item.half_price !== null &&
+                item.half_price !== undefined &&
+                item.half_price !== ""
+            ) {
+
+                const half =
+                    Number(
+                        item.half_price
+                    );
+
+
+                if (!Number.isNaN(half)) {
+
+                    prices.push(half);
+
+                }
+
+            }
+
+
+            if (
+                item.full_price !== null &&
+                item.full_price !== undefined &&
+                item.full_price !== ""
+            ) {
+
+                const full =
+                    Number(
+                        item.full_price
+                    );
+
+
+                if (!Number.isNaN(full)) {
+
+                    prices.push(full);
+
+                }
+
+            }
+
+
+            if (prices.length === 0) {
+
+                return Infinity;
+
+            }
+
+
+            return Math.min(
+                ...prices
+            );
+
+        }
+
+
+        /* =========================================================
+           UPDATE RESULTS COUNT
+        ========================================================= */
+
+        function updateResultsCount(count) {
+
+            resultsCount.innerHTML = `
+
+                Showing
+                <strong>${count}</strong>
+                ${count === 1 ? "dish" : "dishes"}
+
+            `;
+
+        }
+
+
+        /* =========================================================
+           DISPLAY MENU
+        ========================================================= */
+
+        function displayMenu(items) {
+
+            if (!items.length) {
+
+                menuContainer.innerHTML = `
+
+                    <div class="empty-state">
+
+                        <div class="empty-state-icon">
+                            🔎
+                        </div>
+
+                        <h3>
+                            No Dishes Found
+                        </h3>
+
+                        <p>
+                            Try another search or
+                            change your filters.
+                        </p>
+
+                    </div>
+
+                `;
+
+                return;
+
+            }
+
+
+            menuContainer.innerHTML =
+                items
+                    .map(
+                        item =>
+                            createMenuCard(item)
+                    )
+                    .join("");
+
+        }
+
+
+        /* =========================================================
+           CREATE MENU CARD
+           
+           IMAGE IS LOADED FROM:
+           
+           item.image_url
+           
+           WHICH COMES FROM DATABASE
+        ========================================================= */
+
+        function createMenuCard(item) {
+
+            const type =
+                String(
+                    item.food_type || ""
+                ).trim();
+
+
+            const normalizedType =
+                normalizeFoodType(type);
+
+
+            const typeClass =
+                normalizedType === "NON-VEG"
+                    ? "nonveg"
+                    : "";
+
+
+            const dishId =
+                item.id ??
+                item.menu_id ??
+                item.food_id ??
+                "";
+
+
+            /* =====================================================
+               DATABASE IMAGE URL
+            ===================================================== */
+
+            const imageUrl =
+                String(
+                    item.image_url || ""
+                ).trim();
+
+
+            let imageHTML = "";
+
+
+            if (imageUrl) {
+
+                imageHTML = `
+
+                    <img
+                        class="menu-image"
+                        src="${escapeHTML(imageUrl)}"
+                        alt="${escapeHTML(
+                            item.name || "Food item"
+                        )}"
+                        loading="lazy"
+                        onerror="handleImageError(this)"
+                    >
+
+                `;
+
+            }
+
+            else {
+
+                imageHTML = `
+
+                    <div class="menu-image-placeholder">
+
+                        🍽️
+
+                    </div>
+
+                `;
+
+            }
+
+
+            /* =====================================================
+               PRICE
+            ===================================================== */
+
+            let price = "";
+
+
+            const hasHalf =
+                item.half_price !== null &&
+                item.half_price !== undefined &&
+                item.half_price !== "";
+
+
+            const hasFull =
+                item.full_price !== null &&
+                item.full_price !== undefined &&
+                item.full_price !== "";
+
+
+            if (hasHalf && hasFull) {
+
+                price = `
+
+                    Half ₹${formatPrice(item.half_price)}
+
+                    &nbsp; • &nbsp;
+
+                    Full ₹${formatPrice(item.full_price)}
+
+                `;
+
+            }
+
+
+            else if (hasFull) {
+
+                price =
+                    `Full ₹${formatPrice(
+                        item.full_price
+                    )}`;
+
+            }
+
+
+            else if (hasHalf) {
+
+                price =
+                    `Half ₹${formatPrice(
+                        item.half_price
+                    )}`;
+
+            }
+
+
+            else {
+
+                price =
+                    "Price available at restaurant";
+
+            }
+
+
+            /* =====================================================
+               DESCRIPTION
+            ===================================================== */
+
+            const description =
+                String(
+                    item.description || ""
+                ).trim();
+
+
+            /* =====================================================
+               FINAL MENU CARD
+            ===================================================== */
+
+            return `
+
+                <article class="menu-card">
+
+
+                    <!-- DATABASE IMAGE -->
+
+                    ${imageHTML}
+
+
+                    <!-- CARD TOP -->
+
+                    <div class="card-top">
+
+                        <div
+                            class="food-type ${typeClass}"
+                        >
+
+                            ${escapeHTML(
+                                type ||
+                                "FOOD"
+                            )}
+
+                        </div>
+
+
+                        ${
+                            dishId !== ""
+                                ? `
+
+                                    <div class="dish-id">
+
+                                        #${escapeHTML(
+                                            dishId
+                                        )}
+
+                                    </div>
+
+                                  `
+                                : ""
+                        }
+
+                    </div>
+
+
+                    <!-- DISH NAME -->
+
+                    <h3>
+
+                        ${escapeHTML(
+                            item.name ||
+                            "Unnamed Dish"
+                        )}
+
+                    </h3>
+
+
+                    <!-- CATEGORY -->
+
+                    <div class="category">
+
+                        ${escapeHTML(
+                            item.category ||
+                            "Chotelal Special"
+                        )}
+
+                    </div>
+
+
+                    <!-- DESCRIPTION -->
+
+                    ${
+                        description
+                            ? `
+
+                                <div class="description">
+
+                                    ${escapeHTML(
+                                        description
+                                    )}
+
+                                </div>
+
+                              `
+                            : ""
+                    }
+
+
+                    <!-- PRICE -->
+
+                    <div class="price-area">
+
+                        <div class="price">
+
+                            ${price}
+
+                        </div>
+
+                    </div>
+
+
+                </article>
+
+            `;
+
+        }
+
+
+        /* =========================================================
+           IMAGE ERROR HANDLER
+           
+           If database URL is broken, don't show a broken
+           image icon. Replace it with the food placeholder.
+        ========================================================= */
+
+        function handleImageError(image) {
+
+            const placeholder =
+                document.createElement("div");
+
+
+            placeholder.className =
+                "menu-image-placeholder";
+
+
+            placeholder.textContent =
+                "🍽️";
+
+
+            image.replaceWith(
+                placeholder
+            );
+
+        }
+
+
+        /* =========================================================
+           FORMAT PRICE
+        ========================================================= */
+
+        function formatPrice(price) {
+
+            const number =
+                Number(price);
+
+
+            if (Number.isNaN(number)) {
+
+                return escapeHTML(
+                    price
+                );
+
+            }
+
+
+            return number.toLocaleString(
+                "en-IN",
+                {
+                    maximumFractionDigits: 0
+                }
+            );
+
+        }
+
+
+        /* =========================================================
+           ESCAPE HTML
+        ========================================================= */
+
+        function escapeHTML(value) {
+
+            return String(
+                value ?? ""
+            )
+
+                .replace(
+                    /&/g,
+                    "&amp;"
+                )
+
+                .replace(
+                    /</g,
+                    "&lt;"
+                )
+
+                .replace(
+                    />/g,
+                    "&gt;"
+                )
+
+                .replace(
+                    /"/g,
+                    "&quot;"
+                )
+
+                .replace(
+                    /'/g,
+                    "&#039;"
+                );
+
+        }
+
+
+        /* =========================================================
+           CLEAR FILTERS
+        ========================================================= */
+
+        clearFilters.addEventListener(
+            "click",
+            () => {
+
+                selectedFoodType =
+                    "ALL";
+
+
+                selectedCategory =
+                    "ALL";
+
+
+                selectedSort =
+                    "default";
+
+
+                searchInput.value =
+                    "";
+
+
+                sortSelect.value =
+                    "default";
+
+
+                document
+                    .querySelectorAll(
+                        ".filter-btn"
+                    )
+                    .forEach(button => {
+
+                        button.classList.remove(
+                            "active"
+                        );
+
+                    });
+
+
+                const allFoodButton =
+                    document.querySelector(
+                        '.filter-btn[data-filter="ALL"]'
+                    );
+
+
+                if (allFoodButton) {
+
+                    allFoodButton.classList.add(
+                        "active"
+                    );
+
+                }
+
+
+                categoryButtons
+                    .querySelectorAll(
+                        ".category-btn"
+                    )
+                    .forEach(button => {
+
+                        button.classList.remove(
+                            "active"
+                        );
+
+                    });
+
+
+                const allCategoryButton =
+                    categoryButtons.querySelector(
+                        '[data-category="ALL"]'
+                    );
+
+
+                if (allCategoryButton) {
+
+                    allCategoryButton.classList.add(
+                        "active"
+                    );
+
+                }
+
+
+                applyFilters();
+
+            }
+        );
+
+
+        /* =========================================================
+           BACK TO TOP
+        ========================================================= */
+
+        window.addEventListener(
+            "scroll",
+            () => {
+
+                if (
+                    window.scrollY >
+                    500
+                ) {
+
+                    backToTop.classList.add(
+                        "show"
+                    );
+
+                }
+
+                else {
+
+                    backToTop.classList.remove(
+                        "show"
+                    );
+
+                }
+
+            }
+        );
+
+
+        backToTop.addEventListener(
+            "click",
+            () => {
+
+                window.scrollTo({
+
+                    top: 0,
+
+                    behavior: "smooth"
+
+                });
+
+            }
+        );
+
+
+        /* =========================================================
+           START WEBSITE
+        ========================================================= */
+
+        /*
+         * Load immediately, then keep the public menu synchronized
+         * with changes made in the Admin Panel.
+         */
+        loadMenu();
+
+        /* Refresh while the page is open so admin changes appear automatically. */
+        setInterval(
+            () => {
+                loadMenu();
+            },
+            15000
+        );
+
+        /* Refresh when the visitor returns to this tab. */
+        document.addEventListener(
+            "visibilitychange",
+            () => {
+                if (document.visibilityState === "visible") {
+                    loadMenu();
+                }
+            }
+        );
+
+
+    </script>
+
+
+</body>
+
+</html>

@@ -2628,9 +2628,18 @@ app.use(
 // START SERVER
 // =====================================================
 
-async function startServer() {
+// Health check for Render
+app.get("/health", function (request, response) {
+    response.status(200).json({
+        success: true,
+        status: "online",
+        service: "Chotelal Hotel"
+    });
+});
 
+async function initializeDatabase() {
     try {
+        console.log("🔄 Connecting to MySQL...");
 
         // Check database
         await pool.query("SELECT 1");
@@ -2639,91 +2648,116 @@ async function startServer() {
         await ensureSchema();
 
         console.log("");
-
-        console.log(
-            "===================================="
-        );
-
-        console.log(
-            "✅ MySQL connected successfully!"
-        );
-
-        console.log(
-            "🍽️ Chotelal Hotel database ready."
-        );
-
-        console.log(
-            "===================================="
-        );
-
-        app.listen(
-            PORT,
-            function () {
-
-                console.log("");
-
-                console.log(
-                    "===================================="
-                );
-
-                console.log(
-                    "🍽️ CHOTELAL HOTEL"
-                );
-
-                console.log(
-                    "===================================="
-                );
-
-                console.log(
-                    `🌐 Website: http://localhost:${PORT}`
-                );
-
-                console.log(
-                    `📋 Menu: http://localhost:${PORT}/menu.html`
-                );
-
-                console.log(
-                    `🔐 Admin: http://localhost:${PORT}/admin`
-                );
-
-                console.log(
-                    `⚙️ Settings API: http://localhost:${PORT}/api/settings`
-                );
-
-                console.log(
-                    "===================================="
-                );
-
-                console.log(
-                    "🚀 Server is running successfully!"
-                );
-
-                console.log("");
-            }
-        );
+        console.log("====================================");
+        console.log("✅ MySQL connected successfully!");
+        console.log("🍽️ Chotelal Hotel database ready.");
+        console.log("====================================");
+        console.log("");
 
     } catch (error) {
-
+        console.error("");
+        console.error("❌ DATABASE INITIALIZATION FAILED");
+        console.error("====================================");
+        console.error(error.message);
+        console.error("====================================");
         console.error("");
 
-        console.error(
-            "❌ SERVER STARTUP FAILED"
-        );
-
-        console.error(
-            "===================================="
-        );
-
-        console.error(
-            error.message
-        );
-
-        console.error(
-            "===================================="
-        );
-
-        process.exit(1);
+        // IMPORTANT:
+        // Do NOT stop the HTTP server.
+        // Render must still be able to reach the application.
     }
 }
 
-startServer();
+// =====================================================
+// START HTTP SERVER FIRST
+// =====================================================
+
+const server = app.listen(
+    PORT,
+    "0.0.0.0",
+    function () {
+
+        console.log("");
+        console.log("====================================");
+        console.log("🍽️ CHOTELAL HOTEL");
+        console.log("====================================");
+
+        console.log(
+            `🌐 Website: http://0.0.0.0:${PORT}`
+        );
+
+        console.log(
+            `📋 Menu: http://0.0.0.0:${PORT}/menu.html`
+        );
+
+        console.log(
+            `🔐 Admin: http://0.0.0.0:${PORT}/admin`
+        );
+
+        console.log(
+            `⚙️ Settings API: http://0.0.0.0:${PORT}/api/settings`
+        );
+
+        console.log(
+            `❤️ Health: http://0.0.0.0:${PORT}/health`
+        );
+
+        console.log("====================================");
+        console.log("🚀 Server is running successfully!");
+        console.log("====================================");
+        console.log("");
+
+        // Initialize MySQL AFTER the HTTP server is listening.
+        initializeDatabase();
+    }
+);
+
+// =====================================================
+// GRACEFUL SHUTDOWN
+// =====================================================
+
+process.on("SIGTERM", function () {
+
+    console.log("🛑 SIGTERM received. Shutting down...");
+
+    server.close(function () {
+
+        pool.end()
+            .then(function () {
+                console.log("✅ Server shut down cleanly.");
+                process.exit(0);
+            })
+            .catch(function (error) {
+                console.error(
+                    "❌ Database shutdown error:",
+                    error.message
+                );
+
+                process.exit(1);
+            });
+
+    });
+});
+
+process.on("SIGINT", function () {
+
+    console.log("🛑 SIGINT received. Shutting down...");
+
+    server.close(function () {
+
+        pool.end()
+            .then(function () {
+                console.log("✅ Server shut down cleanly.");
+                process.exit(0);
+            })
+            .catch(function (error) {
+                console.error(
+                    "❌ Database shutdown error:",
+                    error.message
+                );
+
+                process.exit(1);
+            });
+
+    });
+});
